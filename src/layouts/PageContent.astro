@@ -1,0 +1,27 @@
+---
+import "reset-css";
+import "../styles/global.scss";
+import Navi from "~/components/global/Navi.astro";
+import Header from "~/components/global/Header.astro";
+import Footer from "~/components/global/Footer.astro";
+import ContentBanner from "~/components/common/ContentBanner.astro";
+import AboutModelHouse from "~/components/common/AboutModelHouse.astro";
+---
+
+<Header />
+<script src="../scripts/global.ts"></script>
+<name id="head"></name>
+<Navi />
+<slot />
+<AboutModelHouse />
+<ContentBanner />
+<Footer />
+
+<style lang="scss" is:global>
+  .content-banner {
+    margin-top: 162px;
+  }
+  footer {
+    margin-top: 169px;
+  }
+</style>

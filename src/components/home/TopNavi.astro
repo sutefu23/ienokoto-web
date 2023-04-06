@@ -1,0 +1,210 @@
+---
+import { Image } from "@astrojs/image/components";
+
+import NavReform from "~/img/top/nav_reform.png";
+import NavLearn from "~/img/top/nav_learn.png";
+import NavSpace from "~/img/top/nav_space.png";
+import NavSaisei from "~/img/top/nav_saisei.png";
+import NavConsult from "~/img/top/nav_consult.png";
+import NavTherapist from "~/img/top/nav_therapist.png";
+import NavStaff from "~/img/top/nav_staff.png";
+import NavAbout from "~/img/top/nav_about.png";
+import NavInquiry from "~/img/top/nav_inquiry.png";
+---
+
+<nav class="top_nav">
+  <ul>
+    <li>
+      <Image
+        src={NavReform}
+        alt="家をつくる"
+        width={362}
+        height={284}
+        format="webp"
+        loading="lazy"
+      />
+      <span>家をつくる</span>
+      <div class="hover_box">
+        <p>イエノコトのリフォーム事例や流れを詳しくご紹介しています。</p>
+        <a href="">⇒詳細はこちら</a>
+      </div>
+    </li>
+    <li>
+      <Image
+        src={NavLearn}
+        alt="暮らしを学ぶ"
+        width={362}
+        height={284}
+        format="webp"
+        loading="lazy"
+      />
+      <span>暮らしを学ぶ</span>
+      <div class="hover_box">
+        <p>
+          暮らしが豊かになる、片付けなどの暮らしの講座や、コンテンツ、片付けサポートを用意しています。
+        </p>
+        <a href="">⇒詳細はこちら</a>
+      </div>
+    </li>
+    <li>
+      <Image
+        src={NavSpace}
+        alt="貸しスペース"
+        width={362}
+        height={284}
+        format="webp"
+        loading="lazy"
+      />
+      <span>貸しスペース</span>
+      <div class="hover_box">
+        <a href="">⇒講座カレンダー</a>
+        <a href="">⇒貸しスペースを借りたい</a>
+      </div>
+    </li>
+    <li>
+      <Image
+        src={NavSaisei}
+        alt="古民家再生"
+        width={362}
+        height={284}
+        format="webp"
+        loading="lazy"
+      />
+      <span>古民家再生</span>
+      <div class="hover_box">
+        <p>お持ちの古民家の、再生、移築を行います。</p>
+        <a href="">⇒詳細とご相談はこちら</a>
+      </div>
+    </li>
+    <li>
+      <Image
+        src={NavConsult}
+        alt="暮らしの相談所"
+        width={362}
+        height={284}
+        format="webp"
+        loading="lazy"
+      />
+      <span>暮らしの相談所</span>
+      <div class="hover_box">
+        <p>
+          どこに聞いていいかわからない家のこと、相続のこと、介護のこと…。専門家に相談してみませんか？
+        </p>
+        <a href="">⇒詳細と相談予約はこちら</a>
+      </div>
+    </li>
+    <li>
+      <Image
+        src={NavTherapist}
+        alt="セラピストになる"
+        width={362}
+        height={284}
+        format="webp"
+        loading="lazy"
+      />
+      <span>セラピストになる</span>
+      <div class="hover_box">
+        <p>
+          片付けをさらにさらに学びたい、仕事につなげたい方向けの専門資格、家事セラピスになりませんか？
+        </p>
+        <a href="">⇒詳細はこちら</a>
+      </div>
+    </li>
+    <li>
+      <Image
+        src={NavStaff}
+        alt="スタッフ紹介"
+        width={362}
+        height={284}
+        format="webp"
+        loading="lazy"
+      />
+      <span>スタッフ紹介</span>
+      <div class="hover_box">
+        <p>イエノコトで働くスタッフを紹介します。</p>
+        <a href="">⇒詳細はこちら</a>
+      </div>
+    </li>
+    <li>
+      <Image
+        src={NavAbout}
+        alt="会社概要・アクセス"
+        width={362}
+        height={284}
+        format="webp"
+        loading="lazy"
+      />
+      <span>会社概要・アクセス</span>
+      <div class="hover_box">
+        <p>会社概要とアクセス、所在地をご紹介します。</p>
+        <a href="">⇒詳細はこちら</a>
+      </div>
+    </li>
+    <li>
+      <Image
+        src={NavInquiry}
+        alt="お問い合わせ"
+        width={362}
+        height={284}
+        format="webp"
+        loading="lazy"
+      />
+      <span>お問い合わせ</span>
+      <div class="hover_box">
+        <p>
+          家のコト、暮らしのコトなど、お気軽にお問い合わせください。<br
+          />TEL：0120-200-789
+        </p>
+        <a href="">⇒お問い合わせはこちら</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+<style lang="scss">
+  .top_nav {
+    ul {
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 42px 41px;
+      justify-content: center;
+      max-width: $baseContentWidth;
+
+      li {
+        position: relative;
+        span {
+          position: absolute;
+          top: 30px;
+          left: 24px;
+          text-shadow: 0px 3px 6px rgba($color: #000000, $alpha: 0.16);
+          font-size: 24px;
+          font-weight: bold;
+          line-height: 1.25;
+          color: white;
+        }
+        .hover_box {
+          opacity: 0;
+          position: absolute;
+          inset: 0;
+          padding: 32px 28px;
+          margin: auto;
+          width: 315px;
+          height: 186px;
+          transition: opacity 0.3s 0.1s ease-in-out;
+          background-color: rgba(#f5f2f2, 0.87);
+          line-height: 1.875;
+          font-weight: bold;
+          a {
+            display: inline-block;
+            margin-top: 1em;
+          }
+        }
+        &:hover {
+          .hover_box {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+</style>

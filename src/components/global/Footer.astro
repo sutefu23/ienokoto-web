@@ -1,0 +1,102 @@
+---
+import SNSList from "~/components/global/SNSList.astro";
+import { Image } from "@astrojs/image/components";
+import FooterLogo from "~/img/footer_logo.png";
+import classnames from "classnames";
+const { class: className } = Astro.props;
+---
+
+<footer class={classnames(className)}>
+  <div class="footer-content">
+    <div class="footer-left">
+      <Image
+        class="footer-logo"
+        src={FooterLogo}
+        width={233}
+        alt="イエノコト"
+      />
+      <address>
+        〒818-0104<br />
+        福岡県太宰府市通古賀5-2-3<br />
+        TEL：0120-200-789<br />
+        営業時間：10:00～17:00（水曜定休）
+      </address>
+    </div>
+    <div class="footer-right">
+      <ul class="footer-menu">
+        <li><a href="/">ホーム</a></li>
+        <li><a href="#">リフォーム</a></li>
+        <li><a href="#">暮らしの講座</a></li>
+        <li><a href="#">貸しスペース</a></li>
+        <li><a href="#">古民家再生</a></li>
+      </ul>
+      <ul class="footer-menu">
+        <li><a href="#">暮らしの相談</a></li>
+        <li><a href="#">家事セラピスト養成講座</a></li>
+        <li><a href="#">スタッフ紹介</a></li>
+      </ul>
+      <ul class="footer-menu">
+        <li><a href="#">会社概要・アクセス</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-sns">
+    <SNSList />
+    <small>Copyright©イエノコト株式会社　 All Rgiths Reserved</small>
+  </div>
+  <a href="#head" class="goback fade" data-show-position={100} title="上に戻る"
+  ></a>
+</footer>
+<style lang="scss">
+  .footer-content {
+    color: #fff;
+    max-width: $designLineWidth;
+    min-height: 318px;
+    background-color: #6c6c60;
+    display: flex;
+    justify-content: space-between;
+    padding-left: vw(136px, $baseWindowWidth);
+    padding-right: vw(278px, $baseWindowWidth);
+  }
+  .footer-left {
+    margin-top: 61px;
+  }
+  .footer-logo {
+    margin-bottom: 38px;
+  }
+  .footer-right {
+    margin-top: 96px;
+  }
+  .footer-menu {
+    display: flex;
+    & + & {
+      margin-top: 31px;
+    }
+  }
+  li {
+    & + li {
+      margin-left: 26px;
+    }
+  }
+  .footer-sns {
+    padding-top: 70px;
+    min-height: 244px;
+    text-align: center;
+    small {
+      display: block;
+      margin-top: 47px;
+    }
+  }
+  .goback {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: 80px;
+    width: 30px;
+    height: 30px;
+    border-top: solid 1px #6c6c60;
+    border-left: solid 1px #6c6c60;
+    transform: rotate(45deg);
+  }
+</style>

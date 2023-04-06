@@ -1,0 +1,82 @@
+/*
+  The CSS in this style tag is based off of Bear Blog's default CSS.
+  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: $fontBase;
+	margin: auto;
+	font-size: $baseFontSize;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	line-height: 1.5;
+	color: #000;
+}
+
+.content {
+	/*コンテンツ幅*/
+	max-width: $baseContentWidth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 50px;
+	text-align: center;
+}
+
+h2 {
+	font-size: 24px;
+	text-align: center;
+}
+
+h3 {
+	font-size: 18px;
+	text-align: center;
+}
+
+a {
+	color: inherit;
+	transition: opacity .7s ease;
+	text-decoration: none;
+
+	&:hover {
+		opacity: 0.72
+	}
+}
+
+table {
+	width: 100%;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.fade {
+	opacity: 0;
+	transition: opacity var(--data-duration, .3s) ease-in;
+
+	&.show {
+		opacity: 1;
+	}
+
+	&.hide {
+		opacity: 0;
+	}
+
+}

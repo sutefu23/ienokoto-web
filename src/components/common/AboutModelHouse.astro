@@ -1,0 +1,45 @@
+---
+import { Image } from "@astrojs/image/components";
+import ModelImage from "~/img/model_image.png";
+---
+
+<section class="about_modelhouse">
+  <h2>モデルハウスのご案内</h2>
+  <div class="content">
+    <Image width={443} src={ModelImage} alt="Facebook" />
+    <p class="text">
+      イエノコトのモデルハウスは、「捨てる！技術」辰巳渚の家を一部再現した、暮らしのエッセンスがたくさん詰まった、古民家風の新築です。<br
+      />
+      <br />
+      モデルハウスは貸しスペースも行っており、ヨガ教室や料理教室、韓国語講座などにもご利用いただいています。<br
+      />
+      <br />
+      モデルハウス見学ご希望の方は、0120-200-789まで事前にご予約ください。<br />
+      <br />
+      　　営業時間　　10:00～17:00（水曜定休）<br />
+      　　所在地　　　福岡県太宰府市通古賀5-2-3<br />
+      　　　　　　　　※駐車場あり<br />
+      　　　　　　　　※西鉄大牟田線都府楼前駅より徒歩１０分<br />
+    </p>
+  </div>
+</section>
+<style lang="scss">
+  .about_modelhouse {
+    margin: auto;
+    h2 {
+      margin-bottom: 146px;
+    }
+    .content {
+      display: flex;
+      justify-content: center;
+      column-gap: 95px;
+      @media screen and (max-width: $baseContentWidth) {
+        column-gap: vw(95px, $baseWindowWidth);
+      }
+      margin: auto;
+      .text {
+        max-width: 563px;
+      }
+    }
+  }
+</style>

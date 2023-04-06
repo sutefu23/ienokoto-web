@@ -1,0 +1,57 @@
+---
+import { Image } from "@astrojs/image/components";
+import BannerKajijuku from "~/img/banner_kajijuku.png";
+import BannerSaisei from "~/img/banner_kominka_saisei.png";
+import BannerAkiya from "~/img/banner_akiya.png";
+---
+
+<nav class="content-banner">
+  <ul>
+    <li>
+      <a href="https://www.facebook.com/">
+        <Image
+          src={BannerKajijuku}
+          width={235}
+          alt="家事塾"
+          loading="lazy"
+          format="webp"
+        />
+      </a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/">
+        <Image
+          src={BannerSaisei}
+          width={500}
+          alt="全国古民家再生協会"
+          loading="lazy"
+          format="webp"
+        />
+      </a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/">
+        <Image
+          src={BannerAkiya}
+          width={258}
+          alt="太宰府空き家予防協議会"
+          loading="lazy"
+          format="webp"
+        />
+      </a>
+    </li>
+  </ul>
+</nav>
+<style lang="scss">
+  .content-banner {
+    width: 100%;
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    li + li {
+      margin-left: 96px;
+    }
+  }
+</style>

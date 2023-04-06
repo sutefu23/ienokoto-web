@@ -1,0 +1,64 @@
+---
+import { Image } from "@astrojs/image/components";
+// import { Link } from "@astrojs/router";
+import Logo from "~/img/logo.png";
+import { SITE_TITLE } from "../../consts";
+---
+
+<nav class="fade">
+  <div class="wrap">
+    <a href="/">
+      <Image
+        src={Logo}
+        width={172}
+        alt={SITE_TITLE}
+        class="logo"
+        format="webp"
+      />
+    </a>
+    <ul>
+      <li><a href="index.html">リフォーム</a></li>
+      <li><a href="about.html">暮らしの講座</a></li>
+      <li><a href="contact.html">貸しスペース</a></li>
+      <li><a href="contact.html">古民家再生</a></li>
+      <li><a href="contact.html">暮らしの相談所</a></li>
+      <li><a href="/staff/">スタッフ</a></li>
+      <li><a href="/about/">会社概要</a></li>
+      <li><a href="/siryo/">お問い合わせ</a></li>
+    </ul>
+  </div>
+</nav>
+<style lang="scss">
+  nav {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    top: 0;
+    height: 85px;
+    line-height: 85px;
+    background-color: rgba($color: #6c6c60, $alpha: 0.72);
+    .wrap {
+      max-width: 1676px;
+      margin: auto;
+      display: flex;
+      justify-content: space-around;
+      @media screen and (min-width: 1650px) {
+        padding-left: 84px;
+        padding-right: 130px;
+        justify-content: space-between;
+      }
+    }
+    .logo {
+      margin-top: 21px;
+    }
+    ul {
+    }
+    li {
+      color: #fff;
+      display: inline-block;
+      & + li:before {
+        content: "／";
+      }
+    }
+  }
+</style>

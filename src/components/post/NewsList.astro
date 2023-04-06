@@ -1,0 +1,64 @@
+---
+const Posts = [
+  {
+    id: 1,
+    title: "みんなの冷蔵庫が設置されました",
+    date: "2023年02月01日",
+    url: "http://www.example.com/",
+  },
+  {
+    id: 1,
+    title: "西日本新聞に掲載されました",
+    date: "2023年02月01日",
+    url: "http://www.example.com/",
+  },
+  {
+    id: 1,
+    title: "年末年始の営業について",
+    date: "2023年02月01日",
+    url: "http://www.example.com/",
+  },
+];
+---
+
+<section class="news_list">
+  <h3>お知らせ</h3>
+  <ul>
+    {
+      Posts.map((post) => (
+        <li>
+          <a href={post.url}>
+            <p>
+              <time>{post.date}</time>
+              {post.title}
+            </p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <a href="/news/" class="more">＞＞もっと見る</a>
+</section>
+<style lang="scss">
+  .news_list {
+    max-width: 420px;
+    margin: auto;
+    text-align: center;
+  }
+  h3 {
+    margin-bottom: 104px;
+  }
+  ul {
+    text-align: left;
+  }
+  li + li {
+    margin-top: 47px;
+  }
+  time {
+    margin-right: 53px;
+  }
+  .more {
+    display: inline-block;
+    margin-top: 78px;
+  }
+</style>

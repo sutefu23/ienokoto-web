@@ -1,0 +1,85 @@
+---
+import { Image } from "@astrojs/image/components";
+const Columns = [
+  {
+    id: 1,
+    title: "エンディングノートワークショップ",
+    date: "2023年2月10日（金）",
+    url: "http://www.example.com/",
+    image: "https://placehold.jp/3d4070/ffffff/322x322.png?text=322x322",
+  },
+  {
+    id: 2,
+    title: "ちょこっと片付けのススメ",
+    date: "2023年2月21日（火）",
+    url: "http://www.example.com/",
+    image: "https://placehold.jp/3d4070/ffffff/322x322.png?text=322x322",
+  },
+  {
+    id: 3,
+    title: "リクシル福岡　小さく豊かに暮らす",
+    date: "2023年2月22日（水）",
+    url: "http://www.example.com/",
+    image: "https://placehold.jp/3d4070/ffffff/322x322.png?text=322x322",
+  },
+];
+---
+
+<section class="column_list">
+  <h3>暮らしのお便り・コラム</h3>
+  <ul>
+    {
+      Columns.map((post) => (
+        <li>
+          <a href={post.url}>
+            <Image
+              src={post.image}
+              width={322}
+              height={322}
+              format="webp"
+              alt={post.title}
+            />
+            <time>{post.date}</time>
+            <p>{post.title}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <a href="http://www.example.com/" class="more">＞＞もっと見る</a>
+</section>
+<style lang="scss">
+  .column_list {
+    max-width: $baseContentWidth;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h3 {
+    margin-bottom: 111px;
+  }
+  ul {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 104px;
+  }
+  img {
+    margin-bottom: 30px;
+  }
+  a:hover {
+    opacity: 0.72;
+  }
+  time {
+    display: block;
+    margin-bottom: 13px;
+    margin-right: 53px;
+  }
+  p {
+    line-height: 1.875;
+  }
+  .more {
+    text-align: right;
+    display: block;
+    margin-top: 62px;
+  }
+</style>
