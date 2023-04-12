@@ -11,7 +11,7 @@ import ColumnList from "~/components/post/ColumnList.astro";
 
 <PageContent>
   <TopCatch />
-  <main>
+  <main class="home">
     <p class="main_copy">
       イエノコトは太宰府市通古賀にある工務店。 <br />
       いくら素敵な家を建てても、<br />
@@ -24,8 +24,7 @@ import ColumnList from "~/components/post/ColumnList.astro";
     <NewsList />
     <EventList />
     <ColumnList />
-    <h3>Follow us</h3>
-
+    <h3 class="sns_list_title">Follow us</h3>
     <SNSList />
   </main>
 </PageContent>
@@ -34,9 +33,28 @@ import ColumnList from "~/components/post/ColumnList.astro";
     margin-top: 243px;
     text-align: center;
     line-height: 3.75;
+    margin-bottom: 241px;
     strong {
       display: block;
       font-size: 24px;
     }
+  }
+  .sns_list_title {
+    margin-bottom: 110px;
+  }
+  :global(.home .top_nav) {
+    margin-bottom: 252px;
+  }
+  :global(.home .news_list) {
+    margin-bottom: 252px;
+  }
+  :global(.home .event_list) {
+    margin-bottom: 252px;
+  }
+  :global(.home .column_list) {
+    margin-bottom: 252px;
+  }
+  :global(.home .sns_list) {
+    margin-bottom: 249px;
   }
 </style>

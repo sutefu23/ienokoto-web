@@ -1,6 +1,6 @@
 ---
 import { Image } from "@astrojs/image/components";
-
+import { PAGES } from "~/consts";
 import NavReform from "~/img/top/nav_reform.png";
 import NavLearn from "~/img/top/nav_learn.png";
 import NavSpace from "~/img/top/nav_space.png";
@@ -17,33 +17,33 @@ import NavInquiry from "~/img/top/nav_inquiry.png";
     <li>
       <Image
         src={NavReform}
-        alt="家をつくる"
+        alt={PAGES.REFORM.title}
         width={362}
         height={284}
         format="webp"
         loading="lazy"
       />
-      <span>家をつくる</span>
+      <span>{PAGES.REFORM.title}</span>
       <div class="hover_box">
         <p>イエノコトのリフォーム事例や流れを詳しくご紹介しています。</p>
-        <a href="">⇒詳細はこちら</a>
+        <a href="/reform">⇒詳細はこちら</a>
       </div>
     </li>
     <li>
       <Image
         src={NavLearn}
-        alt="暮らしを学ぶ"
+        alt={PAGES.REPRODUCTION.title}
         width={362}
         height={284}
         format="webp"
         loading="lazy"
       />
-      <span>暮らしを学ぶ</span>
+      <span>{PAGES.REPRODUCTION.title}</span>
       <div class="hover_box">
         <p>
           暮らしが豊かになる、片付けなどの暮らしの講座や、コンテンツ、片付けサポートを用意しています。
         </p>
-        <a href="">⇒詳細はこちら</a>
+        <a href={PAGES.REPRODUCTION.slug}>⇒詳細はこちら</a>
       </div>
     </li>
     <li>
@@ -57,40 +57,43 @@ import NavInquiry from "~/img/top/nav_inquiry.png";
       />
       <span>貸しスペース</span>
       <div class="hover_box">
-        <a href="">⇒講座カレンダー</a>
-        <a href="">⇒貸しスペースを借りたい</a>
+        <a href="/event">⇒講座カレンダー</a>
+        <a
+          href="/wp/wp-content/themes/ienokoto/files/HP%E7%94%A8-%E8%B2%B8%E3%81%97%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%81%AE%E3%81%94%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95.pdf"
+          >⇒貸しスペースを借りたい</a
+        >
       </div>
     </li>
     <li>
       <Image
         src={NavSaisei}
-        alt="古民家再生"
+        alt={PAGES.REPRODUCTION.title}
         width={362}
         height={284}
         format="webp"
         loading="lazy"
       />
-      <span>古民家再生</span>
+      <span>{PAGES.REPRODUCTION.title}</span>
       <div class="hover_box">
         <p>お持ちの古民家の、再生、移築を行います。</p>
-        <a href="">⇒詳細とご相談はこちら</a>
+        <a href={PAGES.REPRODUCTION.slug}>⇒詳細とご相談はこちら</a>
       </div>
     </li>
     <li>
       <Image
         src={NavConsult}
-        alt="暮らしの相談所"
+        alt={PAGES.CONSULT.title}
         width={362}
         height={284}
         format="webp"
         loading="lazy"
       />
-      <span>暮らしの相談所</span>
+      <span>{PAGES.CONSULT.title}</span>
       <div class="hover_box">
         <p>
           どこに聞いていいかわからない家のこと、相続のこと、介護のこと…。専門家に相談してみませんか？
         </p>
-        <a href="">⇒詳細と相談予約はこちら</a>
+        <a href={PAGES.CONSULT.slug}>⇒詳細と相談予約はこちら</a>
       </div>
     </li>
     <li>
@@ -107,22 +110,22 @@ import NavInquiry from "~/img/top/nav_inquiry.png";
         <p>
           片付けをさらにさらに学びたい、仕事につなげたい方向けの専門資格、家事セラピスになりませんか？
         </p>
-        <a href="">⇒詳細はこちら</a>
+        <a href="/">⇒詳細はこちら</a>
       </div>
     </li>
     <li>
       <Image
         src={NavStaff}
-        alt="スタッフ紹介"
+        alt={PAGES.STAFF.title}
         width={362}
         height={284}
         format="webp"
         loading="lazy"
       />
-      <span>スタッフ紹介</span>
+      <span>{PAGES.STAFF.title}</span>
       <div class="hover_box">
         <p>イエノコトで働くスタッフを紹介します。</p>
-        <a href="">⇒詳細はこちら</a>
+        <a href={PAGES.STAFF.slug}>⇒詳細はこちら</a>
       </div>
     </li>
     <li>
@@ -137,7 +140,7 @@ import NavInquiry from "~/img/top/nav_inquiry.png";
       <span>会社概要・アクセス</span>
       <div class="hover_box">
         <p>会社概要とアクセス、所在地をご紹介します。</p>
-        <a href="">⇒詳細はこちら</a>
+        <a href="/about">⇒詳細はこちら</a>
       </div>
     </li>
     <li>
@@ -155,7 +158,7 @@ import NavInquiry from "~/img/top/nav_inquiry.png";
           家のコト、暮らしのコトなど、お気軽にお問い合わせください。<br
           />TEL：0120-200-789
         </p>
-        <a href="">⇒お問い合わせはこちら</a>
+        <a href="/siryo">⇒お問い合わせはこちら</a>
       </div>
     </li>
   </ul>
