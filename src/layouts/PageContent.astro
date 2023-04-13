@@ -6,6 +6,10 @@ import Head from "~/components/global/Head.astro";
 import Footer from "~/components/global/Footer.astro";
 import ContentBanner from "~/components/common/ContentBanner.astro";
 import AboutModelHouse from "~/components/common/AboutModelHouse.astro";
+
+export type Props = {
+  class: string;
+};
 const { class: className } = Astro.props;
 ---
 
@@ -13,11 +17,13 @@ const { class: className } = Astro.props;
 <html lang="ja">
   <Head />
   <script src="../scripts/global.ts"></script>
-  <body class={className}>
+  <body>
     <header id="head">
       <Navi />
     </header>
-    <slot />
+    <main class={className}>
+      <slot />
+    </main>
     <AboutModelHouse />
     <ContentBanner />
     <Footer />

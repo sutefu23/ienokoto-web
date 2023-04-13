@@ -6,21 +6,21 @@ const Columns = [
     title: "エンディングノートワークショップ",
     date: "2023年2月10日（金）",
     url: "http://www.example.com/",
-    image: "https://placehold.jp/3d4070/ffffff/322x322.png?text=322x322",
+    image: "https://placehold.jp/322x322.png",
   },
   {
     id: 2,
     title: "ちょこっと片付けのススメ",
     date: "2023年2月21日（火）",
     url: "http://www.example.com/",
-    image: "https://placehold.jp/3d4070/ffffff/322x322.png?text=322x322",
+    image: "https://placehold.jp/322x322.png",
   },
   {
     id: 3,
     title: "リクシル福岡　小さく豊かに暮らす",
     date: "2023年2月22日（水）",
     url: "http://www.example.com/",
-    image: "https://placehold.jp/3d4070/ffffff/322x322.png?text=322x322",
+    image: "https://placehold.jp/322x322.png",
   },
 ];
 ---
@@ -37,6 +37,7 @@ const Columns = [
               width={322}
               height={322}
               format="webp"
+              loading={"lazy"}
               alt={post.title}
             />
             <time>{post.date}</time>
@@ -46,7 +47,7 @@ const Columns = [
       ))
     }
   </ul>
-  <a href="http://www.example.com/" class="more">＞＞もっと見る</a>
+  <a href="/column" class="more">＞＞もっと見る</a>
 </section>
 <style lang="scss">
   .column_list {

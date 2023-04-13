@@ -7,26 +7,27 @@ import TopNavi from "~/components/home/TopNavi.astro";
 import NewsList from "~/components/post/NewsList.astro";
 import EventList from "~/components/post/EventList.astro";
 import ColumnList from "~/components/post/ColumnList.astro";
+import { PAGES } from "~/consts";
+
+const { className } = PAGES.HOME;
 ---
 
-<PageContent>
+<PageContent class={className}>
   <TopCatch />
-  <main class="home">
-    <p class="main_copy">
-      イエノコトは太宰府市通古賀にある工務店。 <br />
-      いくら素敵な家を建てても、<br />
-      暮らしが整っていなくて、毎日イライラ<br />
-      していたらなんだか幸せじゃない。
-      <strong>「家創りは、暮らし創り」</strong>
-      そんな想いを持つ女性が集まって生まれた<br />イエノコトだからできるコト。
-    </p>
-    <TopNavi />
-    <NewsList />
-    <EventList />
-    <ColumnList />
-    <h3 class="sns_list_title">Follow us</h3>
-    <SNSList />
-  </main>
+  <p class="main_copy">
+    イエノコトは太宰府市通古賀にある工務店。 <br />
+    いくら素敵な家を建てても、<br />
+    暮らしが整っていなくて、毎日イライラ<br />
+    していたらなんだか幸せじゃない。
+    <strong>「家創りは、暮らし創り」</strong>
+    そんな想いを持つ女性が集まって生まれた<br />イエノコトだからできるコト。
+  </p>
+  <TopNavi />
+  <NewsList />
+  <EventList />
+  <ColumnList />
+  <h3 class="sns_list_title">Follow us</h3>
+  <SNSList />
 </PageContent>
 <style lang="scss">
   .main_copy {
