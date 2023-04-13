@@ -1,0 +1,39 @@
+---
+import { PAGES } from "~/consts";
+import type { PageKey } from "~/consts";
+export type Props = {
+  page: PageKey;
+  subPageTitle?: string; //もし自身が下層ページであれば、そのタイトルを入力する
+};
+const { page, subPageTitle } = Astro.props;
+---
+
+<ul class="breadcrumb content">
+  <li>
+    <a href={PAGES.HOME.slug}>Home</a>
+  </li>
+  {
+    !subPageTitle ? (
+      <li>{PAGES[page].title}</li>
+    ) : (
+      <>
+        <li>
+          <a href={PAGES[page].slug}>{PAGES[page].title}</a>
+        </li>
+        <li>{subPageTitle}</li>
+      </>
+    )
+  }
+</ul>
+<style lang="scss">
+  .breadcrumb {
+    display: flex;
+    justify-content: left;
+    margin-top: 44px;
+    max-width: $designLineWidth;
+    padding-left: 134px;
+    li + li::before {
+      content: ">";
+    }
+  }
+</style>

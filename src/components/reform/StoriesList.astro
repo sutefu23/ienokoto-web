@@ -1,0 +1,97 @@
+---
+import { Image } from "@astrojs/image/components";
+const ReformPosts = [
+  {
+    id: 1,
+    title: "終の棲家を小さく豊かにフルリノベ",
+    spec: "１階フロア120㎡　フルリノベーション　600万円",
+    date: "2023年2月10日（金）",
+    url: "http://www.example.com/",
+    image: "https://placehold.jp/1920x832.png",
+  },
+  {
+    id: 2,
+    title: "築５０年　古き良き日本を生かしたフルリノベ",
+    spec: "築50年中古物件フルリノベーション　2000万円",
+    date: "2023年2月21日（火）",
+    url: "http://www.example.com/",
+    image: "https://placehold.jp/1920x832.png",
+  },
+  {
+    id: 3,
+    title: "暮らしやすさを取り入れた古民家風新築",
+    date: "2023年2月22日（水）",
+    url: "http://www.example.com/",
+    image: "https://placehold.jp/1920x832.png",
+  },
+];
+---
+
+<h2 class="stories_tile">リフォームストーリー</h2>
+<div class="stories">
+  {
+    ReformPosts.map((post) => (
+      <div class="story">
+        <Image
+          class="story_image"
+          src={post.image}
+          alt={post.title}
+          format={"webp"}
+          loading={"lazy"}
+          width={1920}
+          height={832}
+        />
+        <div class="story_content">
+          <h3 class="story_title">{post.title}</h3>
+          {post.spec && <p class="story_spec">{post.spec}</p>}
+        </div>
+      </div>
+    ))
+  }
+</div>
+<style lang="scss">
+  .stories_tile {
+    margin-top: 273px;
+  }
+  .stories {
+    margin-top: 119px;
+  }
+  .story {
+    position: relative;
+    + .story {
+      margin-top: 3px;
+    }
+  }
+  .story_content {
+    position: absolute;
+    max-width: $designLineWidth;
+    height: 100%;
+    inset: 0;
+    margin: auto;
+  }
+  .story_title {
+    text-align: left;
+    margin-top: 49px;
+    margin-left: 75px;
+    display: inline-block;
+    background-color: #fff;
+    padding: 18px 33px;
+    box-shadow: 0 3px 6px rgba($color: #000, $alpha: 0.16);
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .story_spec {
+    position: absolute;
+    margin-left: 107px;
+    bottom: 39px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .story_image {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+</style>

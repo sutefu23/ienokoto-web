@@ -1,0 +1,76 @@
+---
+import { Image } from "@astrojs/image/components";
+const ReformPosts = [
+  {
+    id: 1,
+    title: "終の棲家を小さく豊かにフルリノベ",
+    spec: "１階フロア120㎡　フルリノベーション　600万円",
+    date: "2023年2月10日（金）",
+    url: "http://www.example.com/",
+    image: "https://placehold.jp/234x227.png",
+  },
+  {
+    id: 2,
+    title: "築５０年　古き良き日本を生かしたフルリノベ",
+    spec: "築50年中古物件フルリノベーション　2000万円",
+    date: "2023年2月21日（火）",
+    url: "http://www.example.com/",
+    image: "https://placehold.jp/234x227.png",
+  },
+  {
+    id: 3,
+    title: "暮らしやすさを取り入れた古民家風新築",
+    date: "2023年2月22日（水）",
+    url: "http://www.example.com/",
+    image: "https://placehold.jp/234x227.png",
+  },
+  {
+    id: 4,
+    title: "暮らしやすさを取り入れた古民家風新築",
+    date: "2023年2月22日（水）",
+    url: "http://www.example.com/",
+    image: "https://placehold.jp/234x227.png",
+  },
+  {
+    id: 5,
+    title: "暮らしやすさを取り入れた古民家風新築",
+    date: "2023年2月22日（水）",
+    url: "http://www.example.com/",
+    image: "https://placehold.jp/234x227.png",
+  },
+];
+---
+
+<section class="reform_list">
+  <ul>
+    {
+      ReformPosts.map((post) => (
+        <li>
+          <a href={post.url}>
+            <Image
+              src={post.image}
+              width={234}
+              height={227}
+              format="webp"
+              loading={"lazy"}
+              alt={post.title}
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+<style lang="scss">
+  .reform_list {
+    max-width: $baseContentWidth;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  ul {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    column-gap: 53px;
+  }
+</style>

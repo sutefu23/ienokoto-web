@@ -1,0 +1,52 @@
+---
+import { Image } from "@astrojs/image/components";
+import classNames from "classnames";
+export type Props = {
+  contents: {
+    title: string;
+    text: string;
+    image: ImageMetadata;
+  }[];
+  class?: string;
+};
+const { contents, class: className } = Astro.props;
+---
+
+<div class={classNames(["loop_section", "content", className])}>
+  {
+    contents.map((content) => (
+      <section class="line">
+        <Image
+          src={content.image}
+          alt={content.title}
+          width={443}
+          height={327}
+        />
+        <div class="content">
+          <h4 class="content_title">{content.title}</h4>
+          <p class="content_text">{content.text}</p>
+        </div>
+      </section>
+    ))
+  }
+</div>
+
+<style lang="scss">
+  .line {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 125px;
+    @media screen and (max-width: 1168px) {
+      column-gap: vw(100px, 1168px);
+    }
+    + .line {
+      margin-top: 197px;
+    }
+  }
+  .line:nth-of-type(2n) {
+    flex-direction: row-reverse;
+  }
+  .content_title {
+    margin-bottom: 63px;
+  }
+</style>

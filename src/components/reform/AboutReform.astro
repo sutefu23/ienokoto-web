@@ -1,0 +1,32 @@
+---
+import LoopSection from "../common/LoopSection.astro";
+import AboutImage1 from "~/img/reform/reform_abount_01.jpg";
+import AboutImage2 from "~/img/reform/reform_abount_02.jpg";
+import AboutImage3 from "~/img/reform/reform_abount_03.jpg";
+import AboutImage4 from "~/img/reform/reform_abount_04.jpg";
+
+const contents = [
+  {
+    title: "こんなのできるのかな？全てお聞きします。",
+    image: AboutImage1,
+    text: "イエノコトには、暮らしの専門家の家事セラピスト・建築士・古民家鑑定士がいます。あなたの暮らし方を全て聞き取ったうえで、一緒に暮らしやすいご提案をします。",
+  },
+  {
+    title: "暮らしをデザインします。",
+    image: AboutImage2,
+    text: "数多くのメーカー・商品の中から、お客さまの暮らしにぴったりのモノをご提案し、納得いく商品決めをおこないます。",
+  },
+  {
+    title: "気になる商品を一緒にショールームに見に行きます。",
+    image: AboutImage3,
+    text: "一緒に現物を見に行ってわかる、「質感」「使い勝手」「機能性」を確認し、お客様の「これがいい！」が出るまでショールームを回ります。",
+  },
+  {
+    title: "リフォーム後もずっと・・・",
+    image: AboutImage4,
+    text: "リフォーム後から始まるご縁を大切にし、いつまでも暮らしやすいお家のためのお手伝いをいたします。小さなことでもまたご連絡ください。",
+  },
+];
+---
+
+<LoopSection contents={contents} />

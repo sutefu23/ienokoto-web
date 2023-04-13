@@ -13,7 +13,7 @@ const { page } = Astro.props;
   <Image
     src={PAGES[page].catchImage}
     alt={PAGES[page].title}
-    class="catch-image"
+    class="catch_image"
     format="webp"
     loading={"eager"}
   />
@@ -25,10 +25,18 @@ const { page } = Astro.props;
     position: relative;
     text-align: center;
   }
+  .catch_image {
+    vertical-align: middle;
+  }
   .page_title {
+    max-width: $designLineWidth;
+    position: absolute;
+    padding-left: 84px;
     color: #fff;
+    top: 0;
+    bottom: 0;
     font-weight: bold;
-    margin-top: 78px;
-    font-size: 19px;
+    margin: auto;
+    height: 50px;
   }
 </style>

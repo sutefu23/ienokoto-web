@@ -20,6 +20,8 @@ body {
 .content {
 	/*コンテンツ幅*/
 	max-width: $baseContentWidth;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 h1,
