@@ -12,17 +12,17 @@ export type Props = {
 const { contents, class: className } = Astro.props;
 ---
 
-<div class={classNames(["loop_section", "content", className])}>
+<div class={classNames(["loop_section", className])}>
   {
     contents.map((content) => (
-      <section class="line">
+      <section class="loop_content">
         <Image
           src={content.image}
           alt={content.title}
           width={443}
           height={327}
         />
-        <div class="content">
+        <div>
           <h4 class="content_title">{content.title}</h4>
           <p class="content_text">{content.text}</p>
         </div>
@@ -32,18 +32,20 @@ const { contents, class: className } = Astro.props;
 </div>
 
 <style lang="scss">
-  .line {
+  .loop_content {
     display: flex;
     justify-content: space-between;
     column-gap: 125px;
+    max-width: 1140px;
+    margin: auto;
     @media screen and (max-width: 1168px) {
       column-gap: vw(100px, 1168px);
     }
-    + .line {
+    + .loop_content {
       margin-top: 197px;
     }
   }
-  .line:nth-of-type(2n) {
+  .loop_content:nth-of-type(2n) {
     flex-direction: row-reverse;
   }
   .content_title {

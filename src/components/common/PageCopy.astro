@@ -1,0 +1,23 @@
+---
+export type Props = {
+  title: string;
+};
+const { title } = Astro.props;
+---
+
+<h2 class="copy_title">
+  {title}
+</h2>
+<p class="copy_content">
+  <slot />
+</p>
+<style lang="scss">
+  .copy_title {
+    margin-top: 171px;
+  }
+  .copy_content {
+    text-align: center;
+    margin-top: 119px;
+    line-height: 2.5;
+  }
+</style>

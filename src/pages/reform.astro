@@ -3,6 +3,7 @@ import PageCatch from "~/components/catch/PageCatch.astro";
 import { PAGES } from "~/consts";
 import PageContent from "~/layouts/PageContent.astro";
 const { className } = PAGES.REFORM;
+import PageCopy from "~/components/common/PageCopy.astro";
 import BreadCrumb from "~/components/common/BreadCrumb.astro";
 import StoriesList from "~/components/reform/StoriesList.astro";
 import ReformCaseList from "~/components/post/ReformCaseList.astro";
@@ -12,15 +13,14 @@ import AboutReform from "~/components/reform/AboutReform.astro";
 <PageContent class={className}>
   <PageCatch page={"REFORM"} />
   <BreadCrumb page={"REFORM"} />
-  <h2 class="copy_title">この家で、これからも、いつまでも</h2>
-  <p class="copy_content">
+  <PageCopy title="この家で、これからも、いつまでも">
     せわしない平日の朝支度、些細なことから喧嘩したこと・・・<br />
     家族との色んな思い出が詰まったわが家。<br />
     月日が過ぎて、子どもたちは巣立ち、夫婦ふたりの暮らし。<br />
     家族と一緒に過ごしてきたこの家も、年を取った。<br />
     これから自分たちの時間をより豊かにするための住まいをつくり、<br />
     毎日を楽しく過ごすために イエノコトは寄り添います。
-  </p>
+  </PageCopy>
   <StoriesList />
   <h2 class="reform_case_title">過去の施工事例はこちら</h2>
   <ReformCaseList />
@@ -34,14 +34,6 @@ import AboutReform from "~/components/reform/AboutReform.astro";
   </div>
 </PageContent>
 <style lang="scss">
-  .copy_title {
-    margin-top: 171px;
-  }
-  .copy_content {
-    text-align: center;
-    margin-top: 119px;
-    line-height: 1.875;
-  }
   .about_title {
     margin-top: 273px;
     margin-bottom: 146px;
