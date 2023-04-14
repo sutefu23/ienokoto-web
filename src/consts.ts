@@ -22,9 +22,9 @@ export const PAGES = {
     catchImage: CatchReform
   },
   REPRODUCTION: {
-    slug: '/reploduction',
+    slug: '/reproduction',
     title: '古民家再生',
-    className: 'reploduction',
+    className: 'reproduction',
     catchImage: CatchReproduction
   },
   CONSULT: {

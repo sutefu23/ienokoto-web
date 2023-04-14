@@ -1,0 +1,52 @@
+---
+import PageCatch from "~/components/catch/PageCatch.astro";
+import { PAGES } from "~/consts";
+import PageContent from "~/layouts/PageContent.astro";
+const { className } = PAGES.REPRODUCTION;
+import PageCopy from "~/components/common/PageCopy.astro";
+import BreadCrumb from "~/components/common/BreadCrumb.astro";
+import ContentDetails from "~/components/reproduction/ContentDetails.astro";
+import InquiryMore from "~/components/common/InquiryMore.astro";
+import { Image } from "@astrojs/image/components";
+import BannerKominkaSaisei from "~/img/banner_kominka_saisei.png";
+---
+
+<PageContent class={className}>
+  <PageCatch page={"REPRODUCTION"} />
+  <BreadCrumb page={"REPRODUCTION"} />
+  <PageCopy title="日本の伝統建築を次世代につなぐ">
+    イエノコトは、日本の伝統と文化を次世代につなげます<br />
+    家創りは、暮らし創り<br />
+    古いものを新しい時代に残していいくこと<br />
+    日本の暮らしと文化<br />
+    少しカタチは変わっても<br />
+    意識して残していけば、次世代につないでいける<br />
+    そのお手伝いをします
+  </PageCopy>
+  <ContentDetails />
+  <InquiryMore />
+  <section class="banner">
+    <h4 class="banner_title">イエノコトは古民家再生協会に所属しています</h4>
+    <Image
+      src={BannerKominkaSaisei}
+      width={500}
+      height={72}
+      alt="全国古民家再生協議会"
+      format="webp"
+      loading="lazy"
+    />
+  </section>
+</PageContent>
+<style lang="scss">
+  .reproduction :global(.page_copy) {
+    margin-bottom: 210px;
+  }
+  .banner {
+    text-align: center;
+    margin-bottom: 483px;
+  }
+  .banner_title {
+    margin-top: 173px;
+    margin-bottom: 21px;
+  }
+</style>

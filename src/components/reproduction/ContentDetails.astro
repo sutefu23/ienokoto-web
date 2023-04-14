@@ -1,0 +1,42 @@
+---
+import LoopSection from "../common/LoopSection.astro";
+import ReproductionImage1 from "~/img/reproduction/content_01.jpg";
+import ReproductionImage2 from "~/img/reproduction/content_02.jpg";
+import ReproductionImage3 from "~/img/reproduction/content_03.jpg";
+import ReproductionImage4 from "~/img/reproduction/content_04.jpg";
+
+const contents = [
+  {
+    title: "古民家をお持ちの方はご相談ください",
+    image: ReproductionImage1,
+    text: `
+    イエノコトには、古民家鑑定士・１級建築士がいます。古民家をリフォームしたいけど、どこを修繕すべきかわからない。売却を考えているが、解体せずに住んでくれる人に譲りたい。解体して更地にするが、立派な木材を捨てるのはもったいない。古民家を移築して、住みたい…。そんな、古民家に関する様々なコトについて何でもご相談ください。
+    `,
+  },
+  {
+    title: "古民家の調査",
+    image: ReproductionImage2,
+    text: `
+    古民家は長い年月を経た建物であり、再築（リフォーム）前には必ず専門家による事前調査が必要です。イエノコトは、古民家を調査可能な唯一の専門家資格である、古民家鑑定士が在籍しています。古民家を安全・安心・快適に活用いただくために、まずは古民家鑑定を実施いたします。
+    `,
+  },
+  {
+    title: "耐震シロアリの検査",
+    image: ReproductionImage3,
+    text: `
+    古民家を所有する消費者の一番多い悩みが耐震に関する問題です。もともと、古民家は現在の住宅と耐震に関する考え方が異なるため、現在の耐震診断や補強が一概には良いとは言えません。イエノコトは、全国伝統耐震評価連合会が実施する古民家に適した伝統耐震診断を採用しています。シロアリや床下に関しては、全国床下インスペクション協会が実施する自走式ロボットを活用した床下インスペクション（調査）を実施いたします。<br/>
+    <br/>
+    <a href="">⇒対応事例を見る</a>
+    `,
+  },
+  {
+    title: "サポート",
+    image: ReproductionImage4,
+    text: `
+    そのほか、古民家に関する、様々保険や補助制度、古民家見守りサービスなどもご案内しています。まずはお気軽にご相談ください。
+    `,
+  },
+];
+---
+
+<LoopSection contents={contents} />

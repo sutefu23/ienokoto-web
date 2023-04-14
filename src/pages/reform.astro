@@ -8,6 +8,7 @@ import BreadCrumb from "~/components/common/BreadCrumb.astro";
 import StoriesList from "~/components/reform/StoriesList.astro";
 import ReformCaseList from "~/components/post/ReformCaseList.astro";
 import AboutReform from "~/components/reform/AboutReform.astro";
+import InquiryMore from "~/components/common/InquiryMore.astro";
 ---
 
 <PageContent class={className}>
@@ -26,12 +27,7 @@ import AboutReform from "~/components/reform/AboutReform.astro";
   <ReformCaseList />
   <h2 class="about_title">イエノコトの家づくりとは</h2>
   <AboutReform />
-  <div class="more">
-    <a class="more_link" href="tel:0120-200-789"
-      >＞お電話で相談してみる（10時～17時）</a
-    >
-    <a class="more_link" href="/siryo">＞メールで相談してみる</a>
-  </div>
+  <InquiryMore />
 </PageContent>
 <style lang="scss">
   .about_title {
@@ -42,16 +38,10 @@ import AboutReform from "~/components/reform/AboutReform.astro";
     margin-top: 273px;
     margin-bottom: 119px;
   }
-  .more {
-    display: flex;
-    justify-content: center;
+  .reform :global(.inquiry_more) {
     column-gap: 174px;
-    padding-left: 50px;
   }
-  .more_link {
-    display: inline-block;
-    font-weight: bold;
-    margin-top: 167px;
+  .reform :global(.more_link) {
     padding-bottom: 404px;
   }
 </style>
