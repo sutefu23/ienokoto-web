@@ -1,0 +1,160 @@
+---
+import PageCatch from "~/components/catch/PageCatch.astro";
+import { PAGES } from "~/consts";
+import PageContent from "~/layouts/PageContent.astro";
+const { className } = PAGES.CONSULT;
+import PageCopy from "~/components/common/PageCopy.astro";
+import BreadCrumb from "~/components/common/BreadCrumb.astro";
+import InquiryMore from "~/components/common/InquiryMore.astro";
+import ExpartTakaya from "~/img/consult/expart_takaya.jpg";
+import ExpartYodogawa from "~/img/consult/expart_yodogawa.jpg";
+import { Image } from "@astrojs/image/components";
+import BannerKominkaSaisei from "~/img/banner_kominka_saisei.png";
+---
+
+<PageContent class={className}>
+  <PageCatch page={"CONSULT"} />
+  <BreadCrumb page={"CONSULT"} />
+  <PageCopy title="くらしの専門家が、あなたの「家のコト」、解決します">
+    イエノコトでは、どこに、どこから相談したらいいか分からない、<br />
+    相続、遺言、家族信託、財産管理、お墓、土地などの家のコトの<br />
+    無料相談会を毎月開催しています。<br />
+    こんなこと聞いてもいいのかな？と思うどんな些細なことでも、<br />
+    一人で悩まず、まずはお気軽にご相談ください。<br />
+    私たちが、力になります。
+  </PageCopy>
+  <section class="consult_list">
+    <h2 class="consult_list_title">こんなお悩み、ありませんか？</h2>
+    <dl class="consult_list_content">
+      <dt>家族信託のコト</dt>
+      <dd>「信託」って聞くけど、どういう意味なのかしら？</dd>
+      <dt>謄本のコト</dt>
+      <dd>「信託」って聞くけど、どういう意味なのかしら？</dd>
+      <dt>実家のコト</dt>
+      <dd>親が高齢になって、今のうちにやっておくべきことって何かしら？</dd>
+      <dt>遺言・相続のコト</dt>
+      <dd>家族がもめないために私が準備しておくことってあるのかしら？</dd>
+    </dl>
+  </section>
+  <section class="consult_expart">
+    <h2 class="consult_expart_title">専門家紹介（抜粋）</h2>
+    <ul class="consult_expart_content">
+      <li>
+        <Image
+          src={ExpartTakaya}
+          width={126}
+          height={126}
+          alt="髙谷 亜希子"
+          format="webp"
+          loading="lazy"
+        />
+        <h4>髙谷 亜希子</h4>
+        <p class="align_center">司法書士</p>
+      </li>
+      <li>
+        <Image
+          src={ExpartYodogawa}
+          width={126}
+          height={126}
+          alt="淀川　洋子"
+          format="webp"
+          loading="lazy"
+        />
+        <h4>淀川　洋子</h4>
+        <p class="align_left">
+          1級家事セラピスト<br />
+          宅建士<br />
+          ファイナンシャルプランナー
+        </p>
+      </li>
+    </ul>
+  </section>
+  <section class="consult_detail">
+    <h2 class="consult_detail_title">詳細</h2>
+    <p class="consult_detail_content">
+      【開催日時】　　毎月第２水曜　10:00～15:00（１組2時間）<br />
+      【開催場所】　　イエノコトモデルハウス<br />
+      【予約方法】　　0120-200-789までお電話ください。<br />
+    </p>
+  </section>
+  <section class="inquiry_more">
+    <h2 class="inquiry_more_title">まずはお気軽にお問い合わせください</h2>
+    <InquiryMore />
+  </section>
+</PageContent>
+<style lang="scss">
+  .consult_list {
+    margin-top: 188px;
+  }
+  .consult_list_title {
+    text-align: center;
+    margin-bottom: 124px;
+  }
+  .consult_list_content {
+    max-width: 600px;
+    padding-left: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    dt {
+      font-weight: bold;
+      margin-bottom: 25px;
+      line-height: 1;
+      position: relative;
+      &::before {
+        position: absolute;
+        content: "";
+        width: 27px;
+        height: 27px;
+        background: url("./icon_check.svg") center center;
+        left: -44px;
+        top: -39%;
+      }
+    }
+    dd {
+      line-height: 1.875;
+      + dt {
+        margin-top: 39px;
+      }
+    }
+  }
+  .consult_expart {
+    margin-top: 188px;
+  }
+  .consult_expart_title {
+    margin-bottom: 119px;
+  }
+  .consult_expart_content {
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    column-gap: 91px;
+    margin-right: auto;
+    margin-left: auto;
+    li {
+      text-align: center;
+      h4 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      p {
+        font-size: 12px;
+        line-height: 1.875;
+      }
+    }
+  }
+  .consult_detail {
+    margin-top: 191px;
+    max-width: 466px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 118px;
+  }
+  .consult_detail_title {
+    margin-bottom: 68px;
+    text-align: center;
+  }
+  .inquiry_more {
+    margin-bottom: 267px;
+  }
+</style>

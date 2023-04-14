@@ -29,7 +29,7 @@ export const PAGES = {
   },
   CONSULT: {
     slug: '/consult',
-    title: '暮らしの相談所',
+    title: 'くらしのお悩み相談所',
     className: 'consult',
     catchImage: CatchConsult
   },
