@@ -24,7 +24,7 @@ const { contents, class: className } = Astro.props;
         />
         <div>
           <h4 class="content_title">{content.title}</h4>
-          <p class="content_text">{content.text}</p>
+          <p class="content_text" set:html={content.text} />
         </div>
       </section>
     ))

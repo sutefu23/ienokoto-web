@@ -1,5 +1,11 @@
 ---
 import { Image } from "@astrojs/image/components";
+export type Props = {
+  title?: string;
+  noTitle?: boolean;
+  copy?: string;
+};
+const { title, noTitle = false, copy } = Astro.props;
 const Columns = [
   {
     id: 1,
@@ -26,7 +32,8 @@ const Columns = [
 ---
 
 <section class="column_list">
-  <h3>暮らしのお便り・コラム</h3>
+  {!noTitle && <h3>{title || "暮らしのお便り・コラム"}</h3>}
+  {copy && <p class="copy" set:html={copy} />}
   <ul>
     {
       Columns.map((post) => (
@@ -58,6 +65,13 @@ const Columns = [
   h3 {
     margin-bottom: 111px;
   }
+  .copy {
+    margin-top: 99px;
+    margin-bottom: 85px;
+    max-width: 538px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   ul {
     margin: 0 auto;
     display: flex;
@@ -72,7 +86,8 @@ const Columns = [
   }
   time {
     display: block;
-    margin-bottom: 13px;
+    margin-bottom: 0px;
+    line-height: 1.875;
     margin-right: 53px;
   }
   p {

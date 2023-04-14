@@ -5,12 +5,14 @@ export type Props = {
 const { title } = Astro.props;
 ---
 
-<h2 class="copy_title">
-  {title}
-</h2>
-<p class="copy_content">
-  <slot />
-</p>
+<section class="page_copy">
+  <h2 class="copy_title">
+    {title}
+  </h2>
+  <p class="copy_content">
+    <slot />
+  </p>
+</section>
 <style lang="scss">
   .copy_title {
     margin-top: 171px;

@@ -3,6 +3,7 @@ import { Image } from "@astrojs/image/components";
 // import { Link } from "@astrojs/router";
 import Logo from "~/img/logo.png";
 import { SITE_TITLE } from "../../consts";
+import { PAGES } from "../../consts";
 ---
 
 <nav class="fade">
@@ -17,12 +18,12 @@ import { SITE_TITLE } from "../../consts";
       />
     </a>
     <ul>
-      <li><a href="index.html">リフォーム</a></li>
-      <li><a href="about.html">暮らしの講座</a></li>
-      <li><a href="contact.html">貸しスペース</a></li>
-      <li><a href="contact.html">古民家再生</a></li>
-      <li><a href="contact.html">暮らしの相談所</a></li>
-      <li><a href="/staff/">スタッフ</a></li>
+      <li><a href={PAGES.REFORM.slug}>リフォーム</a></li>
+      <li><a href={PAGES.LEARN.slug}>暮らしの講座</a></li>
+      <li><a href="/event">貸しスペース</a></li>
+      <li><a href={PAGES.REPRODUCTION.slug}>古民家再生</a></li>
+      <li><a href={PAGES.CONSULT.slug}>暮らしの相談所</a></li>
+      <li><a href={PAGES.STAFF.slug}>スタッフ</a></li>
       <li><a href="/about/">会社概要</a></li>
       <li><a href="/siryo/">お問い合わせ</a></li>
     </ul>

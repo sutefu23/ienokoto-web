@@ -1,0 +1,47 @@
+---
+import LoopSection from "../common/LoopSection.astro";
+import LearnImageKouza from "~/img/learn/learn_kouza.jpg";
+import LearnImageJuku from "~/img/learn/learn_juku.jpg";
+import LearnImageShukatsu from "~/img/learn/learn_shukatsu.jpg";
+const contents = [
+  {
+    title: "片付け講座",
+    image: LearnImageKouza,
+    text: `
+        断捨離できない、整理収納が苦手・・・。そんな方へ。
+        <br />
+        イエノコトの片付け講座は、まずは自分の物の持ち方を通して、自分にちょうどいい量で暮らす方法を伝えています。無理に捨てなくてもいい！物がちょうどいい量になれば、整理収納法はなんでもいい。
+        <br />
+        そんな、ずっと続けられる片付け方を伝えています。
+        <br />
+        また、片付けの専門資格、家事セラピスト養成講座もご用意しています。
+        <br />
+        本格的に片付けを学びたい方は、こちらをご参照ください。
+      `,
+  },
+  {
+    title: "親子お手伝い塾・自立塾",
+    image: LearnImageJuku,
+    text: `
+        お手伝いは、次世代に文化を伝えること。
+        <br />
+        お手伝い＝家事力は、子どもが生きる力を養うことと考えます。
+        <br />
+        イエノコトは、年に３回、お手伝い塾を開催し、そうじやおにぎりづくり、お裁縫など、家事全般を教えています。同時に、親の子どもへの声かけ方として、親の座談会も行います。
+      `,
+  },
+  {
+    title: "終活講座",
+    image: LearnImageShukatsu,
+    text: `
+        人生１００年時代。子育てが終わった、退職した、さあ、どうしよう。
+        <br />
+        その時期は、人生再青春時代。自分らしく人生の最終章を楽しく過ごすため、
+        <br />
+        エンディングノートワークショップや、実家じまいのコト、生前整理のコトなどの講座を行っています。
+      `,
+  },
+];
+---
+
+<LoopSection contents={contents} />

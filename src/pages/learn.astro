@@ -1,0 +1,130 @@
+---
+import PageCatch from "~/components/catch/PageCatch.astro";
+import { PAGES } from "~/consts";
+import PageContent from "~/layouts/PageContent.astro";
+const { className } = PAGES.LEARN;
+import YoutubeImg from "~/img/learn/youtube.jpg";
+import { Image } from "@astrojs/image/components";
+import BreadCrumb from "~/components/common/BreadCrumb.astro";
+import PageCopy from "~/components/common/PageCopy.astro";
+import EventList from "~/components/post/EventList.astro";
+import AboutSupport from "~/components/learn/AboutSupport.astro";
+import AboutLecture from "~/components/learn/AboutLecture.astro";
+import ColumnList from "~/components/post/ColumnList.astro";
+import SNSList from "~/components/global/SNSList.astro";
+---
+
+<PageContent class={className}>
+  <PageCatch page={"LEARN"} />
+  <BreadCrumb page={"LEARN"} />
+  <PageCopy
+    title="いくら家を直しても、その後の暮らしが整っていなければ、幸せじゃない"
+  >
+    イエノコトは、「捨てる！技術」の辰巳渚の片付けの考えを学んだ、<br />
+    暮らしの専門家である「家事セラピスト」が在中しています。<br />
+    片付け＝モノと向き合うことを通して、<br />
+    自分にとってちょうどいい量で<br />
+    好きなモノに囲まれて、自分のペースで幸せに暮らす方法を伝えています。<br />
+    また、子育て、子どもの独立、退職後、・・・<br />
+    それぞれのフェーズに合わせた暮らし方についても伝えています。<br />
+    <br />
+    「自分は自分、これでいいのだ！」と<br />
+    一人でも多くの笑顔が増えますように。
+  </PageCopy>
+  <section class="learn_content section_learn">
+    <h2 class="line">講座で学ぶ</h2>
+    <p class="lead">
+      イエノコトでは片付け講座を中心に、暮らしの講座を月１～２のペースで開催しています。
+    </p>
+    <AboutLecture />
+  </section>
+  <EventList title="直近の講座" />
+  <section class="learn_content section_video">
+    <h2 class="line">動画やコラムで学ぶ</h2>
+    <div class="section_video_content">
+      <h4 class="video_title">Youtube</h4>
+      <p class="video_copy">
+        イエノコトyoutubeチャンネルでは、プチ片付け術や暮らし術、スタッフの暮らしの様子を配信しています。是非チェックしてみてくださいね。
+      </p>
+      <Image
+        src={YoutubeImg}
+        alt="youtube"
+        width={704}
+        height={394}
+        format="webp"
+        loading="lazy"
+      />
+    </div>
+  </section>
+  <section class="learn_column">
+    <h3>暮らしのお便り・コラム</h3>
+    <ColumnList
+      noTitle={true}
+      copy="毎月季節のコラムや、片付け、暮らしにまつわるコラムを投稿しています。暮らしのヒントに、ご覧ください。"
+    />
+  </section>
+  <section class="learn_sns">
+    <h3 class="learn_sns_title">その他のSNS</h3>
+    <p class="learn_sns_copy">
+      講座情報やコラムの更新情報をいち早くお届けいたします。
+      是非フォローくださいね。
+    </p>
+    <SNSList />
+  </section>
+  <section class="learn_content section_support">
+    <h2 class="line">一緒に片付けてもらう　『片付けサポート』</h2>
+    <p class="lead">
+      家事セラピストが片付けに伺います。
+      モノが多くて、一度一気に片付けたいという方は、ぜひご利用ください。
+    </p>
+    <AboutSupport />
+  </section>
+</PageContent>
+<style lang="scss">
+  .section_learn {
+    margin-top: 168px;
+  }
+  .learn_content {
+    max-width: 1198px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 222px;
+    .lead {
+      margin-bottom: 115px;
+    }
+  }
+  .line {
+    text-align: left;
+    padding-bottom: 19.5px;
+    border-bottom: 1px solid #707070;
+    margin-bottom: 32.5px;
+  }
+  .section_video {
+    margin-top: 306px;
+  }
+  .section_video_content {
+    max-width: 704px;
+    margin: auto;
+  }
+  .video_title {
+    text-align: center;
+    margin-top: 112px;
+    margin-bottom: 97px;
+  }
+  .video_copy {
+    margin-bottom: 90px;
+  }
+  .learn_sns {
+    margin-bottom: 306px;
+  }
+  .learn_sns_title {
+    margin-top: 222px;
+    margin-bottom: 97px;
+  }
+  .learn_sns_copy {
+    margin-bottom: 85px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

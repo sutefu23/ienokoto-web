@@ -1,0 +1,39 @@
+---
+import LoopSection from "../common/LoopSection.astro";
+import SupportImage1 from "~/img/learn/support_01.jpg";
+import SupportImage2 from "~/img/learn/support_02.jpg";
+import SupportImage3 from "~/img/learn/support_03.jpg";
+
+const contents = [
+  {
+    title: "①「捨てる」に寄り添います。",
+    image: SupportImage1,
+    text: `
+        イエノコトの片付けは、モノと向き合うことを大切にしています。暮らしのプロ、家事セラピストが、モノを「いる、いらない、わからない」に、一緒に分けていきます。捨てられないなら、無理にしてない。でも、残す量やどこに置くかなど、イエノコトの片付けメソッドをベースに、あなたが暮らしやすくなるよう、お手伝いいたします。
+      `,
+  },
+  {
+    title: "②片付いたら、プロのお掃除が入ります。",
+    image: SupportImage2,
+    text: `
+        モノが減ったら、プロのお掃除にピカピカにしてもらいます。<br />
+        気持ちがすっきりしますね。
+      `,
+  },
+  {
+    title: "一度相談してみる",
+    image: SupportImage3,
+    text: `
+        片付けは自分でやるもの、そこにお金をかけるなんて、、、<br />
+        と思う方も多いかと思います。
+        <br />
+        ですが、増えすぎたモノを一度リセットすると、その後片付けを維持するのがとても楽になります。料金については、モノの量や形状によって異なりますが、例えばキッチンの片付けは約５万円～（スタッフ２名、３時間、廃棄料金、清掃料こみ）です。ご参考ください。お悩みの方は、ぜひ一度ご相談くださいね。
+        <br />
+        <br />
+        <a href="/siryo">⇒お問い合わせ</a>
+      `,
+  },
+];
+---
+
+<LoopSection contents={contents} />

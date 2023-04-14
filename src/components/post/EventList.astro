@@ -1,5 +1,10 @@
 ---
 import { Image } from "@astrojs/image/components";
+export type Props = {
+  title?: string;
+};
+const { title } = Astro.props;
+
 const Events = [
   {
     id: 1,
@@ -26,7 +31,7 @@ const Events = [
 ---
 
 <section class="event_list">
-  <h3>講座・イベント</h3>
+  <h3>{title || "講座・イベント"}</h3>
   <ul>
     {
       Events.map((post) => (
@@ -72,7 +77,8 @@ const Events = [
   }
   time {
     display: block;
-    margin-bottom: 13px;
+    margin-bottom: 0px;
+    line-height: 1.875;
     margin-right: 53px;
   }
   p {
