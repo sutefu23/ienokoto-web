@@ -1,0 +1,110 @@
+---
+import BreadCrumb from "~/components/common/BreadCrumb.astro";
+import PageContent from "~/layouts/PageContent.astro";
+import { Image } from "@astrojs/image/components";
+---
+
+<PageContent class="staff_detail">
+  <BreadCrumb page={"STAFF"} subPageTitle={"外間まいこ"} />
+  <section class="staff_content">
+    <div class="profile_box">
+      <div class="profile_text">
+        <h2 class="staff_name">外間 　まいこ</h2>
+        <ul class="staff_title">
+          <li>ファンづくり部</li>
+          <li>葬祭カウンセラー</li>
+        </ul>
+      </div>
+      <Image
+        src="/images/staff/maiko.jpg"
+        alt="外間まいこ"
+        class="staff_img"
+        src="https://placehold.jp/407x344.png"
+        format={"webp"}
+        loading={"eager"}
+        width={407}
+        height={344}
+      />
+    </div>
+    <dl class="staff_detail">
+      <dt>やっているコト</dt>
+      <dd>
+        わたしは、主にイエノコトを世の中の人にたくさん知ってもらう仕事をしています。<br
+        />
+        HPの更新や、SNSの発信、暮らしのお便りのイラストを描いたり、チラシを作ったり、イエノコトのスタッフさんの雑談を盗み聞きして四コマにしたりしています。<br
+        />
+        パソコンで作業していることが多いので、基本は家で作業していますが、イベントの時は、サポートでよく登場します。
+      </dd>
+      <dt>好きなコト</dt>
+      <dd>
+        家にいること。コーヒーを飲むこと。温泉に入ること。ネットフリックスを見ること。
+      </dd>
+      <dt>伝えたいコト</dt>
+      <dd>
+        思いがけず片付けを学ぶことになりましたが、片付けを学んだら、こんなに暮らしが楽しくなって、家族関係も良好になるんだと知って、暮らしやすくなりました。おかげで、家にいることが好きになりすぎて、１日１００歩くらいしか歩かないので、今年は外に出たいと思います。暮らしのコトでなんだかもやっとを抱えている人に少しでもイエノコトの暮らしのヒントを届けられるよう、がんばります！
+      </dd>
+      <dt>つくったもの</dt>
+      <dd>
+        家にいること。コーヒーを飲むこと。温泉に入ること。ネットフリックスを見ること。
+      </dd>
+    </dl>
+    <a href="/staff" class="search_more">＞他のスタッフもみてみる</a>
+  </section>
+</PageContent>
+
+<style lang="scss">
+  .staff_detail {
+    padding-top: 151px;
+  }
+  .staff_content {
+    max-width: 1057px;
+    margin: 184px auto 403px;
+  }
+  .staff_name {
+    text-align: left;
+    margin-top: 47px;
+    margin-bottom: 69px;
+    margin-left: -24px;
+  }
+  .staff_title {
+    padding-left: 18px;
+  }
+  @media screen and (max-width: 1168px) {
+    .staff_name {
+      margin-left: 0px;
+      padding-left: 5px;
+    }
+  }
+  .profile_box {
+    display: flex;
+    justify-content: space-between;
+  }
+  .staff_detail {
+    dt {
+      font-weight: bold;
+      margin-bottom: 44px;
+      line-height: 1;
+      &::before {
+        content: "";
+        width: 27px;
+        height: 27px;
+        background: url("../../icon_check.svg") center center;
+        vertical-align: middle;
+        display: inline-block;
+        margin-right: 21.5px;
+      }
+    }
+    dd {
+      padding-left: 48px;
+      margin-bottom: 120px;
+      line-height: 1.875;
+    }
+  }
+  .search_more {
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    max-width: 50%;
+    margin: auto;
+  }
+</style>

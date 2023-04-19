@@ -3,14 +3,14 @@ import { PAGES } from "~/consts";
 import type { PageKey } from "~/consts";
 export type Props = {
   page: PageKey;
-  pageTitle?: string;
+  pageTitle?: string; //通常PAGESのプロパティ、PAGES.titleを挿入するが変更したい場合
   subPageTitle?: string; //もし自身が下層ページであれば、そのタイトルを入力する
 };
 const { page, pageTitle: propTitle, subPageTitle } = Astro.props;
 const pageTitle = propTitle || PAGES[page].title;
 ---
 
-<ul class="breadcrumb content">
+<ul class="breadcrumb">
   <li>
     <a href={PAGES.HOME.slug}>Home</a>
   </li>
@@ -32,6 +32,7 @@ const pageTitle = propTitle || PAGES[page].title;
     display: flex;
     justify-content: left;
     margin-top: 44px;
+    font-weight: bold;
     max-width: $designLineWidth;
     padding-left: 134px;
     li + li::before {

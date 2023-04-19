@@ -1,6 +1,7 @@
 ---
 import PageCatch from "~/components/catch/PageCatch.astro";
 import { PAGES } from "~/consts";
+import { Image } from "@astrojs/image/components";
 import PageContent from "~/layouts/PageContent.astro";
 const { className } = PAGES.STAFF;
 import BreadCrumb from "~/components/common/BreadCrumb.astro";
@@ -10,12 +11,59 @@ import BreadCrumb from "~/components/common/BreadCrumb.astro";
   <PageCatch page={"STAFF"} />
   <BreadCrumb page={"STAFF"} pageTitle="スタッフの紹介" />
   <h2 class="page_title">下記よりスタッフの詳細をご覧頂けます。</h2>
-  <div class="staff_box"></div>
+  <div class="staff_list">
+    {
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(() => (
+        <div class="staff_box">
+          <a class="staff_link" href="/staff/01">
+            <Image
+              class="staff_img"
+              src="https://placehold.jp/258x241.png"
+              format={"webp"}
+              loading={"eager"}
+              width={258}
+              height={241}
+              alt="スタッフの写真"
+            />
+            <div class="staff_text">
+              <p class="staff_title">代表取締役</p>
+              <h4 class="staff_name">淀川　洋子</h4>
+            </div>
+          </a>
+        </div>
+      ))
+    }
+  </div>
 </PageContent>
 <style lang="scss">
   .page_title {
     text-align: center;
     margin-top: 171px;
     margin-bottom: 208px;
+  }
+  .staff_list {
+    display: grid;
+    max-width: 1142px;
+    margin: 0 auto;
+    justify-content: space-between;
+    row-gap: 133px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .staff_link {
+    display: inline-block;
+  }
+  .staff_img {
+    vertical-align: middle;
+    margin-bottom: 32px;
+  }
+  .staff_box {
+    text-align: center;
+  }
+  .staff_text {
+    line-height: 1.1875;
+  }
+  .staff_title {
+    font-weight: bold;
+    margin-bottom: 12px;
   }
 </style>
