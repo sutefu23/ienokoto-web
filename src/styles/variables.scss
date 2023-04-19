@@ -29,3 +29,7 @@ $boxShadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.3);
   $baseWidth: if($baseWidth ==null, $mobileWindowWidth, $baseWidth);
   @return math.div($pixels , $baseWidth ) * 100vw;
 }
+
+@function percent($pixels, $baseWidth) {
+  @return math.div($pixels , $baseWidth ) * 100%;
+}

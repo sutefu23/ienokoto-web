@@ -20,7 +20,6 @@ for (let i = 0; i < smoothScroll.length; i++){
 const elements = document.querySelectorAll<HTMLElement>(".fade");
 window.onscroll = () => {
   elements.forEach((element) => {
-    console.log(element)
     const showPosition = element.dataset.showPosition ? Number(element.dataset.showPosition): 0;
     if (window.pageYOffset > showPosition) {
       element?.classList.add("show");

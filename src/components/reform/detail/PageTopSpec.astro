@@ -1,0 +1,52 @@
+---
+export type Props = {
+  cost: string;
+  area: string;
+  building: string;
+  tags: string[];
+};
+const { cost, area, building, tags } = Astro.props;
+---
+
+<table class="page_top_spec">
+  <tr>
+    <th>費用</th>
+    <td>{cost}</td>
+  </tr>
+  <tr>
+    <th>面積</th>
+    <td>
+      {area}
+    </td>
+  </tr>
+  <tr>
+    <th>建物</th>
+    <td>{building}</td>
+  </tr>
+  <tr>
+    <th>タグ</th>
+    <td>
+      <ul class="tag">
+        {tags.map((tag) => <li>{tag}</li>)}
+      </ul>
+    </td>
+  </tr>
+</table>
+<style lang="scss">
+  table {
+    max-width: 1258px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  th {
+    padding-right: 45px;
+  }
+  li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 22px;
+    line-height: 1em;
+    padding: 12px 20px;
+    border: solid 1px #000;
+  }
+</style>

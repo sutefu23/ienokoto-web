@@ -4,6 +4,7 @@ import { Image } from "@astrojs/image/components";
 import FooterLogo from "~/img/footer_logo.png";
 import classnames from "classnames";
 const { class: className } = Astro.props;
+import { PAGES } from "../../consts";
 ---
 
 <footer class={classnames(className)}>
@@ -25,19 +26,19 @@ const { class: className } = Astro.props;
     <div class="footer-right">
       <ul class="footer-menu">
         <li><a href="/">ホーム</a></li>
-        <li><a href="#">リフォーム</a></li>
-        <li><a href="#">暮らしの講座</a></li>
-        <li><a href="#">貸しスペース</a></li>
-        <li><a href="#">古民家再生</a></li>
+        <li><a href={PAGES.REFORM.slug}>家づくり</a></li>
+        <li><a href={PAGES.LEARN.slug}>暮らしの講座</a></li>
+        <li><a href="/event">貸しスペース</a></li>
+        <li><a href={PAGES.REPRODUCTION.slug}>古民家再生</a></li>
       </ul>
       <ul class="footer-menu">
-        <li><a href="#">暮らしの相談</a></li>
+        <li><a href={PAGES.CONSULT.slug}>暮らしの相談</a></li>
         <li><a href="#">家事セラピスト養成講座</a></li>
-        <li><a href="#">スタッフ紹介</a></li>
+        <li><a href={PAGES.STAFF.slug}>スタッフ紹介</a></li>
       </ul>
       <ul class="footer-menu">
-        <li><a href="#">会社概要・アクセス</a></li>
-        <li><a href="#">お問い合わせ</a></li>
+        <li><a href="/about/">会社概要・アクセス</a></li>
+        <li><a href="/siryo/">お問い合わせ</a></li>
       </ul>
     </div>
   </div>
@@ -49,13 +50,16 @@ const { class: className } = Astro.props;
   ></a>
 </footer>
 <style lang="scss">
+  footer {
+    min-height: 318px;
+    background-color: #6c6c60;
+  }
   .footer-content {
     color: #fff;
     max-width: $designLineWidth;
-    min-height: 318px;
-    background-color: #6c6c60;
     display: flex;
     justify-content: space-between;
+    margin: 0 auto;
     padding-left: vw(136px, $baseWindowWidth);
     padding-right: vw(278px, $baseWindowWidth);
   }

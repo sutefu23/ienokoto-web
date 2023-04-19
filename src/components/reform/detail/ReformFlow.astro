@@ -1,0 +1,170 @@
+---
+import UserIcon from "./UserIcon.astro";
+import { Image } from "@astrojs/image/components";
+export type Props = {};
+---
+
+<div class="reform_flow">
+  <div class="flow_box">
+    <div class="date_box">
+      <time>2021.02.01</time>
+    </div>
+    <div class="content_box">
+      <section class="inner">
+        <h4>相談スタート・プランニング</h4>
+        <div class="inner_content">
+          <p class="balloon left">
+            私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなよう
+          </p>
+          <UserIcon src="https://placehold.jp/116x116.png" name="お客様" />
+        </div>
+      </section>
+      <section class="inner">
+        <h4>イエノコトのご提案</h4>
+        <div class="inner_content">
+          <UserIcon src="https://placehold.jp/116x116.png" name="石田" />
+          <p class="balloon right">
+            私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなよう
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="flow_box">
+    <div class="date_box">
+      <time>2021.03.16</time>
+    </div>
+    <div class="content_box">
+      <section class="inner">
+        <h4>プラン確定</h4>
+        <div class="inner_content">
+          <Image
+            src="https://placehold.jp/189x223.png"
+            format="webp"
+            alt="プラン確定"
+            width={189}
+            height={223}
+            loading={"lazy"}
+          />
+          <p class="description">
+            私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="flow_box">
+    <div class="date_box">
+      <time>2021.04.08</time>
+    </div>
+    <div class="content_box">
+      <section class="inner">
+        <h4>施工開始</h4>
+      </section>
+    </div>
+  </div>
+  <div class="flow_box">
+    <div class="date_box">
+      <time>2021.04.30</time>
+    </div>
+    <div class="content_box">
+      <section class="inner">
+        <h4>完成</h4>
+      </section>
+    </div>
+  </div>
+</div>
+<style lang="scss">
+  .reform_flow {
+    max-width: 1430px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .flow_box {
+    display: flex;
+    justify-content: center;
+    &:last-child .content_box {
+      min-height: auto;
+    }
+  }
+  .date_box {
+    width: 25%;
+    text-align: center;
+    height: 100%;
+    font-weight: bold;
+  }
+  .content_box {
+    position: relative;
+    border-left: solid 2px #707070;
+    min-height: 115px;
+    width: 75%;
+
+    &::before {
+      content: "";
+      display: block;
+      background-color: #d2caca;
+      width: 33px;
+      height: 33px;
+      border-radius: 100%;
+      position: absolute;
+      top: -8px;
+      left: -17px;
+    }
+    .inner {
+      width: 75%;
+      margin: auto;
+    }
+    .inner_content {
+      max-width: 837px;
+      display: flex;
+      align-items: center;
+      margin: auto;
+    }
+  }
+  .balloon {
+    position: relative;
+    display: inline-block;
+    padding: 25px 33px;
+    border-radius: 10px;
+    border: solid 2px #b4acac;
+    background-color: #fff;
+    &.right,
+    &.left {
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 30%;
+      }
+    }
+    &.left {
+      margin-right: 82px;
+      &::before {
+        right: -42px;
+        border: 10px solid transparent;
+        border-left: 32px solid #afa5a5;
+      }
+      &::after {
+        right: -36px;
+        border: 10px solid transparent;
+        border-left: 30px solid #fff;
+      }
+    }
+    &.right {
+      margin-left: 82px;
+      &::before {
+        left: -42px;
+        border: 10px solid transparent;
+        border-right: 32px solid #afa5a5;
+      }
+      &::after {
+        left: -36px;
+        border: 10px solid transparent;
+        border-right: 30px solid #fff;
+      }
+    }
+  }
+  .description {
+    margin-left: 47px;
+  }
+</style>

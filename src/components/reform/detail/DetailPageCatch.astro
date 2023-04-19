@@ -1,0 +1,53 @@
+---
+import { Image } from "@astrojs/image/components";
+
+export type Props = {
+  copy: string;
+  catchImage: ImageMetadata;
+};
+
+const { copy, catchImage } = Astro.props;
+---
+
+<div class="page_catch">
+  <Image
+    src={catchImage}
+    alt={copy}
+    class="catch_image"
+    format="webp"
+    loading={"eager"}
+    width={1920}
+    height={832}
+  />
+  <div class="inner">
+    <h1 class="page_copy">{copy}</h1>
+  </div>
+</div>
+
+<style lang="scss">
+  .page_catch {
+    position: relative;
+    text-align: center;
+  }
+  .catch_image {
+    vertical-align: middle;
+    width: 100%;
+  }
+  .inner {
+    position: absolute;
+    inset: 0;
+    max-width: 1542px;
+    padding-top: 212px;
+    margin: auto;
+    @media screen and (max-width: 1600px) {
+      margin-left: 5vw;
+      padding-top: vw(212, 1600);
+    }
+  }
+  .page_copy {
+    position: absolute;
+    font-size: 24px;
+    padding: 16px 49px;
+    background-color: #fff;
+  }
+</style>

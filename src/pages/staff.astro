@@ -1,0 +1,21 @@
+---
+import PageCatch from "~/components/catch/PageCatch.astro";
+import { PAGES } from "~/consts";
+import PageContent from "~/layouts/PageContent.astro";
+const { className } = PAGES.STAFF;
+import BreadCrumb from "~/components/common/BreadCrumb.astro";
+---
+
+<PageContent class={className}>
+  <PageCatch page={"STAFF"} />
+  <BreadCrumb page={"STAFF"} pageTitle="スタッフの紹介" />
+  <h2 class="page_title">下記よりスタッフの詳細をご覧頂けます。</h2>
+  <div class="staff_box"></div>
+</PageContent>
+<style lang="scss">
+  .page_title {
+    text-align: center;
+    margin-top: 171px;
+    margin-bottom: 208px;
+  }
+</style>

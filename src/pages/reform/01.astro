@@ -1,0 +1,74 @@
+---
+import BreadCrumb from "~/components/common/BreadCrumb.astro";
+import DetailPageCatch from "~/components/reform/detail/DetailPageCatch.astro";
+import PageContent from "~/layouts/PageContent.astro";
+import PageTopSpec from "~/components/reform/detail/PageTopSpec.astro";
+import ReformImages from "~/components/reform/detail/ReformImages.astro";
+
+import DummyTopImage from "~/img/reform/example/page_catch.jpg";
+import DummyImage1 from "~/img/reform/example/detail_01.jpg";
+import DummyImage2 from "~/img/reform/example/detail_02.jpg";
+import DummyImage3 from "~/img/reform/example/detail_03.jpg";
+import DummyImage4 from "~/img/reform/example/detail_04.jpg";
+import StaffCard from "~/components/reform/detail/StaffCard.astro";
+import ReformFlow from "~/components/reform/detail/ReformFlow.astro";
+const detail = {
+  cost: "総額600万円",
+  building: "戸建て",
+  area: "120㎡",
+  tags: ["ホーロー", "インスペクション"],
+  images: [
+    {
+      src: DummyImage1,
+      description: "障子のようなインプラス（内窓）で断熱性能をあげました。",
+    },
+    {
+      src: DummyImage2,
+      description:
+        "ダイニングからキッチンをみたらいい感じ。<br>独立型キッチンはなんとなく安心（笑）。神棚はインテリアに合うお気に入り。",
+    },
+    {
+      src: DummyImage3,
+      description: "壁をこわしてひと続きの空間にしました。",
+    },
+    {
+      src: DummyImage4,
+      description: "キッチンからダイニング。奥様の日々の目線。いい感じ。",
+    },
+  ],
+};
+const staff = {
+  id: 1,
+  name: "山田太郎",
+  roles: ["1級家事セラピスト", "葬祭カウンセラー"],
+  image: "https://placehold.jp/150x150.png",
+  description: `大学生の娘と、高校生の息子の母。<br>
+    趣味：おいしいお酒とごはん・ゆったりすること・映画鑑賞<br>
+    伝えたいこと：毎日の暮らしが自分なりにうまくいくと、気持ちがとても落ち着いてきて、機嫌よく過ごせます。ささいなことに喜ぶ自分がうれしくなります。そんなことを伝えたくて活動しています。`,
+};
+---
+
+<PageContent class="reform_detail">
+  <DetailPageCatch
+    copy="終の棲家を小さく豊かにフルリノベ"
+    catchImage={DummyTopImage}
+  />
+  <BreadCrumb page={"REFORM"} pageTitle="" />
+
+  <PageTopSpec
+    cost={detail.cost}
+    building={detail.building}
+    area={detail.area}
+    tags={detail.tags}
+  />
+  <ReformImages images={detail.images} />
+  <h2>担当したスタッフ</h2>
+  <StaffCard
+    id={staff.id}
+    name={staff.name}
+    roles={staff.roles}
+    image={staff.image}
+    description={staff.description}
+  />
+  <ReformFlow />
+</PageContent>

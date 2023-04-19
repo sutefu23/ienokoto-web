@@ -1,0 +1,77 @@
+---
+import { Image } from "@astrojs/image/components";
+export type Props = {
+  id: number;
+  name: string;
+  roles: string[];
+  image: string;
+  description: string;
+};
+const { id, name, roles, image, description } = Astro.props;
+---
+
+<section class="staff_card">
+  <a href={`/staff/${id}`}>
+    <div class="profile">
+      <Image
+        class="profile_image"
+        src={image}
+        alt={name}
+        width={192}
+        height={192}
+        format="webp"
+        loading={"lazy"}
+      />
+      <div class="profile_detail">
+        <h4 class="name">{name}</h4>
+        {
+          roles.map((role) => {
+            return <p class="role">{role}</p>;
+          })
+        }
+      </div>
+    </div>
+    <div class="description" set:html={description} />
+  </a>
+</section>
+
+<style lang="scss">
+  .staff_card {
+    display: block;
+    padding: 49px;
+    border: 1px solid #707070;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.16);
+    .profile {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: left;
+      column-gap: 50px;
+      margin-bottom: 53px;
+      .profile_image {
+        width: 192px;
+        height: 192px;
+        border-radius: 100%;
+      }
+      .name {
+        font-size: 24px;
+        margin-bottom: 26px;
+      }
+      .role {
+        font-size: 16px;
+        font-weight: bold;
+        + .role {
+          margin-top: 8px;
+        }
+      }
+    }
+    .description {
+      line-height: 1.5;
+    }
+  }
+</style>

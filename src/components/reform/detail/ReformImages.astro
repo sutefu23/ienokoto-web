@@ -1,0 +1,46 @@
+---
+import { Image } from "@astrojs/image/components";
+export type Props = {
+  images: {
+    src: ImageMetadata;
+    description: string;
+  }[];
+};
+const { images } = Astro.props;
+---
+
+<div class="reform_images">
+  {
+    images.map((image, index) => (
+      <div class="reform_image">
+        <Image
+          src={image.src}
+          alt={`リフォーム画像${index}`}
+          width={601}
+          height={640}
+          format="webp"
+          loading="lazy"
+        />
+        <p class="description" set:html={image.description} />
+      </div>
+    ))
+  }
+</div>
+<style lang="scss">
+  .reform_images {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1265px;
+    margin: 0 auto;
+    justify-content: center;
+    gap: 63px 61px;
+    .reform_image {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 22px;
+      .description {
+        line-height: 1.5;
+      }
+    }
+  }
+</style>

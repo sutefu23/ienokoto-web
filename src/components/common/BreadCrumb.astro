@@ -3,9 +3,11 @@ import { PAGES } from "~/consts";
 import type { PageKey } from "~/consts";
 export type Props = {
   page: PageKey;
+  pageTitle?: string;
   subPageTitle?: string; //もし自身が下層ページであれば、そのタイトルを入力する
 };
-const { page, subPageTitle } = Astro.props;
+const { page, pageTitle: propTitle, subPageTitle } = Astro.props;
+const pageTitle = propTitle || PAGES[page].title;
 ---
 
 <ul class="breadcrumb content">
@@ -14,11 +16,11 @@ const { page, subPageTitle } = Astro.props;
   </li>
   {
     !subPageTitle ? (
-      <li>{PAGES[page].title}</li>
+      <li>{pageTitle}</li>
     ) : (
       <>
         <li>
-          <a href={PAGES[page].slug}>{PAGES[page].title}</a>
+          <a href={PAGES[page].slug}>{pageTitle}</a>
         </li>
         <li>{subPageTitle}</li>
       </>

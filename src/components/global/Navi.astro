@@ -4,9 +4,10 @@ import { Image } from "@astrojs/image/components";
 import Logo from "~/img/logo.png";
 import { SITE_TITLE } from "../../consts";
 import { PAGES } from "../../consts";
+const isHome = Astro.url.pathname === "/";
 ---
 
-<nav class="fade">
+<nav class={isHome ? "fade" : ""}>
   <div class="wrap">
     <a href="/">
       <Image

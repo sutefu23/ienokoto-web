@@ -9,12 +9,11 @@ import InquiryMore from "~/components/common/InquiryMore.astro";
 import ExpartTakaya from "~/img/consult/expart_takaya.jpg";
 import ExpartYodogawa from "~/img/consult/expart_yodogawa.jpg";
 import { Image } from "@astrojs/image/components";
-import BannerKominkaSaisei from "~/img/banner_kominka_saisei.png";
 ---
 
 <PageContent class={className}>
   <PageCatch page={"CONSULT"} />
-  <BreadCrumb page={"CONSULT"} />
+  <BreadCrumb page={"CONSULT"} pageTitle="くらしの相談所" />
   <PageCopy title="くらしの専門家が、あなたの「家のコト」、解決します">
     イエノコトでは、どこに、どこから相談したらいいか分からない、<br />
     相続、遺言、家族信託、財産管理、お墓、土地などの家のコトの<br />
@@ -153,6 +152,9 @@ import BannerKominkaSaisei from "~/img/banner_kominka_saisei.png";
   .consult_detail_title {
     margin-bottom: 68px;
     text-align: center;
+  }
+  .consult_detail_content {
+    line-height: 2.5;
   }
   .inquiry_more {
     margin-bottom: 267px;

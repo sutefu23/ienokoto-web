@@ -1,0 +1,40 @@
+---
+import { Image } from "@astrojs/image/components";
+export type Props = {
+  src: string;
+  name: string;
+  width?: number;
+  height?: number;
+};
+const { src, name, width = 116, height = 116 } = Astro.props;
+---
+
+<div class="user_icon">
+  <Image
+    class="user_icon__img"
+    src={src}
+    alt={name}
+    width={width}
+    height={height}
+    format={"webp"}
+    loading={"lazy"}
+  />
+  <p class="user_name">{name}</p>
+</div>
+<style lang="scss">
+  .user_icon {
+    display: inline-block;
+    min-width: 116px;
+    &__img {
+      border-radius: 100%;
+      object-fit: cover;
+      vertical-align: middle;
+    }
+  }
+  .user_name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 15px;
+    text-align: center;
+  }
+</style>
