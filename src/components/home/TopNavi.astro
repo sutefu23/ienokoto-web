@@ -10,157 +10,98 @@ import NavTherapist from "~/img/top/nav_therapist.png";
 import NavStaff from "~/img/top/nav_staff.png";
 import NavAbout from "~/img/top/nav_about.png";
 import NavInquiry from "~/img/top/nav_inquiry.png";
+
+type NavContent = {
+  image: ImageMetadata;
+  title: string;
+  description: string;
+  link: string;
+};
+
+const navContents: NavContent[] = [
+  {
+    image: NavReform,
+    title: PAGES.REFORM.title,
+    description: "イエノコトのリフォーム事例や流れを詳しくご紹介しています。",
+    link: PAGES.REFORM.slug,
+  },
+  {
+    image: NavLearn,
+    title: PAGES.LEARN.title,
+    description:
+      "暮らしが豊かになる、片付けなどの暮らしの講座や、コンテンツ、片付けサポートを用意しています。",
+    link: PAGES.LEARN.slug,
+  },
+  {
+    image: NavSpace,
+    title: "貸しスペース",
+    description:
+      "モデルハウスは貸しスペースとして利用できます。アロマなどの講座が開催されていますので、是非チェックしてみてください。",
+    link: "/event",
+  },
+  {
+    image: NavSaisei,
+    title: PAGES.REPRODUCTION.title,
+    description: "お持ちの古民家の、再生、移築を行います。",
+    link: PAGES.REPRODUCTION.slug,
+  },
+  {
+    image: NavConsult,
+    title: PAGES.CONSULT.title,
+    description:
+      "どこに聞いていいかわからない家のこと、相続のこと、介護のこと…。専門家に相談してみませんか？",
+    link: PAGES.CONSULT.slug,
+  },
+  {
+    image: NavTherapist,
+    title: "セラピストになる",
+    description:
+      "片付けをさらにさらに学びたい、仕事につなげたい方向けの専門資格、家事セラピストになりませんか？",
+    link: "/#",
+  },
+  {
+    image: NavStaff,
+    title: "スタッフ紹介",
+    description: "イエノコトで働くスタッフを紹介します。",
+    link: PAGES.STAFF.slug,
+  },
+  {
+    image: NavAbout,
+    title: "会社概要・アクセス",
+    description: "会社概要とアクセス、所在地をご紹介します。",
+    link: "/about",
+  },
+  {
+    image: NavInquiry,
+    title: "お問い合わせ",
+    description: `家のコト、暮らしのコトなど、お気軽にお問い合わせください。<br/>TEL：0120-200-789`,
+    link: "/siryo",
+  },
+];
 ---
 
 <nav class="top_nav">
   <ul>
-    <li>
-      <Image
-        src={NavReform}
-        alt={PAGES.REFORM.title}
-        width={362}
-        height={284}
-        format="webp"
-        loading="lazy"
-      />
-      <span>{PAGES.REFORM.title}</span>
-      <div class="hover_box">
-        <p>イエノコトのリフォーム事例や流れを詳しくご紹介しています。</p>
-        <a href="/reform">⇒詳細はこちら</a>
-      </div>
-    </li>
-    <li>
-      <Image
-        src={NavLearn}
-        alt={PAGES.REPRODUCTION.title}
-        width={362}
-        height={284}
-        format="webp"
-        loading="lazy"
-      />
-      <span>{PAGES.REPRODUCTION.title}</span>
-      <div class="hover_box">
-        <p>
-          暮らしが豊かになる、片付けなどの暮らしの講座や、コンテンツ、片付けサポートを用意しています。
-        </p>
-        <a href={PAGES.REPRODUCTION.slug}>⇒詳細はこちら</a>
-      </div>
-    </li>
-    <li>
-      <Image
-        src={NavSpace}
-        alt="貸しスペース"
-        width={362}
-        height={284}
-        format="webp"
-        loading="lazy"
-      />
-      <span>貸しスペース</span>
-      <div class="hover_box">
-        <a href="/event">⇒講座カレンダー</a>
-        <a
-          href="/wp/wp-content/themes/ienokoto/files/HP%E7%94%A8-%E8%B2%B8%E3%81%97%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%81%AE%E3%81%94%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95.pdf"
-          >⇒貸しスペースを借りたい</a
-        >
-      </div>
-    </li>
-    <li>
-      <Image
-        src={NavSaisei}
-        alt={PAGES.REPRODUCTION.title}
-        width={362}
-        height={284}
-        format="webp"
-        loading="lazy"
-      />
-      <span>{PAGES.REPRODUCTION.title}</span>
-      <div class="hover_box">
-        <p>お持ちの古民家の、再生、移築を行います。</p>
-        <a href={PAGES.REPRODUCTION.slug}>⇒詳細とご相談はこちら</a>
-      </div>
-    </li>
-    <li>
-      <Image
-        src={NavConsult}
-        alt={PAGES.CONSULT.title}
-        width={362}
-        height={284}
-        format="webp"
-        loading="lazy"
-      />
-      <span>{PAGES.CONSULT.title}</span>
-      <div class="hover_box">
-        <p>
-          どこに聞いていいかわからない家のこと、相続のこと、介護のこと…。専門家に相談してみませんか？
-        </p>
-        <a href={PAGES.CONSULT.slug}>⇒詳細と相談予約はこちら</a>
-      </div>
-    </li>
-    <li>
-      <Image
-        src={NavTherapist}
-        alt="セラピストになる"
-        width={362}
-        height={284}
-        format="webp"
-        loading="lazy"
-      />
-      <span>セラピストになる</span>
-      <div class="hover_box">
-        <p>
-          片付けをさらにさらに学びたい、仕事につなげたい方向けの専門資格、家事セラピスになりませんか？
-        </p>
-        <a href="/">⇒詳細はこちら</a>
-      </div>
-    </li>
-    <li>
-      <Image
-        src={NavStaff}
-        alt={PAGES.STAFF.title}
-        width={362}
-        height={284}
-        format="webp"
-        loading="lazy"
-      />
-      <span>{PAGES.STAFF.title}</span>
-      <div class="hover_box">
-        <p>イエノコトで働くスタッフを紹介します。</p>
-        <a href={PAGES.STAFF.slug}>⇒詳細はこちら</a>
-      </div>
-    </li>
-    <li>
-      <Image
-        src={NavAbout}
-        alt="会社概要・アクセス"
-        width={362}
-        height={284}
-        format="webp"
-        loading="lazy"
-      />
-      <span>会社概要・アクセス</span>
-      <div class="hover_box">
-        <p>会社概要とアクセス、所在地をご紹介します。</p>
-        <a href="/about">⇒詳細はこちら</a>
-      </div>
-    </li>
-    <li>
-      <Image
-        src={NavInquiry}
-        alt="お問い合わせ"
-        width={362}
-        height={284}
-        format="webp"
-        loading="lazy"
-      />
-      <span>お問い合わせ</span>
-      <div class="hover_box">
-        <p>
-          家のコト、暮らしのコトなど、お気軽にお問い合わせください。<br
-          />TEL：0120-200-789
-        </p>
-        <a href="/siryo">⇒お問い合わせはこちら</a>
-      </div>
-    </li>
+    {
+      navContents.map((nav) => (
+        <li>
+          <a class="top_nav_link" href={nav.link}>
+            <Image
+              src={nav.image}
+              alt={nav.title}
+              width={362}
+              height={284}
+              format="webp"
+              loading="lazy"
+            />
+            <span>{nav.title}</span>
+            <div class="hover_box">
+              <p set:html={nav.description} />
+            </div>
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </nav>
 <style lang="scss">
@@ -172,7 +113,14 @@ import NavInquiry from "~/img/top/nav_inquiry.png";
       gap: 42px 41px;
       justify-content: center;
       max-width: $baseContentWidth;
-
+      .top_nav_link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        &:hover {
+          opacity: 1;
+        }
+      }
       li {
         position: relative;
         span {

@@ -12,7 +12,7 @@ const pageTitle = propTitle || PAGES[page].title;
 
 <ul class="breadcrumb">
   <li>
-    <a href={PAGES.HOME.slug}>Home</a>
+    <a href={PAGES.HOME.slug}>ホーム</a>
   </li>
   {
     !subPageTitle ? (
@@ -32,9 +32,10 @@ const pageTitle = propTitle || PAGES[page].title;
     display: flex;
     justify-content: left;
     margin-top: 44px;
+    margin-right: auto;
+    margin-left: auto;
     font-weight: bold;
-    max-width: $designLineWidth;
-    padding-left: 134px;
+    max-width: 1408px;
     li + li::before {
       content: ">";
     }

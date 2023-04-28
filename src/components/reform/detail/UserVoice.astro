@@ -1,0 +1,42 @@
+---
+import UserIcon from "./UserIcon.astro";
+export type Props = {
+  title: string;
+  src: string;
+  name: string;
+  text: string;
+};
+const { title, src, name, text } = Astro.props;
+---
+
+<section class="user_voice">
+  <h3 class="user_voice_title">{title}</h3>
+  <div class="user_voice_box">
+    <UserIcon src={src} name={name} />
+    <p class="user_voice_text" set:html={text} />
+  </div>
+</section>
+
+<style lang="scss">
+  .user_voice {
+    max-width: 1200px;
+    margin: 0 auto;
+    + .user_voice {
+      margin-top: 131px;
+    }
+  }
+  .user_voice_box {
+    display: flex;
+    column-gap: 138px;
+  }
+  .user_voice_title {
+    text-align: left;
+    margin-bottom: 45px;
+    // &:nth-of-type(1) {
+    //   margin-left: -2em;
+    // }
+  }
+  .user_voice_text {
+    margin-top: 1em;
+  }
+</style>

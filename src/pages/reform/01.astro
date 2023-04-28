@@ -12,6 +12,7 @@ import DummyImage3 from "~/img/reform/example/detail_03.jpg";
 import DummyImage4 from "~/img/reform/example/detail_04.jpg";
 import StaffCard from "~/components/reform/detail/StaffCard.astro";
 import ReformFlow from "~/components/reform/detail/ReformFlow.astro";
+import UserVoice from "~/components/reform/detail/UserVoice.astro";
 const detail = {
   cost: "総額600万円",
   building: "戸建て",
@@ -53,22 +54,88 @@ const staff = {
     copy="終の棲家を小さく豊かにフルリノベ"
     catchImage={DummyTopImage}
   />
-  <BreadCrumb page={"REFORM"} pageTitle="" />
-
+  <BreadCrumb page={"REFORM"} />
+  <h2 class="page_title">１階フロア120㎡　フルリノベーション　総額600万円</h2>
   <PageTopSpec
     cost={detail.cost}
     building={detail.building}
     area={detail.area}
     tags={detail.tags}
   />
+  <h2 class="copy_title">完成した住まい</h2>
   <ReformImages images={detail.images} />
-  <h2>担当したスタッフ</h2>
-  <StaffCard
-    id={staff.id}
-    name={staff.name}
-    roles={staff.roles}
-    image={staff.image}
-    description={staff.description}
-  />
+  <section class="material">
+    <h2 class="material_title">使用した素材と設備</h2>
+    <p class="material_content">
+      キッチン：タカラスタンダード<br />
+      神棚：石藏商店<br />
+      床：三協アルミS-フロア
+    </p>
+  </section>
+  <section class="staff">
+    <h2 class="staff_title">担当したスタッフ</h2>
+    <StaffCard
+      id={staff.id}
+      name={staff.name}
+      roles={staff.roles}
+      image={staff.image}
+      description={staff.description}
+    />
+  </section>
   <ReformFlow />
+  <section class="voice">
+    <UserVoice
+      title="お客様からの声"
+      name="お客様"
+      src="https://placehold.jp/150x150.png"
+      text="明るい奥様で、打ち合わせが楽しく進みました。未来のビジョンがしっかりあり、ひとつひとつ納得してモノ選びをする姿に感動しました。新しい家で使いたいモノと手放すモノをジャッジしながら工事期間を過ごしていただきました。お会いすると、幸せそうな笑顔にいつもうれしくなります。"
+    />
+    <UserVoice
+      title="担当者からのコメント"
+      name="石田"
+      src="https://placehold.jp/150x150.png"
+      text="明るい奥様で、打ち合わせが楽しく進みました。未来のビジョンがしっかりあり、ひとつひとつ納得してモノ選びをする姿に感動しました。新しい家で使いたいモノと手放すモノをジャッジしながら工事期間を過ごしていただきました。お会いすると、幸せそうな笑顔にいつもうれしくなります。"
+    />
+  </section>
 </PageContent>
+<style lang="scss">
+  .page_title {
+    max-width: 1408px;
+    @media screen and (max-width: 1408px) {
+      padding-left: 2.5%;
+    }
+    text-align: left;
+    margin-top: 84px;
+    margin-bottom: 94px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .copy_title {
+    margin-top: 153px;
+    margin-bottom: 94px;
+  }
+  .staff_title {
+    margin-top: 267px;
+    margin-bottom: 133px;
+  }
+  .material {
+    text-align: center;
+  }
+  .material_title {
+    margin-top: 250px;
+  }
+  .material_content {
+    display: inline-block;
+    text-align: left;
+    max-width: 15em;
+    margin: 94px auto 267px;
+    line-height: 1.875;
+  }
+  .staff {
+    margin-bottom: 225px;
+  }
+  .voice {
+    margin-top: 230px;
+    margin-bottom: 228px;
+  }
+</style>

@@ -1,9 +1,10 @@
 ---
+import { PAGES } from "~/consts";
 import LoopSection from "../common/LoopSection.astro";
-import AboutImage1 from "~/img/reform/reform_abount_01.jpg";
-import AboutImage2 from "~/img/reform/reform_abount_02.jpg";
-import AboutImage3 from "~/img/reform/reform_abount_03.jpg";
-import AboutImage4 from "~/img/reform/reform_abount_04.jpg";
+import AboutImage1 from "~/img/reform/reform_about_01.jpg";
+import AboutImage2 from "~/img/reform/reform_about_02.jpg";
+import AboutImage3 from "~/img/reform/reform_about_03.jpg";
+import AboutImage4 from "~/img/reform/reform_about_04.jpg";
 
 const contents = [
   {
@@ -19,12 +20,16 @@ const contents = [
   {
     title: "気になる商品を一緒にショールームに見に行きます。",
     image: AboutImage3,
-    text: "一緒に現物を見に行ってわかる、「質感」「使い勝手」「機能性」を確認し、お客様の「これがいい！」が出るまでショールームを回ります。",
+    text: `一緒に現物を見に行ってわかる、「質感」「使い勝手」「機能性」を確認し、お客様の「これがいい！」が出るまでショールームを回ります。<br/>
+          イエノコトはショールームの方や、職人さん、専門の方と主婦との通訳。<br/>
+          分かりにくい専門的な単語や、なかなかお客様から聞きにくいことを、主婦目線で代弁します。だから、納得して商品をお選びいただけます。`,
   },
   {
     title: "リフォーム後もずっと・・・",
     image: AboutImage4,
-    text: "リフォーム後から始まるご縁を大切にし、いつまでも暮らしやすいお家のためのお手伝いをいたします。小さなことでもまたご連絡ください。",
+    text: `リフォーム後から始まるご縁を大切にし、いつまでも暮らしやすいお家のためのお手伝いをいたします。小さなことでもまたご連絡ください。<br/><br/>
+    <a href="${PAGES.LEARN.slug}">⇒暮らし方を学ぶ</a>
+    `,
   },
 ];
 ---

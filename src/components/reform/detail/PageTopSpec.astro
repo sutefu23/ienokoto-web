@@ -34,12 +34,17 @@ const { cost, area, building, tags } = Astro.props;
 </table>
 <style lang="scss">
   table {
-    max-width: 1258px;
+    max-width: 1265px;
+    @media screen and (max-width: 1265px) {
+      margin-left: 2.5%;
+    }
     margin-left: auto;
     margin-right: auto;
+    text-align: left;
   }
   th {
-    padding-right: 45px;
+    width: 5em;
+    height: 67px;
   }
   li {
     display: inline-block;
@@ -48,5 +53,9 @@ const { cost, area, building, tags } = Astro.props;
     line-height: 1em;
     padding: 12px 20px;
     border: solid 1px #000;
+  }
+  .tag {
+    position: relative;
+    top: -0.25em;
   }
 </style>

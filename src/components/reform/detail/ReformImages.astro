@@ -35,11 +35,19 @@ const { images } = Astro.props;
     justify-content: center;
     gap: 63px 61px;
     .reform_image {
-      width: 100%;
+      max-width: 100%;
       max-width: 600px;
       margin-bottom: 22px;
       .description {
-        line-height: 1.5;
+        line-height: 1.875;
+      }
+    }
+  }
+  @media screen and (max-width: 1265px) {
+    .reform_images {
+      gap: 5%;
+      .reform_image {
+        width: 45%;
       }
     }
   }
