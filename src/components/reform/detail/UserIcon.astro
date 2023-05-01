@@ -1,15 +1,17 @@
 ---
 import { Image } from "@astrojs/image/components";
+import classNames from "classnames";
 export type Props = {
   src: string;
   name: string;
   width?: number;
   height?: number;
+  class?: string;
 };
-const { src, name, width = 116, height = 116 } = Astro.props;
+const { src, name, width = 116, height = 116, class: className } = Astro.props;
 ---
 
-<div class="user_icon">
+<div class={classNames(["user_icon", className])}>
   <Image
     class="user_icon__img"
     src={src}

@@ -36,6 +36,10 @@ const pageTitle = propTitle || PAGES[page].title;
     margin-left: auto;
     font-weight: bold;
     max-width: 1408px;
+    @media screen and (max-width: 1408px) {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
     li + li::before {
       content: ">";
     }

@@ -5,11 +5,12 @@ export type Props = {
   src: string;
   name: string;
   text: string;
+  class: "staff" | "user";
 };
-const { title, src, name, text } = Astro.props;
+const { title, src, name, text, class: className } = Astro.props;
 ---
 
-<section class="user_voice">
+<section class={`user_voice user_voice_${className}`}>
   <h3 class="user_voice_title">{title}</h3>
   <div class="user_voice_box">
     <UserIcon src={src} name={name} />
@@ -20,21 +21,32 @@ const { title, src, name, text } = Astro.props;
 <style lang="scss">
   .user_voice {
     max-width: 1200px;
+    @media screen and (max-width: 1300px) {
+      max-width: 95%;
+    }
     margin: 0 auto;
     + .user_voice {
       margin-top: 131px;
     }
   }
+  .user_voice_staff {
+    .user_voice_title {
+      margin-left: -1.5em;
+      @media screen and (max-width: 1300px) {
+        margin-left: -1em;
+      }
+    }
+  }
   .user_voice_box {
     display: flex;
     column-gap: 138px;
+    @media screen and (max-width: 1300px) {
+      column-gap: 10%;
+    }
   }
   .user_voice_title {
     text-align: left;
     margin-bottom: 45px;
-    // &:nth-of-type(1) {
-    //   margin-left: -2em;
-    // }
   }
   .user_voice_text {
     margin-top: 1em;

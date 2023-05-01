@@ -113,6 +113,9 @@ const navContents: NavContent[] = [
       gap: 42px 41px;
       justify-content: center;
       max-width: $baseContentWidth;
+      @media screen and (max-width: 1300px) {
+        gap: vw(42px, 1300px) vw(41px, 1300px);
+      }
       .top_nav_link {
         display: block;
         width: 100%;
@@ -123,6 +126,10 @@ const navContents: NavContent[] = [
       }
       li {
         position: relative;
+        @media screen and (max-width: 1300px) {
+          width: vw(362px, 1300px);
+          height: vw(291px, 1300px);
+        }
         span {
           position: absolute;
           top: 30px;

@@ -80,6 +80,11 @@ import { Image } from "@astrojs/image/components";
     justify-content: space-between;
   }
   .staff_detail {
+    @media screen and (max-width: 1168px) {
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+    }
     dt {
       font-weight: bold;
       margin-bottom: 44px;
