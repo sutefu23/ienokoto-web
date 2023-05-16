@@ -7,6 +7,13 @@ import { PAGES } from "../../consts";
 const isHome = Astro.url.pathname === "/";
 ---
 
+<script>
+  /* レスポンシブ時はfadeさせない */
+  if (location.pathname === "/" && window.outerWidth <= 1024) {
+    const nav = document.querySelector("nav");
+    nav?.classList.remove("fade");
+  }
+</script>
 <nav class={isHome ? "fade" : ""}>
   <div class="wrap">
     <a href="/">
@@ -29,6 +36,11 @@ const isHome = Astro.url.pathname === "/";
       <li><a href="/siryo/">お問い合わせ</a></li>
     </ul>
   </div>
+  <a class="sp_slide_box">
+    <span class="slide_bar"></span>
+    <span class="slide_bar"></span>
+    <span class="slide_bar"></span>
+  </a>
 </nav>
 <style lang="scss">
   nav {
@@ -53,8 +65,6 @@ const isHome = Astro.url.pathname === "/";
     .logo {
       margin-top: 21px;
     }
-    ul {
-    }
     li {
       color: #fff;
       display: inline-block;
@@ -62,13 +72,56 @@ const isHome = Astro.url.pathname === "/";
         content: "／";
       }
     }
-    @media screen and (max-width: 1023px) {
+  }
+  @media screen and (max-width: 1024px) {
+    nav {
+      height: auto;
       .wrap {
         display: block;
       }
-      .nav {
-        height: auto;
+      ul {
+        position: fixed;
+        display: block;
+        width: 250px;
+        right: -250px;
+        top: 0;
+        height: 110%;
+        background-color: rgba(133, 93, 60, 0.8);
+        padding-top: 40px;
+        z-index: 998;
+        box-sizing: border-box;
+        overflow-y: scroll;
       }
+      li {
+        display: inline-block;
+        width: 100%;
+        & + li::before {
+          content: "";
+        }
+      }
+    }
+    .logo {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+    }
+    .sp_slide_box {
+      position: absolute;
+      display: block;
+      right: 20px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 35px;
+      height: 35px;
+      z-index: 999;
+    }
+    .slide_bar {
+      display: block;
+      width: 100%;
+      border-top: solid 4px white;
+      margin-bottom: 10px;
+      border-radius: 5px;
     }
   }
 </style>

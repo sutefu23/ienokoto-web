@@ -1,15 +1,15 @@
 ---
 import { Image } from "@astrojs/image/components";
 import { PAGES } from "~/consts";
-import NavReform from "~/img/top/nav_reform.png";
-import NavLearn from "~/img/top/nav_learn.png";
-import NavSpace from "~/img/top/nav_space.png";
-import NavSaisei from "~/img/top/nav_saisei.png";
-import NavConsult from "~/img/top/nav_consult.png";
-import NavTherapist from "~/img/top/nav_therapist.png";
-import NavStaff from "~/img/top/nav_staff.png";
-import NavAbout from "~/img/top/nav_about.png";
-import NavInquiry from "~/img/top/nav_inquiry.png";
+import NavReform from "~/img/top/nav_reform.jpg";
+import NavLearn from "~/img/top/nav_learn.jpg";
+import NavSpace from "~/img/top/nav_space.jpg";
+import NavSaisei from "~/img/top/nav_saisei.jpg";
+import NavConsult from "~/img/top/nav_consult.jpg";
+import NavTherapist from "~/img/top/nav_therapist.jpg";
+import NavStaff from "~/img/top/nav_staff.jpg";
+import NavAbout from "~/img/top/nav_about.jpg";
+import NavInquiry from "~/img/top/nav_inquiry.jpg";
 
 type NavContent = {
   image: ImageMetadata;
@@ -152,6 +152,10 @@ const navContents: NavContent[] = [
           background-color: rgba(#f5f2f2, 0.87);
           line-height: 1.875;
           font-weight: bold;
+          @media screen and (max-width: 1300px) {
+            width: 90%;
+            height: 90%;
+          }
           a {
             display: inline-block;
             margin-top: 1em;
@@ -160,6 +164,26 @@ const navContents: NavContent[] = [
         &:hover {
           .hover_box {
             opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 990px) {
+    .top_nav {
+      ul {
+        flex-direction: column;
+        gap: vw(28px);
+        li {
+          width: 100%;
+          height: vw(260px);
+          img {
+            width: 100%;
+            height: 100%;
+          }
+          .hover_box {
+            width: 100%;
+            height: 100%;
           }
         }
       }

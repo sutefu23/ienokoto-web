@@ -4,7 +4,8 @@ $baseFontSize: 16px;
 $baseWindowWidth: 1920px; //画面の幅
 $designLineWidth: 1676px; //デザインラインの幅
 $baseContentWidth: 1168px; //コンテンツ幅
-$mobileWindowWidth: 768px; //モバイルの幅
+$mobileDesignWidth: 375px; //モバイルデザインの幅
+$mobileContentWidth: 320px; //モバイルコンテンツ幅
 $h1: 4.8rem;
 $h2: 3.2rem;
 $h3: 2.4rem;
@@ -25,8 +26,7 @@ $boxShadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.3);
   @return math.div($pixels , $baseFontSize) * 1rem;
 }
 
-@function vw($pixels, $baseWidth) {
-  $baseWidth: if($baseWidth ==null, $mobileWindowWidth, $baseWidth);
+@function vw($pixels, $baseWidth :$mobileDesignWidth) {
   @return math.div($pixels , $baseWidth ) * 100vw;
 }
 
