@@ -7,7 +7,7 @@
 	box-sizing: border-box;
 }
 
-body {
+html {
 	font-family: $fontBase;
 	margin: auto;
 	font-size: $baseFontSize;
@@ -15,6 +15,26 @@ body {
 	overflow-wrap: break-word;
 	line-height: 1.5;
 	color: #000;
+
+	@media screen and (max-width: $mobileBreakPoint) {
+		font-size: vw($baseFontSize);
+	}
+}
+
+.pc {
+	display: block;
+
+	@media screen and (max-width: $mobileBreakPoint) {
+		display: none;
+	}
+}
+
+.sp {
+	display: none;
+
+	@media screen and (max-width: $mobileBreakPoint) {
+		display: block;
+	}
 }
 
 .content {
@@ -36,17 +56,17 @@ b {
 }
 
 h1 {
-	font-size: 50px;
+	font-size: rem(50px);
 	text-align: center;
 }
 
 h2 {
-	font-size: 24px;
+	font-size: rem(24px);
 	text-align: center;
 }
 
 h3 {
-	font-size: 18px;
+	font-size: rem(18px);
 	text-align: center;
 }
 

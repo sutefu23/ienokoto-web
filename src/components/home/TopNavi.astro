@@ -10,10 +10,10 @@ import NavTherapist from "~/img/top/nav_therapist.jpg";
 import NavStaff from "~/img/top/nav_staff.jpg";
 import NavAbout from "~/img/top/nav_about.jpg";
 import NavInquiry from "~/img/top/nav_inquiry.jpg";
-
 type NavContent = {
   image: ImageMetadata;
   title: string;
+  subtitle?: string;
   description: string;
   link: string;
 };
@@ -22,12 +22,14 @@ const navContents: NavContent[] = [
   {
     image: NavReform,
     title: PAGES.REFORM.title,
+    subtitle: "リフォーム・新築",
     description: "イエノコトのリフォーム事例や流れを詳しくご紹介しています。",
     link: PAGES.REFORM.slug,
   },
   {
     image: NavLearn,
     title: PAGES.LEARN.title,
+    subtitle: "片付け講座、暮らしのサポート<br>片付けサポート",
     description:
       "暮らしが豊かになる、片付けなどの暮らしの講座や、コンテンツ、片付けサポートを用意しています。",
     link: PAGES.LEARN.slug,
@@ -35,6 +37,7 @@ const navContents: NavContent[] = [
   {
     image: NavSpace,
     title: "貸しスペース",
+    subtitle: "講座カレンダー<br>貸しスペースを借りたい",
     description:
       "モデルハウスは貸しスペースとして利用できます。アロマなどの講座が開催されていますので、是非チェックしてみてください。",
     link: "/event",
@@ -42,12 +45,15 @@ const navContents: NavContent[] = [
   {
     image: NavSaisei,
     title: PAGES.REPRODUCTION.title,
+    subtitle: "古民家再生・移築",
     description: "お持ちの古民家の、再生、移築を行います。",
     link: PAGES.REPRODUCTION.slug,
   },
   {
     image: NavConsult,
     title: PAGES.CONSULT.title,
+    subtitle:
+      "実家のコト、相続のコト・・・どこに相談したらいいか分からない家のコト<br>ご相談ください",
     description:
       "どこに聞いていいかわからない家のこと、相続のこと、介護のこと…。専門家に相談してみませんか？",
     link: PAGES.CONSULT.slug,
@@ -55,6 +61,7 @@ const navContents: NavContent[] = [
   {
     image: NavTherapist,
     title: "セラピストになる",
+    subtitle: "暮らしの専門家、家事セラピスト養成講座のご案内",
     description:
       "片付けをさらにさらに学びたい、仕事につなげたい方向けの専門資格、家事セラピストになりませんか？",
     link: "/#",
@@ -94,7 +101,12 @@ const navContents: NavContent[] = [
               format="webp"
               loading="lazy"
             />
-            <span>{nav.title}</span>
+            <div class="title_box">
+              <span class="title">{nav.title}</span>
+              {nav.subtitle && (
+                <span class="subtitle sp" set:html={nav.subtitle} />
+              )}
+            </div>
             <div class="hover_box">
               <p set:html={nav.description} />
             </div>
@@ -124,49 +136,52 @@ const navContents: NavContent[] = [
           opacity: 1;
         }
       }
-      li {
-        position: relative;
+    }
+    li {
+      position: relative;
+      @media screen and (max-width: 1300px) {
+        width: vw(362px, 1300px);
+        height: vw(291px, 1300px);
+      }
+      .hover_box {
+        opacity: 0;
+        position: absolute;
+        inset: 0;
+        padding: 32px 28px;
+        margin: auto;
+        width: 315px;
+        height: 186px;
+        transition: opacity 0.3s 0.1s ease-in-out;
+        background-color: rgba(#f5f2f2, 0.87);
+        line-height: 1.875;
+        font-weight: bold;
         @media screen and (max-width: 1300px) {
-          width: vw(362px, 1300px);
-          height: vw(291px, 1300px);
+          width: 90%;
+          height: 90%;
         }
-        span {
-          position: absolute;
-          top: 30px;
-          left: 24px;
-          text-shadow: 0px 3px 6px rgba($color: #000000, $alpha: 0.16);
-          font-size: 24px;
-          font-weight: bold;
-          line-height: 1.25;
-          color: white;
-        }
-        .hover_box {
-          opacity: 0;
-          position: absolute;
-          inset: 0;
-          padding: 32px 28px;
-          margin: auto;
-          width: 315px;
-          height: 186px;
-          transition: opacity 0.3s 0.1s ease-in-out;
-          background-color: rgba(#f5f2f2, 0.87);
-          line-height: 1.875;
-          font-weight: bold;
-          @media screen and (max-width: 1300px) {
-            width: 90%;
-            height: 90%;
-          }
-          a {
-            display: inline-block;
-            margin-top: 1em;
-          }
-        }
-        &:hover {
-          .hover_box {
-            opacity: 1;
-          }
+        a {
+          display: inline-block;
+          margin-top: 1em;
         }
       }
+      &:hover {
+        .hover_box {
+          opacity: 1;
+        }
+      }
+    }
+    .title_box {
+      position: absolute;
+      top: 30px;
+      left: 24px;
+      width: 100%;
+      line-height: 1.25;
+      color: white;
+    }
+    .title {
+      text-shadow: 0px 3px 6px rgba($color: #000000, $alpha: 0.16);
+      font-size: 24px;
+      font-weight: bold;
     }
   }
   @media screen and (max-width: 990px) {
@@ -174,18 +189,32 @@ const navContents: NavContent[] = [
       ul {
         flex-direction: column;
         gap: vw(28px);
-        li {
+      }
+      li {
+        width: 100%;
+        height: vw(260px);
+        img {
           width: 100%;
-          height: vw(260px);
-          img {
-            width: 100%;
-            height: 100%;
-          }
-          .hover_box {
-            width: 100%;
-            height: 100%;
-          }
+          height: 100%;
         }
+        .hover_box {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .top_nav {
+      .title {
+        font-size: vw(21px);
+      }
+      .subtitle {
+        position: absolute;
+        color: #fff;
+        font-size: 1rem;
+        margin-top: vw(10px);
+        line-height: calc(25 / 16);
       }
     }
   }

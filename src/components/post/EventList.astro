@@ -1,33 +1,18 @@
 ---
+import useWPApi from "~/hooks/useWPApi";
 import { Image } from "@astrojs/image/components";
+import dayjs from "dayjs";
+import ja from "dayjs/locale/ja";
+dayjs.locale(ja);
+const { fetchPosts } = useWPApi();
+const Events = await fetchPosts("events", { per_page: 3 });
+if (!Events) return;
+
 export type Props = {
   title?: string;
 };
-const { title } = Astro.props;
 
-const Events = [
-  {
-    id: 1,
-    title: "エンディングノートワークショップ",
-    date: "2023年2月10日（金）",
-    url: "http://www.example.com/",
-    image: "https://placehold.jp/322x322.png",
-  },
-  {
-    id: 2,
-    title: "ちょこっと片付けのススメ",
-    date: "2023年2月21日（火）",
-    url: "http://www.example.com/",
-    image: "https://placehold.jp/322x322.png",
-  },
-  {
-    id: 3,
-    title: "リクシル福岡　小さく豊かに暮らす",
-    date: "2023年2月22日（水）",
-    url: "http://www.example.com/",
-    image: "https://placehold.jp/322x322.png",
-  },
-];
+const { title } = Astro.props;
 ---
 
 <section class="event_list">
@@ -36,23 +21,23 @@ const Events = [
     {
       Events.map((post) => (
         <li>
-          <a href={post.url}>
+          <a href={post.link}>
             <Image
-              src={post.image}
+              src={post._embedded["wp:featuredmedia"][0].source_url}
               width={322}
               height={322}
               format="webp"
               loading={"lazy"}
-              alt={post.title}
+              alt={post.title.rendered}
             />
-            <time>{post.date}</time>
-            <p>{post.title}</p>
+            <time>{dayjs(post.date).format("YYYY年MM月DD日(dd)")}</time>
+            <p>{post.title.rendered}</p>
           </a>
         </li>
       ))
     }
   </ul>
-  <a href="/event" class="more">＞＞もっと見る</a>
+  <a href=`${Astro.site}/events` class="more">＞＞もっと見る</a>
 </section>
 <style lang="scss">
   .event_list {

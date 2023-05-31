@@ -14,6 +14,7 @@ const isHome = Astro.url.pathname === "/";
     nav?.classList.remove("fade");
   }
 </script>
+
 <nav class={isHome ? "fade" : ""}>
   <div class="wrap">
     <a href="/">
@@ -25,8 +26,8 @@ const isHome = Astro.url.pathname === "/";
         format="webp"
       />
     </a>
-    <ul>
-      <li><a href={PAGES.REFORM.slug}>リフォーム</a></li>
+    <ul class="main_navi">
+      <li><a href={PAGES.REFORM.slug}>家づくり</a></li>
       <li><a href={PAGES.LEARN.slug}>暮らしの講座</a></li>
       <li><a href="/event">貸しスペース</a></li>
       <li><a href={PAGES.REPRODUCTION.slug}>古民家再生</a></li>
@@ -36,7 +37,7 @@ const isHome = Astro.url.pathname === "/";
       <li><a href="/siryo/">お問い合わせ</a></li>
     </ul>
   </div>
-  <a class="sp_slide_box">
+  <a class="slide_box">
     <span class="slide_bar"></span>
     <span class="slide_bar"></span>
     <span class="slide_bar"></span>
@@ -75,11 +76,13 @@ const isHome = Astro.url.pathname === "/";
   }
   @media screen and (max-width: 1024px) {
     nav {
-      height: auto;
+      // background-color: transparent;
+      // width: 80px;
+      right: 0;
       .wrap {
         display: block;
       }
-      ul {
+      .main_navi {
         position: fixed;
         display: block;
         width: 250px;
@@ -88,24 +91,30 @@ const isHome = Astro.url.pathname === "/";
         height: 110%;
         background-color: rgba(133, 93, 60, 0.8);
         padding-top: 40px;
+        padding-left: 14px;
         z-index: 998;
         box-sizing: border-box;
         overflow-y: scroll;
       }
       li {
-        display: inline-block;
+        display: block;
         width: 100%;
+        height: 50px;
         & + li::before {
-          content: "";
+          display: none;
         }
+      }
+      a {
+        display: block;
+        line-height: 100%;
+        height: 100%;
       }
     }
     .logo {
-      position: absolute;
-      inset: 0;
-      margin: auto;
+      // display: none;
+      padding-left: 10px;
     }
-    .sp_slide_box {
+    .slide_box {
       position: absolute;
       display: block;
       right: 20px;
@@ -122,6 +131,33 @@ const isHome = Astro.url.pathname === "/";
       border-top: solid 4px white;
       margin-bottom: 10px;
       border-radius: 5px;
+      transition: transform 0.25s ease;
+    }
+  }
+  :global(.open) {
+    .slide_bar:first-child {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+
+      top: 14px;
+      position: relative;
+    }
+
+    .slide_bar:nth-child(2) {
+      display: none;
+    }
+
+    .slide_bar:nth-child(3) {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      /*top: -7px;*/
+      position: relative;
     }
   }
 </style>

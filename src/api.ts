@@ -1,7 +1,9 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 const client: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: import.meta.env.API_URL,
   headers: { 'Content-Type': 'application/json' },
   timeout: 5000, // milliseconds
 });
+
+export default client

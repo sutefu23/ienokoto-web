@@ -47,12 +47,19 @@ import Logo from "~/img/top/top_logo.png";
     @media screen and (min-width: 1650px) {
       top: 100px;
     }
+    @media screen and (min-width: $mobileBreakPoint) {
+      width: vw(140px);
+      height: vw(43px);
+    }
   }
   .sub_copy {
     color: #fff;
     font-weight: bold;
     margin-top: 78px;
     font-size: 19px;
+    @media screen and (min-width: $mobileBreakPoint) {
+      display: none;
+    }
   }
   .top_scroll {
     display: block;
@@ -64,6 +71,9 @@ import Logo from "~/img/top/top_logo.png";
     left: 0;
     right: 0;
     text-align: center;
+    @media screen and (min-width: $mobileBreakPoint) {
+      display: none;
+    }
     &:before {
       bottom: -1px;
     }

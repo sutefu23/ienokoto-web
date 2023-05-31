@@ -30,3 +30,53 @@ window.onscroll = () => {
     }  
   });
 };
+
+// ハンバーガーメニュー
+const menu: HTMLElement | null = document.querySelector(".main_navi");
+const menuBtn: HTMLElement | null = document.querySelector(".slide_box");
+const body: HTMLElement | null = document.querySelector("body");
+const menuWidth: number = menu ? menu.getBoundingClientRect().width : 0;
+
+if (menuBtn) {
+  menuBtn.addEventListener("click", function () {
+    slideMenu();
+  });
+}
+
+function slideMenu(): void {
+  if (body) {
+      body.classList.toggle('open');
+  }
+
+  if (body && body.classList.contains('open')) {
+      if (menu) {
+          menu.style.transition = "right 0.1s ease-in-out";
+          menu.style.right = "0";
+          let overlay: HTMLElement = document.createElement('div');
+          overlay.id = 'overlay';
+          overlay.style.transition = "opacity 0.1s ease-in-out";
+          overlay.style.opacity = "0";
+          if (body) body.appendChild(overlay);
+          setTimeout(function() { overlay.style.opacity = "1"; }, 0); // Trigger fade in.
+          overlay.addEventListener('click', function() {
+              slideMenu();
+          });
+      }
+  } else {
+      if (menu) {
+          menu.style.transition = "right 0.2s ease-in-out";
+          menu.style.right = -menuWidth + "px";
+          let overlay: HTMLElement | null = document.querySelector('#overlay');
+          if (overlay) {
+              overlay.style.transition = "opacity 0.1s ease-in-out";
+              overlay.style.opacity = "1";
+              setTimeout(function() {
+                  if(overlay) overlay.style.opacity = "0"; // Trigger fade out.
+                  setTimeout(function() { 
+                      overlay?.parentNode?.removeChild(overlay);
+                  }, 100); // Remove after transition.
+              }, 0);
+          }
+      }
+  }
+}

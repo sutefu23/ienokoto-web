@@ -39,6 +39,16 @@ const { className } = PAGES.HOME;
       display: block;
       font-size: 24px;
     }
+    @media screen and (max-width: $mobileBreakPoint) {
+      margin-top: vw(77px);
+      line-height: calc(30 / 16);
+      margin-bottom: vw(11px);
+      strong {
+        font-size: vw(18px);
+        padding-top: vw(48px);
+        padding-bottom: vw(46px);
+      }
+    }
   }
   .sns_list_title {
     margin-bottom: 110px;
@@ -58,6 +68,23 @@ const { className } = PAGES.HOME;
     }
     :global(.sns_list) {
       margin-bottom: 249px;
+    }
+    @media screen and (max-width: $mobileBreakPoint) {
+      :global(.top_nav) {
+        margin-bottom: vw(102px);
+      }
+      :global(.news_list) {
+        margin-bottom: vw(102px);
+      }
+      :global(.event_list) {
+        margin-bottom: vw(105px);
+      }
+      :global(.column_list) {
+        margin-bottom: vw(92px);
+      }
+      :global(.sns_list) {
+        margin-bottom: vw(102px);
+      }
     }
   }
 </style>

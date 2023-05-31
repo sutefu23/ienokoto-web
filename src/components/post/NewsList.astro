@@ -1,24 +1,11 @@
 ---
-const Posts = [
-  {
-    id: 1,
-    title: "みんなの冷蔵庫が設置されました",
-    date: "2023年02月01日",
-    url: "http://www.example.com/",
-  },
-  {
-    id: 1,
-    title: "西日本新聞に掲載されました",
-    date: "2023年02月01日",
-    url: "http://www.example.com/",
-  },
-  {
-    id: 1,
-    title: "年末年始の営業について",
-    date: "2023年02月01日",
-    url: "http://www.example.com/",
-  },
-];
+import useWPApi from "~/hooks/useWPApi";
+import dayjs from "dayjs";
+import ja from "dayjs/locale/ja";
+dayjs.locale(ja);
+const { fetchPosts } = useWPApi();
+const Posts = await fetchPosts("news", { per_page: 3 });
+if (!Posts) return;
 ---
 
 <section class="news_list">
@@ -27,17 +14,18 @@ const Posts = [
     {
       Posts.map((post) => (
         <li>
-          <a href={post.url}>
-            <p>
-              <time>{post.date}</time>
-              {post.title}
-            </p>
+          <a href={post.link} class="news_line">
+            <time>
+              {dayjs(post.date).format("YYYY")}年<br class="sp" /><!--
+                 -->{dayjs(post.date).format("MM月DD")}
+            </time>
+            <p>{post.title.rendered}</p>
           </a>
         </li>
       ))
     }
   </ul>
-  <a href="/news" class="more">＞＞もっと見る</a>
+  <a href=`${Astro.site}/news` class="more">＞＞もっと見る</a>
 </section>
 <style lang="scss">
   .news_list {
@@ -54,11 +42,23 @@ const Posts = [
   li + li {
     margin-top: 47px;
   }
+  .news_line {
+    display: grid;
+    grid-template-columns: 119px 1fr;
+    column-gap: 53px;
+  }
   time {
-    margin-right: 53px;
   }
   .more {
     display: inline-block;
     margin-top: 78px;
+  }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .news_list {
+      max-width: vw(270px);
+    }
+    .news_line {
+      column-gap: vw(40px);
+    }
   }
 </style>

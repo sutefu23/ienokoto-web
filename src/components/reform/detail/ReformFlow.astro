@@ -125,13 +125,15 @@ export type Props = {};
       width: 75%;
       max-width: 837px;
       display: flex;
-      align-items: center;
       margin-left: auto;
       margin-right: 0px;
       margin-top: 103px;
       margin-bottom: 107px;
       @media screen and (max-width: 1468px) {
         margin-right: 20px;
+      }
+      &:has(.balloon) {
+        align-items: center;
       }
     }
   }
