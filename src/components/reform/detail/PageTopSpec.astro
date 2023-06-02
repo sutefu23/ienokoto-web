@@ -1,36 +1,52 @@
 ---
 export type Props = {
-  cost: string;
-  area: string;
-  building: string;
-  tags: string[];
+  cost?: string;
+  area?: string;
+  building?: string;
+  tags?: string[];
 };
 const { cost, area, building, tags } = Astro.props;
 ---
 
 <table class="page_top_spec">
-  <tr>
-    <th>費用</th>
-    <td>{cost}</td>
-  </tr>
-  <tr>
-    <th>面積</th>
-    <td>
-      {area}
-    </td>
-  </tr>
-  <tr>
-    <th>建物</th>
-    <td>{building}</td>
-  </tr>
-  <tr>
-    <th>タグ</th>
-    <td>
-      <ul class="tag">
-        {tags.map((tag) => <li>{tag}</li>)}
-      </ul>
-    </td>
-  </tr>
+  {
+    cost && (
+      <tr>
+        <th>費用</th>
+        <td>{cost}</td>
+      </tr>
+    )
+  }
+  {
+    area && (
+      <tr>
+        <th>面積</th>
+        <td>{area}</td>
+      </tr>
+    )
+  }
+  {
+    building && (
+      <tr>
+        <th>建物</th>
+        <td>{building}</td>
+      </tr>
+    )
+  }
+  {
+    tags && (
+      <tr>
+        <th>タグ</th>
+        <td>
+          <ul class="tag">
+            {tags.map((tag) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        </td>
+      </tr>
+    )
+  }
 </table>
 <style lang="scss">
   table {

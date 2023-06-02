@@ -1,30 +1,16 @@
 ---
+import useWPApi, { WP_REST_API_ReformStory } from "~/hooks/useWPApi";
 import { Image } from "@astrojs/image/components";
-const ReformPosts = [
-  {
-    id: 1,
-    title: "終の棲家を小さく豊かにフルリノベ",
-    spec: "１階フロア120㎡　フルリノベーション　600万円",
-    date: "2023年2月10日（金）",
-    url: "http://www.example.com/",
-    image: "https://placehold.jp/1920x832.png",
-  },
-  {
-    id: 2,
-    title: "築５０年　古き良き日本を生かしたフルリノベ",
-    spec: "築50年中古物件フルリノベーション　2000万円",
-    date: "2023年2月21日（火）",
-    url: "http://www.example.com/",
-    image: "https://placehold.jp/1920x832.png",
-  },
-  {
-    id: 3,
-    title: "暮らしやすさを取り入れた古民家風新築",
-    date: "2023年2月22日（水）",
-    url: "http://www.example.com/",
-    image: "https://placehold.jp/1920x832.png",
-  },
-];
+import dayjs from "dayjs";
+import ja from "dayjs/locale/ja";
+dayjs.locale(ja);
+const { fetchPosts } = useWPApi();
+const ReformPosts = await fetchPosts<WP_REST_API_ReformStory[]>(
+  "reform_story",
+  { per_page: 3, order: "asc" },
+  false
+);
+if (!ReformPosts) return;
 ---
 
 <h2 class="stories_tile">リフォームストーリー</h2>
@@ -32,19 +18,21 @@ const ReformPosts = [
   {
     ReformPosts.map((post) => (
       <div class="story">
-        <a class="story_link" href="/reform/01">
+        <a class="story_link" href={`/reform/${post.id}`}>
           <Image
             class="story_image"
-            src={post.image}
-            alt={post.title}
+            src={post.acf.main_image}
+            alt={post.acf.catch_copy}
             format={"webp"}
             loading={"lazy"}
             width={1920}
             height={832}
           />
           <div class="story_content">
-            <h3 class="story_title">{post.title}</h3>
-            {post.spec && <p class="story_spec">{post.spec}</p>}
+            <h3 class="story_title">{post.acf.catch_copy}</h3>
+            {post.acf.spec_overview && (
+              <p class="story_spec">{post.acf.spec_overview}</p>
+            )}
           </div>
         </a>
       </div>

@@ -3,15 +3,15 @@ import { Image } from "@astrojs/image/components";
 
 export type Props = {
   copy: string;
-  catchImage: ImageMetadata;
+  src: string;
 };
 
-const { copy, catchImage } = Astro.props;
+const { copy, src } = Astro.props;
 ---
 
 <div class="page_catch">
   <Image
-    src={catchImage}
+    src={src}
     alt={copy}
     class="catch_image"
     format="webp"

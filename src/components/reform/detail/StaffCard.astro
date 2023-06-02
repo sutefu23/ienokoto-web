@@ -3,11 +3,11 @@ import { Image } from "@astrojs/image/components";
 export type Props = {
   id: number;
   name: string;
-  roles: string[];
+  titles: string[];
   image: string;
   description: string;
 };
-const { id, name, roles, image, description } = Astro.props;
+const { id, name, titles, image, description } = Astro.props;
 ---
 
 <section class="staff_card">
@@ -25,7 +25,7 @@ const { id, name, roles, image, description } = Astro.props;
       <div class="profile_detail">
         <h4 class="name">{name}</h4>
         {
-          roles.map((role) => {
+          titles.map((role) => {
             return <p class="role">{role}</p>;
           })
         }

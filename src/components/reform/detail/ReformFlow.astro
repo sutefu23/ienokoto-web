@@ -1,53 +1,72 @@
 ---
 import UserIcon from "./UserIcon.astro";
 import { Image } from "@astrojs/image/components";
-export type Props = {};
+import useWPApi from "~/hooks/useWPApi";
+import type { ReformFlow } from "~/types/customFields";
+
+const { fetchImage } = useWPApi();
+
+export type Props = ReformFlow & { staff_image?: string };
+const {
+  flow_start,
+  ienokoto_proposal,
+  flow_fix,
+  flow_construction_start_date,
+  flow_completed_date,
+  staff_image,
+} = Astro.props;
 ---
 
 <div class="reform_flow">
   <div class="flow_box">
     <div class="date_box">
-      <time>2021.02.01</time>
+      <time>{flow_start.date}</time>
     </div>
     <div class="content_box">
       <section class="inner">
         <h3 class="box_title">相談スタート・プランニング</h3>
         <div class="inner_content">
           <p class="balloon left">
-            私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなよう
+            {flow_start.customer_comment}
           </p>
-          <UserIcon src="https://placehold.jp/116x116.png" name="お客様" />
+          {(<UserIcon src={flow_start.customer_image} name="お客様" />)}
         </div>
       </section>
       <section class="inner">
         <h3 class="box_title">イエノコトのご提案</h3>
         <div class="inner_content">
-          <UserIcon src="https://placehold.jp/116x116.png" name="石田" />
-          <p class="balloon right">
-            私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなよう
-          </p>
+          {staff_image && <UserIcon src={staff_image} name="石田" />}
+          {
+            ienokoto_proposal && (
+              <p class="balloon right">{ienokoto_proposal}</p>
+            )
+          }
         </div>
       </section>
     </div>
   </div>
   <div class="flow_box">
     <div class="date_box">
-      <time>2021.03.16</time>
+      <time>{flow_fix.date}</time>
     </div>
     <div class="content_box">
       <section class="inner">
         <h3 class="box_title">プラン確定</h3>
         <div class="inner_content">
-          <Image
-            src="https://placehold.jp/189x223.png"
-            format="webp"
-            alt="プラン確定"
-            width={189}
-            height={223}
-            loading={"lazy"}
-          />
+          {
+            (
+              <Image
+                src={flow_fix.image}
+                format="webp"
+                alt="プラン確定"
+                width={189}
+                height={223}
+                loading={"lazy"}
+              />
+            )
+          }
           <p class="description">
-            私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。だから、この最後のリフォームは思い切り自分の好きなようったんです。だから、この最後のリフォームは思い切り自分の好きなようにしたくて。私、自分の家がずっと大嫌いだったんです。
+            {flow_fix.content}
           </p>
         </div>
       </section>
@@ -55,7 +74,7 @@ export type Props = {};
   </div>
   <div class="flow_box">
     <div class="date_box">
-      <time>2021.04.08</time>
+      <time>{flow_construction_start_date}</time>
     </div>
     <div class="content_box">
       <section class="inner">
@@ -65,7 +84,7 @@ export type Props = {};
   </div>
   <div class="flow_box">
     <div class="date_box">
-      <time>2021.04.30</time>
+      <time>{flow_completed_date}</time>
     </div>
     <div class="content_box">
       <section class="inner">
@@ -134,6 +153,9 @@ export type Props = {};
       }
       &:has(.balloon) {
         align-items: center;
+      }
+      p {
+        line-height: calc(30 / 16);
       }
     }
   }

@@ -1,29 +1,33 @@
 ---
 import { Image } from "@astrojs/image/components";
 export type Props = {
-  images: {
-    src: ImageMetadata;
-    description: string;
+  images?: {
+    src?: string;
+    description?: string;
   }[];
 };
 const { images } = Astro.props;
+if (!images) return;
 ---
 
 <div class="reform_images">
   {
-    images.map((image, index) => (
-      <div class="reform_image">
-        <Image
-          src={image.src}
-          alt={`リフォーム画像${index}`}
-          width={601}
-          height={640}
-          format="webp"
-          loading="lazy"
-        />
-        <p class="description" set:html={image.description} />
-      </div>
-    ))
+    images.map(
+      (image, index) =>
+        image.src && (
+          <div class="reform_image">
+            <Image
+              src={image.src}
+              alt={`リフォーム画像${index}`}
+              width={601}
+              height={640}
+              format="webp"
+              loading="lazy"
+            />
+            <p class="description" set:html={image.description} />
+          </div>
+        )
+    )
   }
 </div>
 <style lang="scss">

@@ -1,0 +1,183 @@
+---
+import useWPApi, {
+  WP_REST_API_ReformStory,
+  WP_REST_API_Staff,
+} from "~/hooks/useWPApi";
+import BreadCrumb from "~/components/common/BreadCrumb.astro";
+import DetailPageCatch from "~/components/reform/detail/DetailPageCatch.astro";
+import PageContent from "~/layouts/PageContent.astro";
+import PageTopSpec from "~/components/reform/detail/PageTopSpec.astro";
+import ReformImages from "~/components/reform/detail/ReformImages.astro";
+
+import StaffCard from "~/components/reform/detail/StaffCard.astro";
+import ReformFlow from "~/components/reform/detail/ReformFlow.astro";
+import UserVoice from "~/components/reform/detail/UserVoice.astro";
+import ReformCaseList from "~/components/post/ReformCaseList.astro";
+export async function getStaticPaths() {
+  const { fetchPosts } = useWPApi();
+  const Posts = await fetchPosts<WP_REST_API_ReformStory[]>(
+    "reform_story",
+    { per_page: 100, order: "asc" },
+    false
+  );
+  if (!Posts) return [];
+  return Posts.map((post) => ({
+    params: {
+      id: post.id,
+    },
+  }));
+}
+
+const { fetchPost } = useWPApi();
+
+const { id } = Astro.params;
+
+if (!id) return;
+
+const post = await fetchPost<WP_REST_API_ReformStory>(
+  "reform_story",
+  Number(id),
+  false
+);
+if (!post) return;
+
+const staff = await fetchPost<WP_REST_API_Staff>(
+  "staff",
+  Number(post.acf.staff),
+  false
+);
+---
+
+<PageContent class="reform_detail">
+  {(<DetailPageCatch copy={post.acf.catch_copy} src={post.acf.main_image} />)}
+  <BreadCrumb page={"REFORM"} subPageTitle={post.title.rendered} />
+  <h2 class="page_title">{post.acf.spec_overview}</h2>
+  <PageTopSpec
+    cost={`総額${post.acf.cost}万円`}
+    building={post.acf.building}
+    area={`${post.acf.area}㎡`}
+  />
+  <h2 class="copy_title">{post.acf.overview_title}</h2>
+  <p class="copy_detail" set:html={post.acf.overview_description} />
+  <ReformImages
+    images={post.acf.garally?.map((data) => ({
+      src: data.image.url,
+      description: data?.description ?? "",
+    }))}
+  />
+  {
+    post.acf.using_material && (
+      <section class="material">
+        <h2 class="material_title">使用した素材と設備</h2>
+        <p class="material_content" set:html={post.acf.using_material} />
+      </section>
+    )
+  }
+  <section class="staff">
+    <h2 class="staff_title">担当したスタッフ</h2>
+    {
+      staff && (
+        <StaffCard
+          id={staff.id}
+          name={`${staff.acf?.last_name}　${staff.acf?.first_name}`}
+          titles={staff.acf?.titles.map((data) => data.title)}
+          image={staff.acf?.image}
+          description={staff.acf?.staff_card?.message ?? ""}
+        />
+      )
+    }
+  </section>
+  <ReformFlow
+    flow_start={post.acf.flow_start}
+    ienokoto_proposal={post.acf.ienokoto_proposal}
+    flow_fix={post.acf.flow_fix}
+    flow_construction_start_date={post.acf.flow_construction_start_date}
+    flow_completed_date={post.acf.flow_completed_date}
+    staff_image={staff?.acf.image}
+  />
+  <section class="voice">
+    {
+      (
+        <UserVoice
+          title="お客様からの声"
+          name="お客様"
+          src={post.acf.flow_start.customer_image}
+          text={post.acf.customer_voice}
+          class={"user"}
+        />
+      )
+    }
+    {
+      staff && (
+        <UserVoice
+          title="担当者からのコメント"
+          name={staff.acf.last_name}
+          src={staff.acf.image}
+          text={post.acf.staff_comment}
+          class={"staff"}
+        />
+      )
+    }
+  </section>
+  <section class="other_recommend">
+    <h2 class="other_recommend_title">その他のおすすめ施工事例</h2>
+    <ReformCaseList />
+  </section>
+</PageContent>
+<style lang="scss">
+  .page_title {
+    max-width: 1408px;
+    @media screen and (max-width: 1408px) {
+      padding-left: 2.5%;
+    }
+    text-align: left;
+    margin-top: 84px;
+    margin-bottom: 94px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .copy_title {
+    margin-top: 153px;
+    margin-bottom: 94px;
+  }
+  .copy_detail {
+    margin-top: 94px;
+    margin-bottom: 91px;
+    max-width: 1250px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: calc(30 / 16);
+    @media screen and (max-width: 1265px) {
+      max-width: 95%;
+    }
+  }
+  .staff_title {
+    margin-bottom: 133px;
+  }
+  .material {
+    text-align: center;
+  }
+  .material_title {
+    margin-top: 250px;
+  }
+  .material_content {
+    display: inline-block;
+    text-align: left;
+    max-width: 15em;
+    margin: 94px auto 267px;
+    line-height: 1.875;
+  }
+  .staff {
+    margin-bottom: 225px;
+  }
+  .voice {
+    margin-top: 230px;
+    margin-bottom: 228px;
+  }
+  .other_recommend {
+    margin-bottom: 403px;
+  }
+  .other_recommend_title {
+    margin-bottom: 119px;
+  }
+</style>

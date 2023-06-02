@@ -1,0 +1,157 @@
+---
+import useWPApi, { WP_REST_API_Staff } from "~/hooks/useWPApi";
+import BreadCrumb from "~/components/common/BreadCrumb.astro";
+import PageContent from "~/layouts/PageContent.astro";
+import { Image } from "@astrojs/image/components";
+
+export async function getStaticPaths() {
+  const { fetchPosts } = useWPApi();
+  const Posts = await fetchPosts<WP_REST_API_Staff[]>(
+    "staff",
+    { per_page: 100, order: "asc" },
+    false
+  );
+  if (!Posts) return [];
+  return Posts.map((post) => ({
+    params: {
+      id: post.id,
+    },
+  }));
+}
+
+const { fetchPost } = useWPApi();
+
+const { id } = Astro.params;
+
+if (!id) return;
+
+const staff = await fetchPost<WP_REST_API_Staff>("staff", Number(id), false);
+if (!staff) return;
+---
+
+<PageContent class="staff_detail">
+  <BreadCrumb
+    page={"STAFF"}
+    subPageTitle={`${staff.acf.last_name}${staff.acf.first_name}`}
+  />
+  <section class="staff_content">
+    <div class="profile_box">
+      <div class="profile_text">
+        <h2 class="staff_name">
+          {`${staff.acf.last_name}　${staff.acf.first_name}`}
+        </h2>
+        <ul class="staff_title">
+          <li>{staff.acf.department}</li>
+          {staff.acf.titles.map((data) => <li>{data.title}</li>)}
+        </ul>
+      </div>
+      <Image
+        src={staff.acf.image}
+        alt={`${staff.acf.last_name}${staff.acf.first_name}`}
+        class="staff_img"
+        format={"webp"}
+        loading={"eager"}
+        width={407}
+        height={344}
+      />
+    </div>
+    <dl class="staff_detail">
+      {
+        staff.acf.doing && (
+          <>
+            <dt>やっているコト</dt>
+            <dd>{staff.acf.doing}</dd>
+          </>
+        )
+      }
+      {
+        staff.acf.preferance && (
+          <>
+            <dt>好きなコト</dt>
+            <dd>{staff.acf.preferance}</dd>
+          </>
+        )
+      }
+      {
+        staff.acf.want_to_tell && (
+          <>
+            <dt>伝えたいコト</dt>
+            <dd>{staff.acf.want_to_tell}</dd>
+          </>
+        )
+      }
+      {
+        staff.acf.extra_content?.content && (
+          <>
+            <dt>{staff.acf.extra_content.title}</dt>
+            <dd set:html={staff.acf.extra_content.content} />
+          </>
+        )
+      }
+    </dl>
+    <a href="/staff" class="search_more">＞他のスタッフもみてみる</a>
+  </section>
+</PageContent>
+
+<style lang="scss">
+  .staff_detail {
+    padding-top: 151px;
+  }
+  .staff_content {
+    max-width: 1057px;
+    margin: 184px auto 403px;
+  }
+  .staff_name {
+    text-align: left;
+    margin-top: 47px;
+    margin-bottom: 69px;
+    margin-left: -24px;
+  }
+  .staff_title {
+    padding-left: 18px;
+    line-height: calc(30 / 16);
+  }
+  @media screen and (max-width: 1168px) {
+    .staff_name {
+      margin-left: 0px;
+      padding-left: 5px;
+    }
+  }
+  .profile_box {
+    display: flex;
+    justify-content: space-between;
+  }
+  .staff_detail {
+    @media screen and (max-width: 1168px) {
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    dt {
+      font-weight: bold;
+      margin-bottom: 44px;
+      line-height: 1;
+      &::before {
+        content: "";
+        width: 27px;
+        height: 27px;
+        background: url("../../icon_check.svg") center center;
+        vertical-align: middle;
+        display: inline-block;
+        margin-right: 21.5px;
+      }
+    }
+    dd {
+      padding-left: 48px;
+      margin-bottom: 120px;
+      line-height: 1.875;
+    }
+  }
+  .search_more {
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    max-width: 50%;
+    margin: auto;
+  }
+</style>
