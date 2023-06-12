@@ -44,4 +44,15 @@ import InquiryMore from "~/components/common/InquiryMore.astro";
   .reform :global(.more_link) {
     padding-bottom: 404px;
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .about_title {
+      margin: vw(100px) 0 vw(45px);
+    }
+    .reform_case_title {
+      margin: vw(100px) 0 vw(43px);
+    }
+    .reform :global(.more_link) {
+      padding-bottom: 0;
+    }
+  }
 </style>

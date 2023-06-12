@@ -39,4 +39,13 @@ const { page } = Astro.props;
     margin: auto;
     height: 50px;
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .page_title {
+      padding-left: vw(30px);
+      height: auto;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+    }
+  }
 </style>

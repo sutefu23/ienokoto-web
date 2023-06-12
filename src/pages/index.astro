@@ -40,9 +40,8 @@ const { className } = PAGES.HOME;
       font-size: 24px;
     }
     @media screen and (max-width: $mobileBreakPoint) {
-      margin-top: vw(77px);
+      margin: vw(75px) 0;
       line-height: calc(30 / 16);
-      margin-bottom: vw(11px);
       strong {
         font-size: vw(18px);
         padding-top: vw(48px);
@@ -52,6 +51,9 @@ const { className } = PAGES.HOME;
   }
   .sns_list_title {
     margin-bottom: 110px;
+    @media screen and (max-width: $mobileBreakPoint) {
+      margin-bottom: vw(45px);
+    }
   }
   .home {
     :global(.top_nav) {
@@ -67,6 +69,7 @@ const { className } = PAGES.HOME;
       margin-bottom: 252px;
     }
     :global(.sns_list) {
+      display: block;
       margin-bottom: 249px;
     }
     @media screen and (max-width: $mobileBreakPoint) {
@@ -83,7 +86,7 @@ const { className } = PAGES.HOME;
         margin-bottom: vw(92px);
       }
       :global(.sns_list) {
-        margin-bottom: vw(102px);
+        margin-bottom: vw(100px);
       }
     }
   }
