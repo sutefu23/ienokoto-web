@@ -1,0 +1,32 @@
+name: Manual trigger workflow
+
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Volta
+        uses: volta-cli/action@v4
+      - run: |
+          yarn install && \
+          yarn build
+      # SSH 設定
+      - name: SSH Deploy
+        uses: shimataro/ssh-key-action@v2
+        if: github.event.client_payload.ref == 'develop'
+        with:
+          key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          name: ienokoto-staging.key
+          known_hosts: ${{ secrets.STAGING_SSH_KNOWN_HOST }}
+          config: |
+            Host ienokoto-staging
+              HostName ${{ secrets.STAGING_SSH_HOST_NAME }}
+              User ${{ secrets.STAGING_SSH_USER }}
+              IdentityFile ~/.ssh/ienokoto-staging.key
+              Port 10022
+              StrictHostKeyChecking no
+      - name: rsync over SSH
+        if: github.event.client_payload.ref == 'develop'
+        run: rsync -r ./src/build ienokoto-staging:/home/engine0606/en-gine.dev/public_html/ienokoto/build
