@@ -37,4 +37,5 @@ export default defineConfig({
       }
     }
   },
+  outDir: 'static',
 });
