@@ -16,6 +16,7 @@ const { contents, class: className } = Astro.props;
   {
     contents.map((content) => (
       <section class="loop_content">
+        <h4 class="content_title sp">{content.title}</h4>
         <Image
           src={content.image}
           alt={content.title}
@@ -23,7 +24,7 @@ const { contents, class: className } = Astro.props;
           height={327}
         />
         <div>
-          <h4 class="content_title">{content.title}</h4>
+          <h4 class="content_title pc">{content.title}</h4>
           <p class="content_text" set:html={content.text} />
         </div>
       </section>
@@ -55,4 +56,24 @@ const { contents, class: className } = Astro.props;
   .content_text {
     line-height: 2;
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .loop_section {
+      margin-bottom: vw(50px);
+    }
+		.loop_content {
+      flex-direction: column;
+      max-width: 100%;
+      padding: 0 vw(31px);
+      img {
+        margin-bottom: vw(25px);
+      }
+      + .loop_content {
+        flex-direction: column;
+        margin-top: vw(50px);
+      }
+    }
+    .content_title {
+      margin-bottom: vw(25px);
+    }
+	}
 </style>

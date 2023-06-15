@@ -22,4 +22,17 @@ const { title } = Astro.props;
     margin-top: 119px;
     line-height: 2.5;
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .page_copy {
+      line-height: vw(30px);
+      padding: 0 vw(35px);
+    }
+    .copy_title {
+      margin-top: vw(61px);
+    }
+    .copy_content {
+      line-height: vw(30px);
+      margin-top: vw(45px);
+    }
+  }
 </style>

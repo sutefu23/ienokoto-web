@@ -44,4 +44,10 @@ const pageTitle = propTitle || PAGES[page].title;
       content: ">";
     }
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .breadcrumb {
+      margin-top: vw(19px);
+      padding: 0 vw(36px);
+    }
+  }
 </style>

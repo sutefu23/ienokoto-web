@@ -34,6 +34,11 @@ const { class: className } = Astro.props;
       footer {
         margin-top: 169px;
       }
+      @media screen and (max-width: $mobileBreakPoint) {
+        footer {
+          margin-top: vw(80px);
+        }
+      }
     </style>
   </body>
 </html>

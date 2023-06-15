@@ -52,6 +52,9 @@ const isHome = Astro.url.pathname === "/";
     height: 85px;
     line-height: 85px;
     background-color: rgba($color: #6c6c60, $alpha: 0.72);
+    @media screen and (max-width: $mobileBreakPoint) {
+      background: none;
+    }
     .wrap {
       max-width: 1676px;
       margin: auto;
@@ -62,9 +65,17 @@ const isHome = Astro.url.pathname === "/";
         padding-right: 130px;
         justify-content: space-between;
       }
+      > a {
+        @media screen and (max-width: $mobileBreakPoint) {
+          pointer-events: none;
+        }
+      }
     }
     .logo {
       margin-top: 21px;
+      @media screen and (max-width: $mobileBreakPoint) {
+        opacity: 0;
+      }
     }
     li {
       color: #fff;
@@ -128,13 +139,16 @@ const isHome = Astro.url.pathname === "/";
     .slide_bar {
       display: block;
       width: 100%;
-      border-top: solid 4px white;
+      border-top: solid 4px #707070;
       margin-bottom: 10px;
       border-radius: 5px;
       transition: transform 0.25s ease;
     }
   }
   :global(.open) {
+    .slide_bar {
+      border-color: white;
+    }
     .slide_bar:first-child {
       -webkit-transform: rotate(45deg);
       -moz-transform: rotate(45deg);

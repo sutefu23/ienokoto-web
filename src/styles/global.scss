@@ -13,12 +13,17 @@ html {
 	font-size: $baseFontSize;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
+	overflow-x: hidden;
 	line-height: 1.5;
 	color: #000;
 
 	@media screen and (max-width: $mobileBreakPoint) {
 		font-size: vw($baseFontSize);
 	}
+}
+
+body {
+	overflow: hidden;
 }
 
 .pc {
@@ -58,16 +63,30 @@ b {
 h1 {
 	font-size: rem(50px);
 	text-align: center;
+	@media screen and (max-width: $mobileBreakPoint) {
+		font-size: vw(18px);
+	}
 }
 
 h2 {
 	font-size: rem(24px);
 	text-align: center;
+	@media screen and (max-width: $mobileBreakPoint) {
+		font-size: vw(18px);
+	}
 }
 
 h3 {
 	font-size: rem(18px);
 	text-align: center;
+}
+
+h4 {
+	@media screen and (max-width: $mobileBreakPoint) {
+		text-align: center;
+		font-size: vw(18px);
+		line-height: vw(30px);
+	}
 }
 
 a {

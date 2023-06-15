@@ -47,7 +47,7 @@ import { PAGES } from "../../consts";
   </div>
   <div class="footer-sns">
     <SNSList />
-    <small>Copyright©イエノコト株式会社　 All Rgiths Reserved</small>
+    <small>Copyright©イエノコト株式会社<span class="pc">　 </span><br class="sp">All Rgiths Reserved</small>
   </div>
   <a href="#head" class="goback fade" data-show-position={100} title="上に戻る"
   ></a>
@@ -55,7 +55,7 @@ import { PAGES } from "../../consts";
 <style lang="scss">
   footer {
     min-height: 318px;
-    background-color: #6c6c60;
+    background-color: rgba(#6c6c60, 0.72);
   }
   .footer-content {
     color: #fff;
@@ -118,12 +118,20 @@ import { PAGES } from "../../consts";
   }
   @media screen and (max-width: $mobileBreakPoint) {
     .footer-sns {
+      background: none;
+      min-height: 0;
+      padding: vw(23px) 0 vw(30px);
+      small {
+        line-height: vw(20px);
+        margin: 0;
+      }
     }
     :global(.sns_list) {
       display: none;
     }
     .footer-content {
       flex-direction: column-reverse;
+      padding: 0 vw(43px);
     }
     .footer-right {
       margin-top: vw(43px);
@@ -155,6 +163,9 @@ import { PAGES } from "../../consts";
       margin-bottom: 0px;
       width: vw(195px);
       height: vw(43px);
+    }
+    .goback {
+      display: none;
     }
   }
 </style>
