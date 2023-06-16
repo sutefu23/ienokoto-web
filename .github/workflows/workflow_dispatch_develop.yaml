@@ -31,4 +31,4 @@ jobs:
               Port 10022
               StrictHostKeyChecking no
       - name: rsync over SSH
-        run: rsync -r ./src/build ienokoto-staging:/home/engine0606/en-gine.dev/public_html/ienokoto/build
+        run: rsync -r ./static/ ienokoto-staging:/home/engine0606/en-gine.dev/public_html/ienokoto/static/
