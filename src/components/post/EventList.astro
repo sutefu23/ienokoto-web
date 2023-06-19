@@ -79,4 +79,31 @@ const { title } = Astro.props;
     display: block;
     margin-top: 62px;
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .event_list {
+      padding: 0 vw(26px);
+    }
+    h3 {
+      margin-bottom: vw(45px);
+    }
+    ul {
+      flex-direction: column;
+      gap: vw(25px);
+      margin-top: 0;
+      li {
+        width: 100%;
+      }
+    }
+    img {
+      display: block;
+      margin: 0 auto vw(22px);
+    }
+    time {
+      margin-right: 0;
+    }
+    .more {
+      text-align: center;
+      margin-top: vw(55px);
+    }
+  }
 </style>

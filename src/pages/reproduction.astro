@@ -26,7 +26,7 @@ import BannerKominkaSaisei from "~/img/banner_kominka_saisei.png";
   <ContentDetails />
   <InquiryMore />
   <section class="banner">
-    <h4 class="banner_title">イエノコトは古民家再生協会に所属しています</h4>
+    <h4 class="banner_title">イエノコトは古民家再生協会に<br class="sp">所属しています</h4>
     <Image
       src={BannerKominkaSaisei}
       width={500}
@@ -48,5 +48,17 @@ import BannerKominkaSaisei from "~/img/banner_kominka_saisei.png";
   .banner_title {
     margin-top: 173px;
     margin-bottom: 21px;
+  }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .reproduction :global(.page_copy) {
+      margin-bottom: vw(100px);
+    }
+    .banner {
+      padding: 0 vw(42px);
+      margin-bottom: vw(100px);
+    }
+    .banner_title {
+      margin: vw(100px) 0 vw(25px);
+    }
   }
 </style>

@@ -55,4 +55,15 @@ if (!images) return;
       }
     }
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .reform_images {
+      .reform_image {
+        width: calc(100% - 35px * 2);
+        margin-bottom: vw(32px);
+        img {
+          margin-bottom: vw(18px);
+        }
+      }
+    }
+  }
 </style>

@@ -21,7 +21,7 @@ if (!Staffs) return;
 <PageContent class={className}>
   <PageCatch page={"STAFF"} />
   <BreadCrumb page={"STAFF"} pageTitle="スタッフの紹介" />
-  <h2 class="page_title">下記よりスタッフの詳細をご覧頂けます。</h2>
+  <h2 class="page_title">下記よりスタッフの詳細を<br class="sp">ご覧頂けます。</h2>
   <div class="staff_list">
     {
       Staffs &&
@@ -77,5 +77,31 @@ if (!Staffs) return;
   .staff_title {
     font-weight: bold;
     margin-bottom: 12px;
+  }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .page_title {
+      text-align: center;
+      line-height: vw(30px);
+      padding: 0 vw(35px);
+      margin: vw(60px) auto vw(41px);
+    }
+    .staff_list {
+      padding: 0 vw(25px);
+      grid-template-columns: 1fr 1fr;
+      column-gap: vw(14px);
+      row-gap: vw(55px);
+      margin-bottom: vw(100px);
+    }
+    .staff_img {
+      margin-bottom: vw(12px);
+    }
+    .staff_title,
+    .staff_name {
+      font-size: vw(14px);
+      line-height: vw(22px);
+    }
+    .staff_title {
+      margin-bottom: 0;
+    }
   }
 </style>

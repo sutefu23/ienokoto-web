@@ -50,4 +50,14 @@ const { copy, src } = Astro.props;
     padding: 16px 49px;
     background-color: #fff;
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .inner {
+      padding-top: vw(124px);
+      margin-left: vw(36px);
+    }
+    .page_copy {
+      font-size: vw(14px);
+      padding: vw(3px) vw(10px);
+    }
+  }
 </style>

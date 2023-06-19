@@ -87,6 +87,7 @@ const staff = await fetchPost<WP_REST_API_Staff>(
       )
     }
   </section>
+  <h2 class="flow_title">リフォーム完成までの流れ</h2>
   <ReformFlow
     flow_start={post.acf.flow_start}
     ienokoto_proposal={post.acf.ienokoto_proposal}
@@ -170,6 +171,9 @@ const staff = await fetchPost<WP_REST_API_Staff>(
   .staff {
     margin-bottom: 225px;
   }
+  .flow_title {
+    margin-bottom: 166px;
+  }
   .voice {
     margin-top: 230px;
     margin-bottom: 228px;
@@ -179,5 +183,44 @@ const staff = await fetchPost<WP_REST_API_Staff>(
   }
   .other_recommend_title {
     margin-bottom: 119px;
+  }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .page_title {
+      line-height: vw(30px);
+      padding: 0 vw(36px);
+      margin: vw(67px) 0 vw(35px);
+    }
+    .copy_title {
+      font-size: vw(18px);
+      margin: vw(87px) 0 vw(50px);
+    }
+    .copy_detail {
+      margin: vw(50px) vw(30px);
+    }
+    .material_title {
+      margin-top: vw(100px);
+    }
+    .material_content {
+      max-width: vw(223px);
+      margin: vw(50px) auto vw(100px);
+    }
+    .staff_title {
+      margin-bottom: vw(50px);
+    }
+    .staff {
+      margin-bottom: vw(100px);
+    }
+    .flow_title {
+      margin-bottom: vw(47px);
+    }
+    .voice {
+      margin: vw(107px) 0 vw(100px);
+    }
+    .other_recommend {
+      margin-bottom: vw(100px);
+    }
+    .other_recommend_title {
+      margin-bottom: vw(45px);
+    }
   }
 </style>

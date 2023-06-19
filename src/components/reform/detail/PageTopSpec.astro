@@ -74,4 +74,15 @@ const { cost, area, building, tags } = Astro.props;
     position: relative;
     top: -0.25em;
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    table {
+      max-width: vw(calc(375px - 36px * 2));
+    }
+    th, td {
+      padding: vw(10px) 0;
+    }
+    th {
+      height: auto;
+    }
+  }
 </style>

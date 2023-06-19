@@ -54,11 +54,18 @@ if (!Posts) return;
     margin-top: 78px;
   }
   @media screen and (max-width: $mobileBreakPoint) {
+    h3 {
+      margin-bottom: vw(27px);
+    }
     .news_list {
       max-width: vw(270px);
     }
     .news_line {
+      grid-template-columns: vw(60px) 1fr;
       column-gap: vw(40px);
+    }
+    .more {
+      margin-top: vw(28px);
     }
   }
 </style>

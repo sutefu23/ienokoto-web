@@ -39,4 +39,16 @@ const { src, name, width = 116, height = 116, class: className } = Astro.props;
     margin-top: 15px;
     text-align: center;
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .user_icon {
+      min-width: 0;
+      text-align: center;
+      &__img {
+        width: vw(90px);
+      }
+    }
+    .user_name {
+      font-size: vw(14px);
+    }
+  }
 </style>

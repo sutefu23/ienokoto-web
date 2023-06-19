@@ -52,4 +52,27 @@ const { title, src, name, text, class: className } = Astro.props;
     margin-top: 1em;
     line-height: calc(30 / 16);
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .user_voice {
+      max-width: vw(283px);
+      + .user_voice {
+        margin-top: vw(52px);
+      }
+    }
+    .user_voice_staff {
+      .user_voice_title {
+        margin-left: 0;
+      }
+    }
+    .user_voice_title {
+      text-align: center;
+      margin-bottom: vw(32px);
+    }
+    .user_voice_box {
+      flex-direction: column;
+    }
+    .user_voice_text {
+      margin-top: vw(22px);
+    }
+  }
 </style>

@@ -90,10 +90,29 @@ if (!ReformPosts) return;
       bottom: 5%;
     }
   }
-
   .story_image {
     width: 100%;
     height: auto;
     vertical-align: middle;
+  }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .stories_tile {
+      margin-top: vw(100px);
+    }
+    .stories {
+      margin-top: vw(43px);
+    }
+    .story_title {
+      font-size: vw(14px);
+      padding: vw(5px) vw(15px);
+      margin: vw(10px) 0 0 vw(24px);
+    }
+    .story_spec {
+      font-size: vw(14px);
+      text-align: center;
+      width: 100%;
+      padding: 0 vw(30px);
+      margin: 0;
+    }
   }
 </style>

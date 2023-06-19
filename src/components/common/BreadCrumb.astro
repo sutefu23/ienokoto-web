@@ -46,8 +46,12 @@ const pageTitle = propTitle || PAGES[page].title;
   }
   @media screen and (max-width: $mobileBreakPoint) {
     .breadcrumb {
+      flex-wrap: wrap;
       margin-top: vw(19px);
       padding: 0 vw(36px);
+      li {
+        line-height: vw(24px);
+      }
     }
   }
 </style>

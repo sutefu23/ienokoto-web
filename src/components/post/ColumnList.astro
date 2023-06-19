@@ -88,4 +88,36 @@ const { title, noTitle = false, copy } = Astro.props;
     display: block;
     margin-top: 62px;
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .column_list {
+      padding: 0 vw(26px);
+    }
+    h3 {
+      margin-bottom: vw(45px);
+    }
+    .copy {
+      margin: vw(25px) auto;
+    }
+    ul {
+      margin-top: 0;
+      flex-direction: column;
+      gap: vw(26px);
+      li {
+        width: 100%;
+      }
+    }
+    img {
+      display: block;
+      margin: 0 auto vw(30px);
+    }
+    time,
+    p {
+      padding: 0 vw(50px);
+      margin: 0;
+    }
+    .more {
+      text-align: center;
+      margin-top: vw(50px);
+    }
+  }
 </style>

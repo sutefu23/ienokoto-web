@@ -32,7 +32,7 @@ const {
           {(<UserIcon src={flow_start.customer_image} name="お客様" />)}
         </div>
       </section>
-      <section class="inner">
+      <section class="inner reverse">
         <h3 class="box_title">イエノコトのご提案</h3>
         <div class="inner_content">
           {staff_image && <UserIcon src={staff_image} name="石田" />}
@@ -50,7 +50,7 @@ const {
       <time>{flow_fix.date}</time>
     </div>
     <div class="content_box">
-      <section class="inner">
+      <section class="inner reverse">
         <h3 class="box_title">プラン確定</h3>
         <div class="inner_content">
           {
@@ -204,5 +204,86 @@ const {
   }
   .description {
     margin-left: 47px;
+  }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .inner {
+      &.reverse {
+        .inner_content {
+          flex-direction: column;
+          &:has(.balloon) {
+            align-items: flex-end;
+          }
+        }
+      }
+    }
+    .reform_flow {
+      max-width: none;
+      padding: 0 vw(36px) 0 vw(29px);
+    }
+    .flow_box {
+      gap: vw(30px);
+    }
+    .date_box {
+      font-size: vw(10px);
+      margin-top: vw(6px);
+      width: auto;
+    }
+    .content_box {
+      .box_title {
+        font-size: vw(14px);
+        margin-top: vw(4px);
+        margin-left: vw(28px);
+        max-width: none;
+        width: auto;
+      }
+      .inner_content {
+        width: auto;
+        margin: vw(32px) 0 0 vw(32px);
+        flex-direction: column-reverse;
+        gap: vw(16px);
+        &:has(.balloon) {
+          align-items: flex-start;
+          gap: vw(50px);
+        }
+      }
+    }
+    .balloon {
+      font-size: vw(14px);
+      padding: vw(19px) vw(18px);
+      border-radius: vw(10px);
+      border-width: vw(2px);
+      &.left,
+      &.right {
+        margin: 0 0 vw(32px) 0;
+        &:before {
+          top: vw(-42px);
+          border: vw(10px) solid transparent;
+          border-bottom: vw(32px) solid #afa5a5;
+        }
+        &:after {
+          top: vw(-36px);
+          border: vw(10px) solid transparent;
+          border-bottom: vw(30px) solid #fff;
+        }
+      }
+      &.left {
+        &:before,
+        &:after {
+          right: auto;
+          left: vw(30px);
+        }
+      }
+      &.right {
+        &:before,
+        &:after {
+          right: vw(30px);
+          left: auto;
+        }
+      }
+    }
+    .description {
+      font-size: vw(14px);
+      margin: 0 0 vw(40px) 0;
+    }
   }
 </style>

@@ -66,7 +66,7 @@ import SNSList from "~/components/global/SNSList.astro";
   <section class="learn_sns">
     <h3 class="learn_sns_title">その他のSNS</h3>
     <p class="learn_sns_copy">
-      講座情報やコラムの更新情報をいち早くお届けいたします。
+      講座情報やコラムの更新情報をいち早くお届けいたします。<br class="sp">
       是非フォローくださいね。
     </p>
     <SNSList />
@@ -128,5 +128,58 @@ import SNSList from "~/components/global/SNSList.astro";
     margin-left: auto;
     margin-right: auto;
     line-height: calc(32 / 16);
+  }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .learn_content {
+      margin-bottom: vw(50px);
+      .lead {
+        max-width: vw(304px);
+        line-height: vw(30px);
+        margin: 0 auto vw(50px);
+      }
+    }
+    .section_learn {
+      margin-top: vw(100px);
+    }
+    .line {
+      max-width: vw(304px);
+      padding-bottom: vw(20.5px);
+      border-width: vw(1px);
+      margin: 0 auto vw(20.5px);
+    }
+    .section_video {
+      padding: 0 vw(29px);
+      margin-top: vw(100px);
+    }
+    .video_title {
+      margin: vw(20.5px) auto vw(25px);
+    }
+    .video_copy {
+      margin-bottom: vw(25px);
+    }
+    .learn_sns {
+      padding: 0 vw(35px);
+      margin-bottom: vw(100px);
+      :global(.sns_list) {
+        display: block;
+        :global(ul) {
+          flex-direction: row;
+          justify-content: center;
+          gap: vw(53.3px);
+          :global(img) {
+            width: vw(45px);
+          }
+        }
+        :global(.yt) {
+          display: none;
+        }
+      }
+    }
+    .learn_sns_title {
+      margin: vw(50px) auto vw(25px);
+    }
+    .learn_sns_copy {
+      margin-bottom: vw(50px);
+    }
   }
 </style>

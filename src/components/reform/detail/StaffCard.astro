@@ -74,4 +74,30 @@ const { id, name, titles, image, description } = Astro.props;
       line-height: 1.5;
     }
   }
+  @media screen and (max-width: $mobileBreakPoint) {
+    .staff_card {
+      max-width: vw(291px);
+      padding: vw(32px) vw(30px);
+      box-shadow: vw(10px) vw(10px) vw(6px) rgba(0, 0, 0, 0.16);
+      .profile {
+        column-gap: vw(27px);
+        margin-bottom: vw(33px);
+        .profile_image {
+          width: vw(89px);
+          height: auto;
+          aspect-ratio: 1;
+        }
+        .name {
+          font-size: vw(18px);
+          margin-bottom: vw(10px);
+        }
+        .role {
+          font-size: vw(14px);
+          &:not(:first-child) {
+            margin-top: vw(5px);
+          }
+        }
+      }
+    }
+  }
 </style>
