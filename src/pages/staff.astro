@@ -35,11 +35,11 @@ if (!Staffs) return;
                 loading={"eager"}
                 width={258}
                 height={241}
-                alt={staff.acf.first_name + staff.acf.last_name}
+                alt={staff.acf.last_name + staff.acf.first_name}
               />
               <div class="staff_text">
                 <p class="staff_title">{staff.acf.department}</p>
-                <h4 class="staff_name">{`${staff.acf.first_name}　${staff.acf.last_name}`}</h4>
+                <h4 class="staff_name">{`${staff.acf.last_name} ${staff.acf.first_name}`}</h4>
               </div>
             </a>
           </div>
@@ -60,6 +60,7 @@ if (!Staffs) return;
     justify-content: space-between;
     row-gap: 133px;
     grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 430px;
   }
   .staff_link {
     display: inline-block;

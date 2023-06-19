@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import image from "@astrojs/image";
+import partytown from "@astrojs/partytown";
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 // import mdx from '@astrojs/mdx';
@@ -11,7 +12,13 @@ const __dirname = dirname(__filename);
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ienokoto.jp',
-  integrations: [sitemap(), image()],
+  integrations: [sitemap(), image(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+  ],
   server:{
     host:true,
   },
@@ -30,4 +37,5 @@ export default defineConfig({
       }
     }
   },
+  outDir: 'static',
 });
