@@ -118,6 +118,12 @@ const navContents: NavContent[] = [
 </nav>
 <style lang="scss">
   .top_nav {
+    @media screen and (min-width: $mobileBreakPoint + 1px) {
+      @media screen and (max-width: $baseContentWidth + 20px) {
+        width: calc(100% - 40px);
+        margin: 0 auto;
+      }
+    }
     ul {
       margin: auto;
       display: flex;

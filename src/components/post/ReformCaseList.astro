@@ -41,11 +41,11 @@ const ReformPosts = [
 ];
 ---
 
-<section class="reform_list">
-  <ul>
+<section class="reform_list swiper">
+  <ul class="swiper-wrapper">
     {
       ReformPosts.map((post) => (
-        <li>
+        <li class="swiper-slide">
           <a href={post.url}>
             <Image
               src={post.image}
@@ -61,6 +61,19 @@ const ReformPosts = [
     }
   </ul>
 </section>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script is:inline>
+  const breakPoint = 768;
+  if ( window.innerWidth <= breakPoint ) {
+    swiper = new Swiper('.swiper', {
+      slidesPerView: 4.4,
+      loop: true,
+    });
+  } else {
+    swiper = undefined;
+  }
+</script>
 <style lang="scss">
   .reform_list {
     max-width: 1383px;
@@ -72,10 +85,30 @@ const ReformPosts = [
     display: flex;
     justify-content: center;
     column-gap: 53px;
+    li {
+      &.swiper-slide {
+        @media screen and (min-width: $mobileBreakPoint + 1px) {
+          flex-shrink: initial;
+          width: auto;
+          height: auto;
+        }
+      }
+    }
   }
   @media screen and (max-width: $mobileBreakPoint) {
+    .reform_list {
+      &.swiper {
+        // width: vw($mobileDesignWidth - 37 * 2);
+      }
+    }
     ul {
-      gap: vw(21px);
+      &.swiper-wrapper {
+        justify-content: normal;
+        column-gap: vw(21px);
+      }
+    }
+    img {
+      width: vw(86px);
     }
   }
 </style>

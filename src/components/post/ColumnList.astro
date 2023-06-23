@@ -104,6 +104,9 @@ const { title, noTitle = false, copy } = Astro.props;
       gap: vw(26px);
       li {
         width: 100%;
+        &:not(:first-child) {
+          display: none;
+        }
       }
     }
     img {

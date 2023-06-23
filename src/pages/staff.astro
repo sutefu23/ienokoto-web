@@ -58,9 +58,15 @@ if (!Staffs) return;
     max-width: 1142px;
     margin: 0 auto;
     justify-content: space-between;
+    column-gap: 5%;
     row-gap: 133px;
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 430px;
+    @media screen and (min-width: $mobileBreakPoint + 1px) {
+      @media screen and (max-width: $baseContentWidth + 20px) {
+        width: calc(100% - 40px);
+      }
+    }
   }
   .staff_link {
     display: inline-block;

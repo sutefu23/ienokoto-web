@@ -49,6 +49,14 @@ body {
 	margin-right: auto;
 }
 
+section {
+	@media screen and (min-width: $mobileBreakPoint + 1px) {
+		@media screen and (max-width: $baseContentWidth + 20px) {
+			width: calc(100% - 40px);
+		}
+	}
+}
+
 h1,
 h2,
 h3,

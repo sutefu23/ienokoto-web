@@ -49,6 +49,9 @@ import { PAGES } from "../../consts";
     <SNSList />
     <small>Copyright©イエノコト株式会社<span class="pc">　 </span><br class="sp">All Rgiths Reserved</small>
   </div>
+  <div class="footer-tel">
+    <a href="tel:0120-200-789">TEL　0120-200-789</a>
+  </div>
   <a href="#head" class="goback fade" data-show-position={100} title="上に戻る"
   ></a>
 </footer>
@@ -100,6 +103,9 @@ import { PAGES } from "../../consts";
       margin-top: 47px;
     }
   }
+  .footer-tel {
+    display: none;
+  }
   .goback {
     display: block;
     position: fixed;
@@ -117,6 +123,9 @@ import { PAGES } from "../../consts";
     }
   }
   @media screen and (max-width: $mobileBreakPoint) {
+    footer {
+      padding-bottom: vw(50px);
+    }
     .footer-sns {
       background: none;
       min-height: 0;
@@ -163,6 +172,23 @@ import { PAGES } from "../../consts";
       margin-bottom: 0px;
       width: vw(195px);
       height: vw(43px);
+    }
+    .footer-tel {
+      width: 100%;
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      a {
+        display: block;
+        color: white;
+        font-size: vw(24px);
+        font-weight: bold;
+        line-height: vw(20px);
+        text-align: center;
+        background: rgba(#6C6C60, 0.72);
+        padding: vw(10px) 0;
+      }
     }
     .goback {
       display: none;

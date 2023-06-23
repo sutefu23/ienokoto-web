@@ -45,6 +45,12 @@ import BannerAkiya from "~/img/banner_akiya.png";
 <style lang="scss">
   .content-banner {
     width: 100%;
+    @media screen and (min-width: $mobileBreakPoint + 1px) {
+      @media screen and (max-width: $baseContentWidth + 20px) {
+        width: calc(100% - 40px);
+        margin: 0 auto;
+      }
+    }
     ul {
       display: flex;
       justify-content: center;

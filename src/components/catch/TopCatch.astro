@@ -50,7 +50,7 @@ import Logo from "~/img/top/top_logo.png";
     @media screen and (max-width: $mobileBreakPoint) {
       width: vw(126px);
       height: vw(44px);
-      top: 50px;
+      top: vw(50px);
     }
   }
   .sub_copy {
@@ -58,6 +58,9 @@ import Logo from "~/img/top/top_logo.png";
     font-weight: bold;
     margin-top: 78px;
     font-size: 19px;
+    @media screen and (max-width: 860px) {
+      margin-top: 50px;
+    }
     @media screen and (max-width: $mobileBreakPoint) {
       display: none;
     }
