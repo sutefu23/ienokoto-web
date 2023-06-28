@@ -1,59 +1,33 @@
 ---
 import { Image } from "@astrojs/image/components";
-const ReformPosts = [
-  {
-    id: 1,
-    title: "終の棲家を小さく豊かにフルリノベ",
-    spec: "１階フロア120㎡　フルリノベーション　600万円",
-    date: "2023年2月10日（金）",
-    url: "http://www.example.com/",
-    image: "https://placehold.jp/234x227.png",
-  },
-  {
-    id: 2,
-    title: "築５０年　古き良き日本を生かしたフルリノベ",
-    spec: "築50年中古物件フルリノベーション　2000万円",
-    date: "2023年2月21日（火）",
-    url: "http://www.example.com/",
-    image: "https://placehold.jp/234x227.png",
-  },
-  {
-    id: 3,
-    title: "暮らしやすさを取り入れた古民家風新築",
-    date: "2023年2月22日（水）",
-    url: "http://www.example.com/",
-    image: "https://placehold.jp/234x227.png",
-  },
-  {
-    id: 4,
-    title: "暮らしやすさを取り入れた古民家風新築",
-    date: "2023年2月22日（水）",
-    url: "http://www.example.com/",
-    image: "https://placehold.jp/234x227.png",
-  },
-  {
-    id: 5,
-    title: "暮らしやすさを取り入れた古民家風新築",
-    date: "2023年2月22日（水）",
-    url: "http://www.example.com/",
-    image: "https://placehold.jp/234x227.png",
-  },
-];
+import useWPApi, { WP_REST_API_Post_With_FeatureImage } from "~/hooks/useWPApi";
+import dayjs from "dayjs";
+import ja from "dayjs/locale/ja";
+import { join } from "path";
+dayjs.locale(ja);
+const { fetchPosts } = useWPApi();
+const ids = [6069, 5075, 5096, 4146, 5148];
+const CasePosts = await fetchPosts<WP_REST_API_Post_With_FeatureImage[]>(
+  "case",
+  { per_page: 5, include: ids.join(",") },
+  true
+);
+if (!CasePosts) return;
 ---
 
 <section class="reform_list swiper">
   <ul class="swiper-wrapper">
     {
-      ReformPosts.map((post) => (
+      CasePosts.map((post) => (
         <li class="swiper-slide">
-          <a href={post.url}>
+          <a href={post.link}>
             <Image
-              src={post.image}
+              src={post._embedded["wp:featuredmedia"][0].source_url}
               width={234}
               height={227}
               format="webp"
               loading={"lazy"}
-              alt={post.title}
+              alt={post.title.rendered}
             />
           </a>
         </li>
@@ -61,12 +35,18 @@ const ReformPosts = [
     }
   </ul>
 </section>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"
+></script>
 <script is:inline>
   const breakPoint = 768;
-  if ( window.innerWidth <= breakPoint ) {
-    swiper = new Swiper('.swiper', {
+  if (window.innerWidth <= breakPoint) {
+    swiper = new Swiper(".swiper", {
       slidesPerView: 4.4,
       loop: true,
     });

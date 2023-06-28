@@ -10,7 +10,13 @@ import type {
   ReformStoryCustomField,
 } from "~/types/customFields";
 
-export type Endpoints = "news" | "events" | "staff" | "reform_story" | "column";
+export type Endpoints =
+  | "news"
+  | "events"
+  | "staff"
+  | "reform_story"
+  | "column"
+  | "case";
 
 export type WPApiResult<T> = T | WP_REST_API_Error;
 
