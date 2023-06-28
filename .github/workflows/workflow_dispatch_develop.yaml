@@ -2,12 +2,15 @@ name: Manual trigger workflow
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - develop
 jobs:
   deploy:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - run: git checkout ${{ github.event.client_payload.ref }}
+      - run: git checkout develop
       - run: echo "SITE_URL=https://ienokoto.en-gine.dev" >> $GITHUB_ENV
       - run: echo "API_URL=https://ienokoto.jp" >> $GITHUB_ENV
       # インストールとビルド
