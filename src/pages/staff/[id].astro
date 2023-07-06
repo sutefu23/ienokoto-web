@@ -42,7 +42,10 @@ if (!staff) return;
         </h2>
         <ul class="staff_title">
           <li>{staff.acf.department}</li>
-          {staff.acf.titles.map((data) => <li>{data.title}</li>)}
+          {
+            staff.acf.titles &&
+              staff.acf.titles.map((data) => <li>{data.title}</li>)
+          }
         </ul>
       </div>
       <Image
