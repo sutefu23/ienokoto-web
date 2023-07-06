@@ -53,8 +53,12 @@ const { title } = Astro.props;
     display: flex;
     justify-content: space-between;
     margin-top: 104px;
+    @media screen and (max-width: 1024px) {
+      gap: vw(10px);
+    }
   }
   li {
+    width: 420px;
     @media screen and (max-width: 1300px) {
       width: vw(322px, 1000px);
     }

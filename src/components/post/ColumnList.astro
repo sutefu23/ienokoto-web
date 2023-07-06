@@ -62,6 +62,9 @@ const { title, noTitle = false, copy } = Astro.props;
     display: flex;
     justify-content: space-between;
     margin-top: 104px;
+    @media screen and (max-width: 1024px) {
+      gap: vw(10px);
+    }
   }
   li {
     @media screen and (max-width: 1300px) {
@@ -97,6 +100,7 @@ const { title, noTitle = false, copy } = Astro.props;
     }
     .copy {
       margin: vw(25px) auto;
+      max-width: 100%;
     }
     ul {
       margin-top: 0;
@@ -112,11 +116,6 @@ const { title, noTitle = false, copy } = Astro.props;
     img {
       display: block;
       margin: 0 auto vw(30px);
-    }
-    time,
-    p {
-      padding: 0 vw(50px);
-      margin: 0;
     }
     .more {
       text-align: center;
