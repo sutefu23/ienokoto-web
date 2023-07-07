@@ -12,7 +12,7 @@ const { fetchPosts } = useWPApi();
 
 const Staffs = await fetchPosts<WP_REST_API_Staff[]>(
   "staff",
-  { per_page: 100, order: "asc" },
+  { per_page: 100, order: "asc", orderby: "date" },
   false
 );
 if (!Staffs) return;
@@ -21,7 +21,9 @@ if (!Staffs) return;
 <PageContent class={className}>
   <PageCatch page={"STAFF"} />
   <BreadCrumb page={"STAFF"} pageTitle="スタッフの紹介" />
-  <h2 class="page_title">下記よりスタッフの詳細を<br class="sp">ご覧頂けます。</h2>
+  <h2 class="page_title">
+    下記よりスタッフの詳細を<br class="sp" />ご覧頂けます。
+  </h2>
   <div class="staff_list">
     {
       Staffs &&
