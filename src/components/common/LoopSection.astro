@@ -58,12 +58,16 @@ const { contents, class: className } = Astro.props;
   }
   .content_text {
     line-height: 2;
+    :global(a) {
+      opacity: 0.72;
+      border-bottom: solid 1px rgba(108, 108, 96, 0.72);
+    }
   }
   @media screen and (max-width: $mobileBreakPoint) {
     .loop_section {
       margin-bottom: vw(50px);
     }
-		.loop_content {
+    .loop_content {
       flex-direction: column;
       max-width: 100%;
       padding: 0 vw(31px);
@@ -78,5 +82,5 @@ const { contents, class: className } = Astro.props;
     .content_title {
       margin-bottom: vw(25px);
     }
-	}
+  }
 </style>
