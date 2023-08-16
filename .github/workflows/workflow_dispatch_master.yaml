@@ -1,0 +1,37 @@
+name: Manual trigger workflow - Production
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: git checkout master
+      - run: echo "SITE_URL=https://ienokoto.jp" >> $GITHUB_ENV
+      - run: echo "API_URL=https://ienokoto.jp" >> $GITHUB_ENV
+      # インストールとビルド
+      - name: Use Volta
+        uses: volta-cli/action@v4
+      - run: |
+          yarn install --immutable && \
+          yarn build --immutable
+      # SSH 設定
+      - name: SSH Deploy
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.PRODUCTION_SSH_PRIVATE_KEY }}
+          name: ienokoto-production.key
+          known_hosts: ${{ secrets.PRODUCTION_SSH_KNOWN_HOST }}
+          config: |
+            Host ienokoto-production
+              HostName ${{ secrets.PRODUCTION_SSH_HOST_NAME }}
+              User ${{ secrets.PRODUCTION_SSH_USER }}
+              IdentityFile ~/.ssh/ienokoto-production.key
+              Port 10022
+              StrictHostKeyChecking no
+      - name: rsync over SSH
+        run: rsync -r ./static/ ienokoto-production:/home/ieno510/ienokoto.jp/public_html/static/
