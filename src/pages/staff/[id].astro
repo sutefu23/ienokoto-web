@@ -63,7 +63,7 @@ if (!staff) return;
         staff.acf.doing && (
           <>
             <dt>やっているコト</dt>
-            <dd>{staff.acf.doing}</dd>
+            <dd set:html={staff.acf.doing} />
           </>
         )
       }
@@ -71,7 +71,7 @@ if (!staff) return;
         staff.acf.preferance && (
           <>
             <dt>好きなコト</dt>
-            <dd>{staff.acf.preferance}</dd>
+            <dd set:html={staff.acf.preferance} />
           </>
         )
       }
@@ -79,7 +79,7 @@ if (!staff) return;
         staff.acf.want_to_tell && (
           <>
             <dt>伝えたいコト</dt>
-            <dd>{staff.acf.want_to_tell}</dd>
+            <dd set:html={staff.acf.want_to_tell} />
           </>
         )
       }
