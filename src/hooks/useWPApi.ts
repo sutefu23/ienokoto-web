@@ -8,6 +8,7 @@ import client from "~/api";
 import type {
   StaffCustomField,
   ReformStoryCustomField,
+  EventsCustomField,
 } from "~/types/customFields";
 
 export type Endpoints =
@@ -28,6 +29,10 @@ export type WP_REST_API_Staff = WP_REST_API_Post & { acf: StaffCustomField };
 
 export type WP_REST_API_ReformStory = WP_REST_API_Post & {
   acf: ReformStoryCustomField;
+};
+
+export type WP_REST_API_Event = WP_REST_API_Post_With_FeatureImage & {
+  acf: EventsCustomField;
 };
 
 const useWPApi = () => {

@@ -1,12 +1,11 @@
-export {}
+export {};
 
 declare global {
   interface String {
-    replaceBr(): string
+    replaceBr(): string;
   }
 }
 
-
 String.prototype.replaceBr = function () {
-  return (this as unknown as string).replace(/\r\n/g, "<br />")
-}
+  return (this as unknown as string).replace(/\r\n/g, "<br />");
+};

@@ -1,11 +1,13 @@
 ---
-import useWPApi from "~/hooks/useWPApi";
+import useWPApi, { WP_REST_API_Event } from "~/hooks/useWPApi";
 import { Image } from "@astrojs/image/components";
 import dayjs from "dayjs";
 import ja from "dayjs/locale/ja";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+dayjs.extend(customParseFormat);
 dayjs.locale(ja);
 const { fetchPosts } = useWPApi();
-const Events = await fetchPosts("events", { per_page: 3 });
+const Events = await fetchPosts<WP_REST_API_Event[]>("events", { per_page: 3 });
 if (!Events) return;
 
 export type Props = {
@@ -30,7 +32,11 @@ const { title } = Astro.props;
               loading={"lazy"}
               alt={post.title.rendered}
             />
-            <time>{dayjs(post.date).format("YYYY年MM月DD日(dd)")}</time>
+            <time>
+              {dayjs(post.acf.開催日, "YYYY年MM月DD日").format(
+                "YYYY年MM月DD日(dd)"
+              )}
+            </time>
             <p>{post.title.rendered}</p>
           </a>
         </li>

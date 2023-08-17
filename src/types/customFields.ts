@@ -80,3 +80,7 @@ export interface ACFImage {
   height: number;
   sizes: { [key: string]: string | number };
 }
+
+export type EventsCustomField = {
+  開催日: string;
+};
