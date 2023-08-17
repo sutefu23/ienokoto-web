@@ -1,13 +1,18 @@
 ---
 import { Image } from "@astrojs/image/components";
-import TopCatch from "~/img/top/top_catch.jpg";
+import TopCatchImg1 from "~/img/top/top_back_01.png";
+import TopCatchImg2 from "~/img/top/top_back_02.png";
+import TopCatchImg3 from "~/img/top/top_back_03.png";
 import Scroll from "~/img/top/scroll.png";
 import Logo from "~/img/top/top_logo.png";
 ---
 
 <div class="catch">
   <Image
-    src={TopCatch}
+    src={TopCatchImg1}
+    data-src-1={TopCatchImg1.src}
+    data-src-2={TopCatchImg2.src}
+    data-src-3={TopCatchImg3.src}
     alt="女性が提案する暮らし方とリフォーム"
     class="catch_image"
     format="webp"

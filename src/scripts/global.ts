@@ -84,3 +84,25 @@ function slideMenu(): void {
     }
   }
 }
+
+// 時間帯によって背景画像を変更
+// 朝昼晩の時間帯でdata-src-1,2,3を出し分けるような処理
+(function () {
+  const now = new Date();
+  const hour = now.getHours();
+  const catchImage = document.querySelector(".catch_image");
+  if (!catchImage) return;
+  if (hour >= 4 && hour < 11) {
+    const moring = catchImage.getAttribute("data-src-1");
+    if (!moring) return;
+    catchImage.setAttribute("src", moring);
+  } else if (hour >= 11 && hour < 17) {
+    const noon = catchImage.getAttribute("data-src-2");
+    if (!noon) return;
+    catchImage.setAttribute("src", noon);
+  } else {
+    const night = catchImage.getAttribute("data-src-2");
+    if (!night) return;
+    catchImage.setAttribute("src", night);
+  }
+})();
