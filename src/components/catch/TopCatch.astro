@@ -14,6 +14,7 @@ import Logo from "~/img/top/top_logo.png";
     data-src-2={TopCatchImg2.src}
     data-src-3={TopCatchImg3.src}
     alt="女性が提案する暮らし方とリフォーム"
+    id="top_image"
     class="catch_image"
     format="webp"
     loading={"eager"}
@@ -34,7 +35,29 @@ import Logo from "~/img/top/top_logo.png";
     />
   </a>
 </div>
-
+<script is:inline>
+  // 時間帯によって背景画像を変更
+  // 朝昼晩の時間帯でdata-src-1,2,3を出し分けるような処理
+  (function () {
+    const now = new Date();
+    const hour = now.getHours();
+    const catchImage = document.getElementById("top_image");
+    if (!catchImage) return;
+    if (hour >= 4 && hour < 11) {
+      const moring = catchImage.getAttribute("data-src-1");
+      if (!moring) return;
+      catchImage.setAttribute("src", moring);
+    } else if (hour >= 11 && hour < 17) {
+      const noon = catchImage.getAttribute("data-src-2");
+      if (!noon) return;
+      catchImage.setAttribute("src", noon);
+    } else {
+      const night = catchImage.getAttribute("data-src-3");
+      if (!night) return;
+      catchImage.setAttribute("src", night);
+    }
+  })();
+</script>
 <style lang="scss">
   .catch {
     position: relative;
