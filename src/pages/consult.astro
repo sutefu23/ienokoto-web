@@ -8,7 +8,7 @@ import BreadCrumb from "~/components/common/BreadCrumb.astro";
 import InquiryMore from "~/components/common/InquiryMore.astro";
 import ExpartTakaya from "~/img/consult/expart_takaya.jpg";
 import ExpartYodogawa from "~/img/consult/expart_yodogawa.jpg";
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 ---
 
 <PageContent class={className}>
@@ -71,9 +71,15 @@ import { Image } from "@astrojs/image/components";
   <section class="consult_detail">
     <h2 class="consult_detail_title">詳細</h2>
     <p class="consult_detail_content">
-      【開催日時】<span class="pc">　　</span><br class="sp">毎月第２水曜　10:00～15:00<br class="sp">（１組2時間）<br />
-      【開催場所】<span class="pc">　　</span><br class="sp">イエノコトモデルハウス<br />
-      【予約方法】<span class="pc">　　</span><br class="sp">0120-200-789までお電話ください。<br />
+      【開催日時】<span class="pc"> </span><br
+        class="sp"
+      />毎月第２水曜　10:00～15:00<br class="sp" />（１組2時間）<br />
+      【開催場所】<span class="pc"> </span><br
+        class="sp"
+      />イエノコトモデルハウス<br />
+      【予約方法】<span class="pc"> </span><br
+        class="sp"
+      />0120-200-789までお電話ください。<br />
     </p>
   </section>
   <section class="inquiry_more">

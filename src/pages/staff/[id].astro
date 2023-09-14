@@ -1,8 +1,9 @@
 ---
-import useWPApi, { WP_REST_API_Staff } from "~/hooks/useWPApi";
+import useWPApi from "~/hooks/useWPApi";
+import type  { WP_REST_API_Staff } from "~/hooks/useWPApi";
 import BreadCrumb from "~/components/common/BreadCrumb.astro";
 import PageContent from "~/layouts/PageContent.astro";
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const { fetchPosts } = useWPApi();
