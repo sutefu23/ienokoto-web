@@ -52,7 +52,9 @@ const useWPApi = () => {
     }
   };
 
-  const fetchPosts = async <T = WP_REST_API_Post_With_FeatureImage[]>(
+  const fetchPosts = async <
+    T extends unknown[] = WP_REST_API_Post_With_FeatureImage[]
+  >(
     endpoint: Endpoints,
     options: Partial<WP_REST_API_Settings> = { posts_per_page: 10 },
     _embed = true
@@ -62,6 +64,9 @@ const useWPApi = () => {
         params: { ...options, _embed, acf_format: "standard" },
       });
       const data = res.data;
+      if (data.length === 0) {
+        throw new Error("No Data");
+      }
       return data;
     } catch (e: unknown) {
       console.error(e);
