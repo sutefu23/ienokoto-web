@@ -20,7 +20,7 @@ jobs:
           yarn install --immutable && \
           yarn build --immutable
         env:
-          RETRY_LIMIT: 3 # 再試行の最大回数を定義
+          RETRY_LIMIT: 5 # 再試行の最大回数を定義
       - name: Check if build was successful
         if: failure() # 前のステップが失敗した場合
         run: |
@@ -29,7 +29,7 @@ jobs:
             echo "Retrying build... ($retry_count/$RETRY_LIMIT)"
             yarn build
             ((retry_count++))
-            sleep 3m  # ウェイト時間
+            sleep 5m  # ウェイト時間
           done
       # SSH 設定
       - name: SSH Deploy
