@@ -19,10 +19,29 @@ export type Endpoints =
   | "column"
   | "case";
 
+export type FeaureImageDetail = {
+  file: string;
+  width: number;
+  height: number;
+  mime_type: string;
+  source_url: string;
+};
+export type WP_REST_API_Attachment_Detail = WP_REST_API_Attachment & {
+  media_details: {
+    sizes: {
+      thumbnail: FeaureImageDetail;
+      medium: FeaureImageDetail;
+      medium_large: FeaureImageDetail;
+      large: FeaureImageDetail;
+      past_case_thumbnail: FeaureImageDetail;
+    };
+  };
+};
+
 export type WPApiResult<T> = T | WP_REST_API_Error;
 
 export type WP_REST_API_Post_With_FeatureImage = WP_REST_API_Post & {
-  _embedded: { "wp:featuredmedia": WP_REST_API_Attachment[] };
+  _embedded: { "wp:featuredmedia": WP_REST_API_Attachment_Detail[] };
 };
 
 export type WP_REST_API_Staff = WP_REST_API_Post & { acf: StaffCustomField };
@@ -75,7 +94,7 @@ const useWPApi = () => {
 
   const fetchImage = async (mediaId: number = 0) => {
     try {
-      const res = await client.get<WP_REST_API_Attachment>(
+      const res = await client.get<WP_REST_API_Attachment_Detail>(
         `/wp-json/wp/v2/media/${mediaId}`
       );
       const data = res.data;

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import useWPApi, { WP_REST_API_Post_With_FeatureImage } from "~/hooks/useWPApi";
+import useWPApi, { type WP_REST_API_Post_With_FeatureImage } from "~/hooks/useWPApi";
 import dayjs from "dayjs";
 import ja from "dayjs/locale/ja";
 import { join } from "path";
@@ -22,7 +22,7 @@ if (!CasePosts) return;
         <li class="swiper-slide">
           <a href={post.link}>
             <Image
-              src={post._embedded["wp:featuredmedia"][0].source_url}
+              src={post._embedded["wp:featuredmedia"][0].media_details["sizes"].past_case_thumbnail.source_url}
               width={234}
               height={227}
               format="webp"
