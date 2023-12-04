@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import useWPApi, { type WP_REST_API_Post_With_FeatureImage } from "~/hooks/useWPApi";
 import dayjs from "dayjs";
 import ja from "dayjs/locale/ja";
-import { join } from "path";
 dayjs.locale(ja);
 const { fetchPosts } = useWPApi();
 const ids = [6069, 5075, 5096, 4146, 5148];
