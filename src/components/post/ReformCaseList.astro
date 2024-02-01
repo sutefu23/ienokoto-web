@@ -21,7 +21,7 @@ if (!CasePosts) return;
         <li class="swiper-slide">
           <a href={post.link}>
             <Image
-              src={post._embedded["wp:featuredmedia"][0].media_details["sizes"].past_case_thumbnail.source_url}
+              src={post["wp:featuredmedia"][0].media_details["sizes"].past_case_thumbnail.source_url}
               width={234}
               height={227}
               format="webp"

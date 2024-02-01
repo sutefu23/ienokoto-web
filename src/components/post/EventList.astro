@@ -25,7 +25,7 @@ const { title } = Astro.props;
         <li>
           <a href={post.link}>
             <Image
-              src={post._embedded["wp:featuredmedia"][0].source_url}
+              src={post["wp:featuredmedia"][0].source_url}
               width={322}
               height={322}
               format="webp"

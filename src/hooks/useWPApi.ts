@@ -41,7 +41,7 @@ export type WP_REST_API_Attachment_Detail = WP_REST_API_Attachment & {
 export type WPApiResult<T> = T | WP_REST_API_Error;
 
 export type WP_REST_API_Post_With_FeatureImage = WP_REST_API_Post & {
-  _embedded: { "wp:featuredmedia": WP_REST_API_Attachment_Detail[] };
+  "wp:featuredmedia": WP_REST_API_Attachment_Detail[];
 };
 
 export type WP_REST_API_Staff = WP_REST_API_Post & { acf: StaffCustomField };
