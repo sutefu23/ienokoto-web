@@ -8,20 +8,24 @@ import NewsList from "~/components/post/NewsList.astro";
 import EventList from "~/components/post/EventList.astro";
 import ColumnList from "~/components/post/ColumnList.astro";
 import { PAGES } from "~/consts";
+import useWPApi from "~/hooks/useWPApi";
 
 const { className } = PAGES.HOME;
+// const { fetchPage } = useWPApi();
+// const topPage = await fetchPage("top");
+
+// if (!topPage || !topPage.content.rendered)
+//   throw Error("Failed to fetch top page content");
 ---
 
 <PageContent class={className}>
   <TopCatch />
   <p class="main_copy">
-    4月8日はお釈迦様の誕生日で<br />
-    お寺では花祭りが催されます<br />
-    <br />
-    自然に囲まれたお寺の境内で<br />
-    甘茶をいただきながら<br />
-    深呼吸をしてみるのにも<br />
-    いい季節<br />
+    五月は七十ニ候では立夏。<br />
+    いよいよ夏の入口<br />
+    昔よりひと月ほど早くなった衣替え<br />
+    部屋中に風を通して<br />
+    不要なものと「さようなら」をする季節<br />
     <br />
     <strong>「家創りは、暮らし創り」</strong>
     そんな想いを持つ女性が集まって生まれた<br />イエノコトだからできるコト。

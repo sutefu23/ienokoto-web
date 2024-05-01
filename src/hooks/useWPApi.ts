@@ -1,5 +1,6 @@
 import type {
   WP_REST_API_Post,
+  WP_REST_API_Pages,
   WP_REST_API_Error,
   WP_REST_API_Settings,
   WP_REST_API_Attachment,
@@ -103,10 +104,24 @@ const useWPApi = () => {
       console.error(e);
     }
   };
+
+  const fetchPage = async (slug: string) => {
+    try {
+      const res = await client.get<WP_REST_API_Pages>(
+        `/wp-json/wp/v2/pages/?slug=${slug}`
+      );
+      const data = res.data[0];
+      return data;
+    } catch (e: unknown) {
+      console.error(e);
+    }
+  };
+
   return {
     fetchPost,
     fetchPosts,
     fetchImage,
+    fetchPage,
   };
 };
 
