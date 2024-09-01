@@ -33,9 +33,9 @@ const { className } = PAGES.HOME;
     そんな想いを持つ女性が集まって生まれた<br />イエノコトだからできるコト。
   </p>
   <TopNavi />
-  <NewsList />
   <EventList />
   <ColumnList />
+  <NewsList />
   <h3 class="sns_list_title">Follow us</h3>
   <SNSList />
 </PageContent>
@@ -67,16 +67,16 @@ const { className } = PAGES.HOME;
   }
   .home {
     :global(.top_nav) {
-      margin-bottom: 252px;
+      margin-bottom: 250px;
     }
     :global(.news_list) {
-      margin-bottom: 252px;
+      margin-bottom: 250px;
     }
     :global(.event_list) {
-      margin-bottom: 252px;
+      margin-bottom: 250px;
     }
     :global(.column_list) {
-      margin-bottom: 252px;
+      margin-bottom: 250px;
     }
     :global(.sns_list) {
       display: block;
@@ -84,16 +84,16 @@ const { className } = PAGES.HOME;
     }
     @media screen and (max-width: $mobileBreakPoint) {
       :global(.top_nav) {
-        margin-bottom: vw(102px);
+        margin-bottom: vw(100px);
       }
       :global(.news_list) {
-        margin-bottom: vw(102px);
+        margin-bottom: vw(100px);
       }
       :global(.event_list) {
-        margin-bottom: vw(105px);
+        margin-bottom: vw(100px);
       }
       :global(.column_list) {
-        margin-bottom: vw(92px);
+        margin-bottom: vw(100px);
       }
       :global(.sns_list) {
         margin-bottom: vw(100px);
