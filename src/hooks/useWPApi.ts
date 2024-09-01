@@ -18,6 +18,7 @@ export type Endpoints =
   | "staff"
   | "reform_story"
   | "column"
+  | "top_copy"
   | "case";
 
 export type FeaureImageDetail = {

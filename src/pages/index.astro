@@ -9,28 +9,25 @@ import EventList from "~/components/post/EventList.astro";
 import ColumnList from "~/components/post/ColumnList.astro";
 import { PAGES } from "~/consts";
 import useWPApi from "~/hooks/useWPApi";
+import { convertPToBr } from "~/utils/convertPtoBr";
+import type { WP_REST_API_Post } from "wp-types";
 
 const { className } = PAGES.HOME;
-// const { fetchPage } = useWPApi();
-// const topPage = await fetchPage("top");
-
-// if (!topPage || !topPage.content.rendered)
-//   throw Error("Failed to fetch top page content");
+const { fetchPosts } = useWPApi();
+const topPages = await fetchPosts<WP_REST_API_Post[]>(
+  "top_copy",
+  { per_page: 1 },
+  false
+);
+const topPage = topPages?.[0];
+if (!topPage || !topPage.content.rendered)
+  throw Error("Failed to fetch top page content");
 ---
 
 <PageContent class={className}>
   <TopCatch />
   <p class="main_copy">
-    九月は長月<br />
-    月を眺める季節<br />
-    中秋の名月は十七日<br />
-    <br />
-    月々に月見る月は多けれど<br />
-    月見る月はこの月の月<br />
-    <br />
-    月見団子を作って<br />
-    ススキを飾って<br />
-    風流な時間を楽しむ<br />
+    <span set:html={convertPToBr(topPage.content.rendered)} />
     <br />
 
     <br />
