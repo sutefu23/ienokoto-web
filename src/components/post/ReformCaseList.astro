@@ -15,7 +15,7 @@ const CasePosts = await fetchPosts<WP_REST_API_Post_With_FeatureImage[]>(
 );
 const ReformStoryPosts = await fetchPosts<WP_REST_API_Post_With_FeatureImage[]>(
   "reform_story",
-  { per_page: 100, offset: 3 },
+  { per_page: 10, offset: 3 },
   true
 );
 if (!CasePosts) return;
@@ -23,12 +23,12 @@ if (!ReformStoryPosts) return;
 ---
 
 {
-  [ReformStoryPosts, CasePosts].map((Posts, i) => (
-  <section class={`reform_list swiper-${i}`}>
-  <ul class="swiper-wrapper">
+  [ReformStoryPosts, CasePosts].map((Posts) => (
+  <section class={`reform_list`}>
+  <ul >
     {
       Posts.map((post) => (
-        <li class="swiper-slide">
+        <li>
           <a href={post.link}>
             {post["wp:featuredmedia"] && 
             <Image
@@ -51,30 +51,7 @@ if (!ReformStoryPosts) return;
 
   ))
 }
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
-/>
-<script
-  is:inline
-  src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"
-></script>
-<script is:inline>
-  const breakPoint = 768;
-  if (window.innerWidth <= breakPoint) {
-    swiper1 = new Swiper(".swiper-1", {
-      slidesPerView: 4.4,
-      loop: true,
-    });
-    swiper2 = new Swiper(".swiper-2", {
-      slidesPerView: 4.4,
-      loop: true,
-    });
-  } else {
-    swiper1 = undefined;
-    swiper2 = undefined;
-  }
-</script>
+<a href=`${Astro.site}case/` class="more">＞＞もっと見る</a>
 <style lang="scss">
   .reform_list {
     max-width: 1383px;
@@ -89,33 +66,35 @@ if (!ReformStoryPosts) return;
     display: flex;
     justify-content: center;
     column-gap: 53px;
-    li {
-      &.swiper-slide {
-        @media screen and (min-width: $mobileBreakPoint + 1px) {
-          flex-shrink: initial;
-          width: auto;
-          height: auto;
-        }
-      }
-    }
+  }
+  .more {
+    text-align: right;
+    display: block;
+    margin-top: 60px;
   }
   @media screen and (max-width: $mobileBreakPoint) {
     .reform_list {
-      &.swiper {
-        // width: vw($mobileDesignWidth - 37 * 2);
-      }
       + .reform_list {
-      margin-top: vw(80px);// - TODO 要確認
+      margin-top: vw(45px);// - TODO 要確認
       }
     }
     ul {
-      &.swiper-wrapper {
-        justify-content: normal;
-        column-gap: vw(21px);
-      }
+      column-gap: vw(21px);
+      row-gap: vw(45px);
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: vw(313px);
+    }
+    li {
+      width: vw(85px);
+      height: vw(85px);
     }
     img {
       width: vw(86px);
+    }
+    .more {
+      text-align: center;
+      margin-top: vw(27px);
     }
   }
 </style>

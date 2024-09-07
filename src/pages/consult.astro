@@ -6,14 +6,13 @@ const { className } = PAGES.CONSULT;
 import PageCopy from "~/components/common/PageCopy.astro";
 import BreadCrumb from "~/components/common/BreadCrumb.astro";
 import InquiryMore from "~/components/common/InquiryMore.astro";
-import ExpartTakaya from "~/img/consult/expart_takaya.jpg";
-import ExpartYodogawa from "~/img/consult/expart_yodogawa.jpg";
+import ExpartImage from "~/img/consult/consult_expert.png";
 import { Image } from "astro:assets";
 ---
 
 <PageContent class={className}>
   <PageCatch page={"CONSULT"} />
-  <BreadCrumb page={"CONSULT"} pageTitle="くらしの相談所" />
+  <BreadCrumb page={"CONSULT"} pageTitle="家のコト相談窓口" />
   <PageCopy title="くらしの専門家が、あなたの「家のコト」、解決します">
     イエノコトでは、どこに、どこから相談したらいいか分からない、<br />
     相続、遺言、家族信託、財産管理、お墓、土地などの家のコトの<br />
@@ -35,51 +34,35 @@ import { Image } from "astro:assets";
       <dd>家族がもめないために私が準備しておくことってあるのかしら？</dd>
     </dl>
   </section>
-  <section class="consult_expart">
-    <h2 class="consult_expart_title">専門家紹介（抜粋）</h2>
-    <ul class="consult_expart_content">
-      <li>
-        <Image
-          src={ExpartTakaya}
-          width={126}
-          height={126}
-          alt="髙谷 亜希子"
-          format="webp"
-          loading="lazy"
-        />
-        <h4>髙谷 亜希子</h4>
-        <p class="align_center">司法書士</p>
-      </li>
-      <li>
-        <Image
-          src={ExpartYodogawa}
-          width={126}
-          height={126}
-          alt="淀川　洋子"
-          format="webp"
-          loading="lazy"
-        />
-        <h4>淀川　洋子</h4>
-        <p class="align_left">
-          1級家事セラピスト<br />
-          宅建士<br />
-          ファイナンシャルプランナー
-        </p>
-      </li>
-    </ul>
+  <section class="consult_expert">
+    <h2 class="consult_expert_title">専門相談員</h2>
+    <p class="consult_expert_text">
+      1級家事セラピスト、宅建士、ファイナンシャルプランナー、葬祭カウンセラー、増改築相談員、古民家鑑定士等、お悩みに応じた専門家が対応します。また、お悩みを伺い必要であれば司法書士や弁護士等へお繋ぎいたします。
+    </p>
+    <div class="consult_expert_content">
+      <Image
+        src={ExpartImage}
+        width={482}
+        height={320}
+        alt="専門相談員"
+        format="webp"
+        loading="lazy"
+      />
+    </div>
   </section>
   <section class="consult_detail">
-    <h2 class="consult_detail_title">詳細</h2>
+    <h2 class="consult_detail_title">相談方法</h2>
     <p class="consult_detail_content">
-      【開催日時】<span class="pc"> </span><br
-        class="sp"
-      />毎月第２水曜　10:00～15:00<br class="sp" />（１組2時間）<br />
-      【開催場所】<span class="pc"> </span><br
-        class="sp"
-      />イエノコトモデルハウス<br />
-      【予約方法】<span class="pc"> </span><br
-        class="sp"
-      />0120-200-789までお電話ください。<br />
+      【開催日時】<br />随時（お申し込み時にお伝えください）<br />
+      ※定期開催の相談会は、講座・イベント詳細から確認ください。 <br /><br />
+      【開催場所】<br
+      />イエノコトモデルハウス又はお電話、zoomや、ご希望により現場まで伺います。お申し込み時にお伝えください。<br
+      /><br />
+      【予約方法】<br />①お電話：0120-200-789までお電話ください。<br />
+      ②お申し込みフォーム：<a href="https://forms.gle/fcDpsKZoDZfp8tKu6
+"
+        >こちらからお申し込みください。</a
+      ><br />
     </p>
   </section>
   <section class="inquiry_more">
@@ -122,38 +105,33 @@ import { Image } from "astro:assets";
       }
     }
   }
-  .consult_expart {
+  .consult_expert {
     margin-top: 188px;
   }
-  .consult_expart_title {
+  .consult_expert_title {
     margin-bottom: 119px;
   }
-  .consult_expart_content {
+  .consult_expert_text {
+    max-width: 635px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 85px;
+    line-height: 1.875;
+  }
+  .consult_expert_content {
     display: flex;
     justify-content: center;
     max-width: 600px;
     column-gap: 91px;
     margin-right: auto;
     margin-left: auto;
-    li {
-      text-align: center;
-      h4 {
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-size: 16px;
-      }
-      p {
-        font-size: 12px;
-        line-height: 1.875;
-      }
-    }
   }
   .consult_detail {
-    margin-top: 191px;
+    margin-top: 188px;
     max-width: 466px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 118px;
+    margin-bottom: 188px;
   }
   .consult_detail_title {
     margin-bottom: 68px;
@@ -189,30 +167,23 @@ import { Image } from "astro:assets";
         }
       }
     }
-    .consult_expart {
+    .consult_expert {
       margin-top: vw(107px);
     }
-    .consult_expart_title {
-      margin-bottom: vw(60px);
+    .consult_expert_title {
+      margin-bottom: vw(63px);
     }
-    .consult_expart_content {
-      flex-direction: column;
-      gap: vw(70px);
-      li {
-        h4 {
-          font-size: vw(16px);
-          margin: vw(34px) 0 vw(10px);
-        }
-        p {
-          display: table;
-          font-size: vw(12px);
-          margin: 0 auto;
-        }
-      }
+    .consult_expert_text {
+      max-width: vw(286px);
+      margin-bottom: vw(42px);
+    }
+
+    .consult_expert_content {
+      max-width: vw(313px);
     }
     .consult_detail {
-      padding: 0 vw(56px);
-      margin: vw(100px) auto vw(50px);
+      padding: 0 vw(38px);
+      margin: vw(102px) auto vw(102px);
     }
     .consult_detail_title {
       margin-bottom: vw(60px);
