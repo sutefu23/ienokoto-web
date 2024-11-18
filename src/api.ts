@@ -7,7 +7,7 @@ interface ImportMeta {
 const client: AxiosInstance = axios.create({
   baseURL: import.meta.env.API_URL,
   headers: { "Content-Type": "application/json" },
-  timeout: 5000, // milliseconds
+  timeout: 5000, // milliseconds,
 });
 
 export default client;

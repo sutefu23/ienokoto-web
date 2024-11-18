@@ -36,11 +36,12 @@ const isHome = Astro.url.pathname === "/";
       />
     </a>
     <ul class="main_navi">
-      <li><a href={PAGES.REFORM.slug}>家づくり</a></li>
-      <li><a href={PAGES.LEARN.slug}>暮らしの講座</a></li>
+      <li><a href={PAGES.REFORM.slug}>リフォーム</a></li>
+      <li><a href={PAGES.LEARN.slug}>中古リノベ</a></li>
+      <li><a href={PAGES.LEARN.slug}>暮らしを学ぶ</a></li>
       <li><a href="/event">貸しスペース</a></li>
+      <li><a href={PAGES.CONSULT.slug}>家のコト相談窓口</a></li>
       <li><a href={PAGES.REPRODUCTION.slug}>古民家再生</a></li>
-      <li><a href={PAGES.CONSULT.slug}>暮らしの相談所</a></li>
       <li><a href={PAGES.STAFF.slug}>スタッフ</a></li>
       <li><a href="/company/">会社概要</a></li>
       <li><a href="/siryo/">お問い合わせ</a></li>
@@ -93,8 +94,8 @@ const isHome = Astro.url.pathname === "/";
       .main_navi {
         position: fixed;
         display: block;
-        width: 250px;
-        right: -250px;
+        width: 280px;
+        right: -280px;
         top: 0;
         height: 110%;
         background-color: rgba(133, 93, 60, 0.8);

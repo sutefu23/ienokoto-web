@@ -7,7 +7,7 @@ dayjs.locale(ja);
 const { fetchPosts } = useWPApi();
 const ReformPosts = await fetchPosts<WP_REST_API_ReformStory[]>(
   "reform_story",
-  { per_page: 4, order: "asc" },
+  { per_page: 3, order: "desc" },
   false
 );
 if (!ReformPosts) return;
