@@ -33,7 +33,7 @@ const ReformLower = ReformStoryPosts.slice(5, 10);
     {
       Posts.map((post) => (
         <li>
-          <a href={post.link}>
+          <a href={post.type==="case"?post.link:`/reform/${post.id}`}>
             {post["wp:featuredmedia"] && 
             post["wp:featuredmedia"][0].media_details["sizes"]
             ["thumbnail"]?.source_url
