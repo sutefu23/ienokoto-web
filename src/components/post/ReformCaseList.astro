@@ -20,10 +20,14 @@ const ReformStoryPosts = await fetchPosts<WP_REST_API_Post_With_FeatureImage[]>(
 );
 if (!CasePosts) return;
 if (!ReformStoryPosts) return;
+
+// 10件のリフォーム事例を５件ずつ表示するため分割
+const ReformUpper = ReformStoryPosts.slice(0, 5);
+const ReformLower = ReformStoryPosts.slice(5, 10);
 ---
 
 {
-  [ReformStoryPosts, CasePosts].map((Posts) => (
+  [ReformUpper, ReformLower, CasePosts].map((Posts) => (
   <section class={`reform_list`}>
   <ul >
     {
@@ -31,10 +35,13 @@ if (!ReformStoryPosts) return;
         <li>
           <a href={post.link}>
             {post["wp:featuredmedia"] && 
+            post["wp:featuredmedia"][0].media_details["sizes"]
+            ["thumbnail"]?.source_url
+            && 
             <Image
               src={
                 post["wp:featuredmedia"][0].media_details["sizes"]
-                  .past_case_thumbnail.source_url
+                  ["thumbnail"]?.source_url
               }
               width={234}
               height={227}

@@ -61,8 +61,9 @@ import { Image } from "astro:assets";
       【予約方法】<br />①お電話：0120-200-789までお電話ください。<br />
       ②お申し込みフォーム：<a href="https://forms.gle/fcDpsKZoDZfp8tKu6
 "
-        >こちらからお申し込みください。</a
-      ><br />
+        >こちら</a
+      >からお申し込みください。
+      <br />
     </p>
   </section>
   <section class="inquiry_more">
@@ -138,6 +139,9 @@ import { Image } from "astro:assets";
     text-align: center;
   }
   .consult_detail_content {
+    a {
+      text-decoration: underline;
+    }
     line-height: 2.5;
   }
   .inquiry_more {

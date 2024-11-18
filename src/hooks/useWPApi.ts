@@ -34,7 +34,7 @@ export type WP_REST_API_Attachment_Detail = WP_REST_API_Attachment & {
       medium: FeaureImageDetail;
       medium_large: FeaureImageDetail;
       large: FeaureImageDetail;
-      past_case_thumbnail: FeaureImageDetail;
+      past_case_thumbnail?: FeaureImageDetail;
     };
   };
 };
