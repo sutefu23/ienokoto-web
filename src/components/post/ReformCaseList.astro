@@ -35,11 +35,13 @@ const ReformLower = ReformStoryPosts.slice(5, 10);
         <li>
           <a href={post.type==="case"?post.link:`/reform/${post.id}`}>
             {post["wp:featuredmedia"] && 
-            post["wp:featuredmedia"][0]?.source_url
+            post["wp:featuredmedia"][0].media_details["sizes"]
+            ["past_case_thumbnail"]?.source_url
             && 
             <Image
               src={
-                post["wp:featuredmedia"][0]?.source_url
+                post["wp:featuredmedia"][0].media_details["sizes"]
+            ["past_case_thumbnail"]?.source_url
               }
               width={234}
               height={227}
