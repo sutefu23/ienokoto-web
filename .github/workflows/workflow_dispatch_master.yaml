@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+
 jobs:
   deploy:
     runs-on: ubuntu-20.04
@@ -13,26 +14,50 @@ jobs:
       - run: git checkout master
       - run: echo "SITE_URL=https://ienokoto.jp" >> $GITHUB_ENV
       - run: echo "API_URL=https://ienokoto.jp" >> $GITHUB_ENV
-      # インストールとビルド
+
       - name: Use Volta
         uses: volta-cli/action@v4
-      - run: |
-          yarn install --immutable && \
-          yarn build --immutable
+
+      - name: Install and Build with Retry
+        id: build
+        continue-on-error: true
         env:
-          RETRY_LIMIT: 5 # 再試行の最大回数を定義
-      - name: Check if build was successful
-        if: failure() # 前のステップが失敗した場合
+          MAX_ATTEMPTS: 5
+          WAIT_TIME: 120
         run: |
-          retry_count=1
-          while [ "$retry_count" -le "$RETRY_LIMIT" ] && [ ! -d "./dist" ]; do
-            echo "Retrying build... ($retry_count/$RETRY_LIMIT)"
-            yarn build
-            ((retry_count++))
-            sleep 5m  # ウェイト時間
+          attempt=1
+          
+          while [ $attempt -le $MAX_ATTEMPTS ]; do
+            echo "::group::Build attempt $attempt of $MAX_ATTEMPTS"
+            
+            if yarn install --immutable && yarn build --immutable; then
+              echo "Build successful on attempt $attempt"
+              echo "::endgroup::"
+              exit 0
+            else
+              echo "Build failed on attempt $attempt"
+              echo "::endgroup::"
+              if [ $attempt -lt $MAX_ATTEMPTS ]; then
+                echo "Waiting $(($WAIT_TIME / 60)) minutes before next attempt..."
+                sleep $WAIT_TIME
+              fi
+            fi
+            
+            attempt=$((attempt + 1))
           done
+          
+          echo "::error::All $MAX_ATTEMPTS build attempts failed"
+          exit 1
+
+      - name: Check Build Status
+        if: steps.build.outcome == 'failure'
+        run: |
+          echo "All build attempts failed. Please check the logs for more details."
+          exit 1
+
       # SSH 設定
       - name: SSH Deploy
+        if: steps.build.outcome == 'success'
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.PRODUCTION_SSH_PRIVATE_KEY }}
@@ -45,5 +70,7 @@ jobs:
               IdentityFile ~/.ssh/ienokoto-production.key
               Port 10022
               StrictHostKeyChecking no
+
       - name: rsync over SSH
+        if: steps.build.outcome == 'success'
         run: rsync -r ./static/ ienokoto-production:/home/ieno510/ienokoto.jp/public_html/static/
